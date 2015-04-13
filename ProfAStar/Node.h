@@ -13,8 +13,7 @@ public:
     inline int X() const { return aiCoord[0]; }
     inline int Y() const { return aiCoord[1]; }
     
-    bool operator==(const Node &other) const
-    {
+    bool operator==(const Node &other) const{
         return X() == other.X() && Y() == other.Y();
     }
     

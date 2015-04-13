@@ -73,11 +73,13 @@
     <ClInclude Include="AStar.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="NodeState.h" />
+    <ClInclude Include="Scacchiera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AStar.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Node.cpp" />
+    <ClCompile Include="Scacchiera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resouces\GiocoDelQuindici.PNG" />
