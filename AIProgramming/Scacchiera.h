@@ -5,13 +5,17 @@ public:
 	Scacchiera();
 	Scacchiera(const Scacchiera& other);
 	void Init();
-	bool operator==(const Scacchiera& other) const;
 	~Scacchiera();
 
+	int			operator[](const int index) const;
+	bool		operator==(const Scacchiera& other) const;
+	
 	void ScambiaValori(int start, int end);
+	void Stampa() const;
+
 	const int GetValue(int index) const;
 	const int GetZeroIndex() const;
-	void Stampa() const;
+	int GetDIM();
 
 private:
 	const int DIM = 16;

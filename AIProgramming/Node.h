@@ -6,18 +6,22 @@
 class Node{
 	public:
 		Node();
-		Node(Scacchiera board);
+		Node(Node& other);
 		~Node();
-		void ComputeHeuristic();
 		bool operator==(const Node &other) const;
+		bool operator>(const Node &other) const;
+		bool operator<(const Node &other) const;
+
+		void ComputeHeuristic();
+		std::list<Node*> GenerateSons();
 		void Stampa()const;
 
 		NodeState			oStato;
 		Node*				pParent;
 		int					iF;
 		int					iG;
-		int                 iH;
+		int                 iH; //could be < 0?
 		std::list<Node*>    lAdj;
 	private:
-		Scacchiera*			pScacchiera;
+		Scacchiera			oScacchiera;
 };
