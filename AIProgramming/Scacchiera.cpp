@@ -5,11 +5,20 @@ using namespace std;
 Scacchiera::Scacchiera(){
 	caselle = new int[DIM];
 	zeroIndex = -1;
+	Init();
 }
 
 Scacchiera::Scacchiera(const Scacchiera& other){
 	this->caselle = other.caselle;
 	this->zeroIndex = other.zeroIndex;
+}
+
+Scacchiera::Scacchiera(const Scacchiera* other){
+	this->caselle = new int[DIM];
+	for (int i = 0; i < DIM; i++){
+		caselle[i] = other->caselle[i];
+	}
+	this->zeroIndex = other->zeroIndex;
 }
 
 Scacchiera::~Scacchiera(){
@@ -20,6 +29,16 @@ Scacchiera::~Scacchiera(){
 void Scacchiera::Init(){
 	caselle = new int[DIM]{13, 5, 14, 11, 12, 15, 7, 2, 1, 10, 3, 9, 8, 6, 4, 0};
 	zeroIndex = 15;
+}
+
+Scacchiera& Scacchiera::operator=(const Scacchiera& other){
+	if (this != &other){
+		for (int i = 0; i < DIM; i++){
+			caselle[i] = other.caselle[i];
+		}
+		zeroIndex = other.zeroIndex;
+	}
+	return *this;
 }
 
 int Scacchiera::operator[](const int index) const{
@@ -52,10 +71,10 @@ void Scacchiera::ScambiaValori(int start, int end){
 void Scacchiera::Stampa() const{
 	for (int i = 0; i < DIM; i++){
 		if (i % 4 == 0){
-			cout << "\n[" << i << "] " << caselle[i] << ends;
+			cout << "\n[" << i << "]\t" << caselle[i] << "\t" << ends;
 		}
 		else{
-			cout << "[" << i << "] " << caselle[i] << ends;
+			cout << "[" << i << "]\t" << caselle[i] << "\t" << ends;
 		}
 	}
 	cout << endl;
@@ -67,8 +86,4 @@ const int Scacchiera::GetValue(int index) const{
 
 const int Scacchiera::GetZeroIndex() const{
 	return zeroIndex;
-}
-
-int Scacchiera::GetDIM(){
-	return this->DIM;
 }

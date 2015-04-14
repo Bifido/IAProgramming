@@ -2,11 +2,16 @@
 
 class Scacchiera{
 public:
+	const int DIM = 16;
+	const int DIM_ROW = 4;
+
 	Scacchiera();
 	Scacchiera(const Scacchiera& other);
+	Scacchiera(const Scacchiera* other);
 	void Init();
 	~Scacchiera();
 
+	Scacchiera& operator=(const Scacchiera& other);
 	int			operator[](const int index) const;
 	bool		operator==(const Scacchiera& other) const;
 	
@@ -15,10 +20,8 @@ public:
 
 	const int GetValue(int index) const;
 	const int GetZeroIndex() const;
-	int GetDIM();
 
 private:
-	const int DIM = 16;
 	int* caselle;
 	int zeroIndex;
 };
