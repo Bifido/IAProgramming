@@ -2,7 +2,7 @@
 #include "NodeState.h"
 
 
-Node::Node(){
+Node::Node(): g(0), h(0), f(0) {
 	// Create a standard configuration that allow at least one solution (always the same)
 	configuration[0] = 13;
 	configuration[1] = 5;
@@ -21,9 +21,10 @@ Node::Node(){
 	configuration[14] = 4;
 	configuration[15] = 16; // 16 rapresent the hole!!
 
+	posOfEmpty = 15;
+
 	state = NodeState::Unknown;
 }
-
 
 Node::Node(const Node& nodeBase){
 	CopyConfigurationFrom(nodeBase);
@@ -35,8 +36,39 @@ Node::~Node(){
 
 }
 
+
+void Node::SetG(int inG){
+	g = inG;
+	f = g + h;
+}
+
+void Node::SetH(int inH){
+	h = inH;
+	f = g + h;
+}
+
+void Node::AddAdjNode(Node* newNode){
+	adjNodes.push_back(newNode);
+}
+
+void Node::SwapCellsInConfiguration(int pos1, int pos2){
+	
+	// Update the posOfEmpty
+	if (pos1 == posOfEmpty)
+		posOfEmpty = pos2;
+	else
+		posOfEmpty = pos1;
+
+	// Swap the values
+	if (pos1 < NODE_MAX_ELEM_STATUS && pos2 < NODE_MAX_ELEM_STATUS){
+		configuration[pos1] = configuration[pos1] ^ configuration[pos2]; // mask in pos1 
+		configuration[pos2] = configuration[pos1] ^ configuration[pos2]; // pos1 in pos2
+		configuration[pos1] = configuration[pos1] ^ configuration[pos2]; // pos2 in pos1
+	}
+}
+
 void Node::CopyConfigurationFrom(const Node& toCopy){
-	memcpy(configuration, toCopy.configuration, NODE_MAX_ELEM_STATUS);
+	memcpy(configuration, toCopy.configuration, NODE_MAX_ELEM_STATUS*sizeof(short));
 }
 
 bool Node::operator==(const Node& toCheck) const{

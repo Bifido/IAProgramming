@@ -8,6 +8,7 @@
 class AStar
 {
 public:
+	void ComputeNodeHeuristic(Node* pNode);
     void Run();
     
 private:
@@ -18,10 +19,10 @@ private:
     
     void CreateGraph();
     void CreateGraphAdjs();
-    void CreateNodeAdj(const int iRow, const int iCol);
+    //void CreateNodeAdj(const int iRow, const int iCol);
+    void CreateNodeAdj(Node* node);
     
     void ComputeGraphHeuristics();
-    void ComputeNodeHeuristic(Node* pNode);
     
     void Clean();
     
