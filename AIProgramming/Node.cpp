@@ -11,7 +11,7 @@ Node::Node(){
 	this->iH = 0;
 	this->lAdj.clear();
 }
-Node::Node(const Node& other){
+Node::Node(Node& other){
 	this->oStato = NodeState::Unknown;
 	this->pParent = &other;
 	this->oScacchiera = new Scacchiera(other.oScacchiera);
@@ -20,7 +20,7 @@ Node::Node(const Node& other){
 	this->iH = other.iH;
 	this->lAdj.clear();
 }
-Node::Node(const Node* other){
+Node::Node(Node* other){
 	this->oStato = NodeState::Unknown;
 	this->pParent = other;
 	this->oScacchiera = new Scacchiera(other->oScacchiera);
@@ -33,13 +33,10 @@ Node::~Node(){
 	oScacchiera->~Scacchiera();
 }
 
-bool Node::operator==(const Node &other) const{
-	bool result = false;
-	if (this->oScacchiera == other.oScacchiera && this->iG == other.iG){
-		result = true;
-	}
-	return result;
+bool Node::EqualTo(Node* other) const{
+	return this->oScacchiera->EqualTo(other->oScacchiera);
 }
+
 bool Node::operator>(const Node &other) const{
 	bool result = false;
 	if (this->oScacchiera == other.oScacchiera && this->iG > other.iG){
@@ -47,9 +44,9 @@ bool Node::operator>(const Node &other) const{
 	}
 	return result;
 }
-bool Node::operator<(const Node &other) const{
+bool Node::BetterThan(Node* other) const{
 	bool result = false;
-	if (this->oScacchiera == other.oScacchiera && this->iG < other.iG){
+	if (this->oScacchiera->EqualTo(other->oScacchiera) && this->iG < other->iG){
 		result = true;
 	}
 	return result;
@@ -92,12 +89,11 @@ void Node::ComputeHeuristic(){
 void Node::GenerateSons(){
 	cout << "generating children" << endl;
 	lAdj.clear();
-	cout << "sons are " << lAdj.size() << endl;
 
 	int zeroIndexX = oScacchiera->GetZeroIndex() % oScacchiera->DIM_ROW;
 	int zeroIndexY = oScacchiera->GetZeroIndex() / oScacchiera->DIM_ROW;
 
-	cout << "zero is in cell (" << zeroIndexX << "," << zeroIndexY << ")" << endl;
+	cout << "zero in (" << zeroIndexX << "," << zeroIndexY << ")" << endl;
 
 	if (zeroIndexX == 0){
 		lAdj.push_back(GeneraDestra());				//genera destra
@@ -147,7 +143,8 @@ void Node::GenerateSons(){
 			}
 		}
 	}
-	cout << "sons generation ended" << endl;
+	cout << "sons are " << lAdj.size() << endl;
+	cout << "sons generation ended\n" << endl;
 }
 void Node::Stampa()const{
 	oScacchiera->Stampa();

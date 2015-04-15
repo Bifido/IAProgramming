@@ -5,29 +5,28 @@
 #include <list>
 #include "Node.h"
 
-class AStar
-{
+class AStar{
 public:
     void Run();
     
-private:
-    void CreateGraph();
-    void CreateGraphAdjs();
-    void CreateNodeAdj(Node& node);
-    
-    void ComputeGraphHeuristics();
-    void ComputeNodeHeuristic(Node* pNode);
-    
-    void Clean();
-    
+private:    
     void Search();
-    Node* VisitNode();
-    void AddNodeToOpenList(Node* pParent, Node* pNode);
     
-    void PrintPath(Node* pNode) const;
+	void VisitNode();
+    void AddNodeToOpenList(Node* pNode);
+	void AddNodeToClosedList(Node* pNode);
+	
+	bool EndFound();
+    void PrintPath();
+	void PresentAndBetter(Node* pNode);
     
+	void Clean();
+
     std::list<Node*> qOpenList;
+	std::list<Node*> qClosedList;
 	Node* root;
+	Node* lastConf;
+	bool endFound;
 };
 
 #endif /* defined(__AStar__AStar__) */

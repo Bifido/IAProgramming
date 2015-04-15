@@ -13,7 +13,7 @@ public:
 
 	Scacchiera& operator=(const Scacchiera& other);
 	int			operator[](const int index) const;
-	bool		operator==(const Scacchiera& other) const;
+	bool		EqualTo(Scacchiera* other);
 	
 	void ScambiaValori(int start, int end);
 	void Stampa() const;

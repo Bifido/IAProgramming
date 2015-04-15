@@ -170,8 +170,10 @@ void AStar::AddNodeToOpenList(Node* pParent, Node* pNode)
             break;
             
         case NodeState::Open:
-            if (pNode->iG <= pParent->iG + 1)
-            {
+
+			//TODO ottimizzazione se nodo uguale?
+
+            if (pNode->iG <= pParent->iG + 1){
                 std::cout << " already in open list.\n";
                 return;
             }

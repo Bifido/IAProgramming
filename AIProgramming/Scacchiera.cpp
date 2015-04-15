@@ -27,8 +27,8 @@ Scacchiera::~Scacchiera(){
 
 
 void Scacchiera::Init(){
-	caselle = new int[DIM]{13, 5, 14, 11, 12, 15, 7, 2, 1, 10, 3, 9, 8, 6, 4, 0};
-	zeroIndex = 15;
+	caselle = new int[DIM]{1, 0, 15, 7, 5, 11, 4, 3, 12, 2, 13, 14, 10, 9, 6, 8};
+	zeroIndex = 1;
 }
 
 Scacchiera& Scacchiera::operator=(const Scacchiera& other){
@@ -45,10 +45,10 @@ int Scacchiera::operator[](const int index) const{
 	return caselle[index];
 }
 
-bool Scacchiera::operator==(const Scacchiera& other) const{
+bool Scacchiera::EqualTo(Scacchiera* other){
 	bool result = true;
 	for (int i = 0; i < DIM; i++){
-		if (this->caselle[i] != other.caselle[i]){
+		if (this->caselle[i] != other->caselle[i]){
 			result = false;
 		}
 	}

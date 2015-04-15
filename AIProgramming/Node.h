@@ -6,12 +6,12 @@
 class Node{
 	public:
 		Node();
-		Node(const Node& other);
-		Node(const Node* other);
+		Node(Node& other);
+		Node(Node* other);
 		~Node();
-		bool operator==(const Node& other) const;
+		bool EqualTo(Node* other) const;
+		bool BetterThan(Node* other) const;
 		bool operator>(const Node& other) const;
-		bool operator<(const Node& other) const;
 
 		void ComputeHeuristic();
 		void ComputeF();
@@ -19,7 +19,7 @@ class Node{
 		void Stampa()const;
 
 		NodeState			oStato;
-		const Node*			pParent;
+		Node*				pParent;
 		int					iF;
 		int					iG;
 		int                 iH;
