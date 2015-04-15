@@ -71,12 +71,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AStar.h" />
+    <ClInclude Include="ChessConfiguration.h" />
+    <ClInclude Include="MyAStar.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="NodeState.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AStar.cpp" />
+    <ClCompile Include="ChessConfiguration.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MyAStar.cpp" />
     <ClCompile Include="Node.cpp" />
   </ItemGroup>
   <ItemGroup>
