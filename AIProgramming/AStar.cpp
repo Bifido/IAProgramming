@@ -4,13 +4,22 @@
 // TODO: find the way to delete the heap allocations
 
 void AStar::Run(){
+	short arrayCorrectConfiguration[16] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
+	// Final Node
+	Node* finalNode = new Node(arrayCorrectConfiguration);
+	// Starting Node
 	Node* x = new Node();
+
 	
 	ComputeNodeHeuristic(x);
 	AddNodeToOpenList(nullptr, x);
 
 	// ** MAIN SEARCH LOOP
-	VisitNode();
+	Node* actual = x;
+	while (*actual != *finalNode)
+		actual = VisitNode();
+
+	PrintPath(actual);
 	// ** END
 }
 
@@ -20,7 +29,8 @@ Node* AStar::VisitNode(){
 	if (actual != nullptr){
 		qOpenList.pop_front();
 
-		// TODO: Check if the configuration is the final one
+		std::cout << "Pop OpenList: (OpenList count:" << qOpenList.size() << ", Configuration passed count:" << nodesAlreadyOpen.size() << std::endl;
+		actual->PrintConfiguration();
 
 		//ComputeNodeHeuristic(actual);
 		CreateNodeAdj(actual);
@@ -28,6 +38,8 @@ Node* AStar::VisitNode(){
 	else{
 		std::cout << "**** No solution finded!!!! ****" << std::endl;
 	}
+
+	nodesAlreadyOpen.push_back(actual);
 
 	return actual;
 }
@@ -42,48 +54,97 @@ void AStar::CreateNodeAdj(Node* node){
 			newAdjNode = new Node(*node); // With the copy costructor copy also the configuration
 			// Change the configuration
 			newAdjNode->SwapCellsInConfiguration(holePosition, holePosition - node->NODE_EDGE_ELEM);
-			// computate the euristic
-			ComputeNodeHeuristic(newAdjNode);
-			// add the element to the open list (this step update also the G variable of the node)
-			AddNodeToOpenList(node, newAdjNode);
-			// add the element as NodeAdj (Maybe useless)
-			node->AddAdjNode(newAdjNode);
+
+			bool isNew = true;
+			for (std::list<Node*>::const_iterator x = nodesAlreadyOpen.begin(); x != nodesAlreadyOpen.end(); ++x)
+				if (*(*x) == (*newAdjNode))
+					isNew = false;
+
+			// if a node with this configuration isn't already open, add to the openList
+			if (isNew){
+				// computate the euristic
+				ComputeNodeHeuristic(newAdjNode);
+				// add the element to the open list (this step update also the G variable of the node)
+				AddNodeToOpenList(node, newAdjNode);
+				// add the element as NodeAdj (Maybe useless)
+				node->AddAdjNode(newAdjNode);
+			}
+			else{
+				delete newAdjNode;
+			}
 		}
 		// ** check bottom bound
 		if (holePosition + node->NODE_EDGE_ELEM < node->NODE_MAX_ELEM_STATUS){
 			newAdjNode = new Node(*node); // With the copy costructor copy also the configuration
 			// Change the configuration
 			newAdjNode->SwapCellsInConfiguration(holePosition, holePosition + node->NODE_EDGE_ELEM);
-			// computate the euristic
-			ComputeNodeHeuristic(newAdjNode);
-			// add the element to the open list (this step update also the G variable of the node)
-			AddNodeToOpenList(node, newAdjNode);
-			// add the element as NodeAdj (Maybe useless)
-			node->AddAdjNode(newAdjNode);
+
+			bool isNew = true;
+			for (std::list<Node*>::const_iterator x = nodesAlreadyOpen.begin(); x != nodesAlreadyOpen.end(); ++x)
+				if (*(*x) == (*newAdjNode))
+					isNew = false;
+
+
+			// if a node with this configuration isn't already open, add to the openList
+			if (isNew){
+				// computate the euristic
+				ComputeNodeHeuristic(newAdjNode);
+				// add the element to the open list (this step update also the G variable of the node)
+				AddNodeToOpenList(node, newAdjNode);
+				// add the element as NodeAdj (Maybe useless)
+				node->AddAdjNode(newAdjNode);
+			}
+			else{
+				delete newAdjNode;
+			}
 		}
 		// ** check left bound
 		if (holePosition / node->NODE_EDGE_ELEM == (holePosition - 1) / node->NODE_EDGE_ELEM){
 			newAdjNode = new Node(*node); // With the copy costructor copy also the configuration
 			// Change the configuration
 			newAdjNode->SwapCellsInConfiguration(holePosition, holePosition - 1);
-			// computate the euristic
-			ComputeNodeHeuristic(newAdjNode);
-			// add the element to the open list (this step update also the G variable of the node)
-			AddNodeToOpenList(node, newAdjNode);
-			// add the element as NodeAdj (Maybe useless)
-			node->AddAdjNode(newAdjNode);
+
+			bool isNew = true;
+			for (std::list<Node*>::const_iterator x = nodesAlreadyOpen.begin(); x != nodesAlreadyOpen.end(); ++x)
+				if (*(*x) == (*newAdjNode))
+					isNew = false;
+
+			// if a node with this configuration isn't already open, add to the openList
+			if (isNew){
+				// computate the euristic
+				ComputeNodeHeuristic(newAdjNode);
+				// add the element to the open list (this step update also the G variable of the node)
+				AddNodeToOpenList(node, newAdjNode);
+				// add the element as NodeAdj (Maybe useless)
+				node->AddAdjNode(newAdjNode);
+			}
+			else{
+				delete newAdjNode;
+			}
 		}
 		// ** check right bound
 		if (holePosition / node->NODE_EDGE_ELEM == (holePosition + 1) / node->NODE_EDGE_ELEM){
 			newAdjNode = new Node(*node); // With the copy costructor copy also the configuration
 			// Change the configuration
 			newAdjNode->SwapCellsInConfiguration(holePosition, holePosition + 1);
-			// computate the euristic
-			ComputeNodeHeuristic(newAdjNode);
-			// add the element to the open list (this step update also the G variable of the node)
-			AddNodeToOpenList(node, newAdjNode);
-			// add the element as NodeAdj (Maybe useless)
-			node->AddAdjNode(newAdjNode);
+
+			bool isNew = true;
+			for (std::list<Node*>::const_iterator x = nodesAlreadyOpen.begin(); x != nodesAlreadyOpen.end(); ++x)
+				if (*(*x) == (*newAdjNode))
+					isNew = false;
+
+			// if a node with this configuration isn't already open, add to the openList
+			if (isNew){
+				// computate the euristic
+				ComputeNodeHeuristic(newAdjNode);
+				// add the element to the open list (this step update also the G variable of the node)
+				AddNodeToOpenList(node, newAdjNode);
+				// add the element as NodeAdj (Maybe useless)
+				node->AddAdjNode(newAdjNode);
+			}
+			else{
+				delete newAdjNode;
+			}
 		}
 			
 	}
@@ -133,4 +194,21 @@ void AStar::ComputeNodeHeuristic(Node* pNode){
 	}
 
 	pNode->SetH(hValue);
+}
+
+void AStar::PrintPath(Node* endNode) const{
+	if (endNode != nullptr){
+		std::list<Node*> path;
+		// Go upward until the starting config is reached
+		while (endNode->GetParent() != nullptr){
+			path.push_back(endNode);
+			endNode = endNode->GetParent();
+		}
+
+		while (path.size() > 0){
+			endNode = path.back();
+			endNode->PrintConfiguration();
+			path.pop_back();
+		}
+	}
 }

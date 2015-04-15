@@ -1,35 +1,70 @@
 #include "Node.h"
 #include "NodeState.h"
+#include <iostream>
 
 
 Node::Node(): g(0), h(0), f(0) {
 	// Create a standard configuration that allow at least one solution (always the same)
-	configuration[0] = 13;
-	configuration[1] = 5;
-	configuration[2] = 14;
-	configuration[3] = 11;
-	configuration[4] = 12;
-	configuration[5] = 15;
-	configuration[6] = 7;
-	configuration[7] = 2;
-	configuration[8] = 1;
-	configuration[9] = 10;
-	configuration[10] = 3;
-	configuration[11] = 9;
-	configuration[12] = 8;
-	configuration[13] = 6;
-	configuration[14] = 4;
-	configuration[15] = 16; // 16 rapresent the hole!!
 
-	posOfEmpty = 15;
+	//configuration[0] = 13;
+	//configuration[1] = 5;
+	//configuration[2] = 14;
+	//configuration[3] = 11;
+	//configuration[4] = 12;
+	//configuration[5] = 15;
+	//configuration[6] = 7;
+	//configuration[7] = 2;
+	//configuration[8] = 1;
+	//configuration[9] = 10;
+	//configuration[10] = 3;
+	//configuration[11] = 9;
+	//configuration[12] = 8;
+	//configuration[13] = 6;
+	//configuration[14] = 4;
+	//configuration[15] = 16; // 16 rapresent the hole!!
+	
+	//posOfEmpty = 15;
 
-	state = NodeState::Unknown;
+	configuration[0] = 1;
+	configuration[1] = 16; // 16 rapresent the hole!!
+	configuration[2] = 15;
+	configuration[3] = 7;
+	configuration[4] = 5;
+	configuration[5] = 11;
+	configuration[6] = 4;
+	configuration[7] = 3;
+	configuration[8] = 12;
+	configuration[9] = 2;
+	configuration[10] = 13;
+	configuration[11] = 14;
+	configuration[12] = 10;
+	configuration[13] = 9;
+	configuration[14] = 6;
+	configuration[15] = 8;
+
+	posOfEmpty = 1;
+
+	//state = NodeState::Unknown;
+}
+
+Node::Node(const short configToCopy[]){
+
+	memcpy(configuration, configToCopy, NODE_MAX_ELEM_STATUS*sizeof(short));
+
+	posOfEmpty = -1;
+	for (int i = 0; i < NODE_MAX_ELEM_STATUS; ++i)
+		if(configuration[i] == 16)
+			posOfEmpty = i;
+
+
 }
 
 Node::Node(const Node& nodeBase){
 	CopyConfigurationFrom(nodeBase);
 
-	state = NodeState::Unknown;
+	posOfEmpty = nodeBase.GetHolePosition();
+
+	//state = NodeState::Unknown;
 }
 
 Node::~Node(){
@@ -79,3 +114,21 @@ bool Node::operator==(const Node& toCheck) const{
 
 	return true;
 };
+
+bool Node::operator!=(const Node& toCheck) const{
+	return !(*this == toCheck);
+}
+
+void Node::PrintConfiguration() const{
+	using namespace std;
+
+	cout << "*********************" << endl;
+	for (int i = 0; i < NODE_EDGE_ELEM; ++i){
+		for (int j = 0; j < NODE_EDGE_ELEM; ++j){
+			cout << configuration[i*NODE_EDGE_ELEM + j] << " ";
+		}
+		cout << endl;
+	}
+	cout << "G:" << g << " H:" << h << " F:" << f << endl;
+	cout << "*********************" << endl;
+}

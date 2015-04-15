@@ -29,6 +29,7 @@ public:
 	// ** FUNCTIONS **
 	Node();
 	Node(const Node&);
+	Node(const short[]);
 	~Node();
 
 	inline int GetG() const { return g; }
@@ -46,5 +47,7 @@ public:
 		
 	void CopyConfigurationFrom(const Node&);
 	bool operator==(const Node&) const;
+	bool operator!=(const Node&) const;
 
+	void PrintConfiguration() const;
 };

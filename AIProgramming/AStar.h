@@ -10,7 +10,7 @@ class AStar
 public:
 	void ComputeNodeHeuristic(Node* pNode);
     void Run();
-    
+
 private:
     const static int xMax = 5;
     const static int yMax = 5;
@@ -35,6 +35,7 @@ private:
     Node* tRoot[xMax * yMax];
     
     std::list<Node*> qOpenList;
+	std::list<Node*> nodesAlreadyOpen;
 };
 
 #endif /* defined(__AStar__AStar__) */
