@@ -82,9 +82,9 @@ void Node::SetH(int inH){
 	f = g + h;
 }
 
-void Node::AddAdjNode(Node* newNode){
-	adjNodes.push_back(newNode);
-}
+//void Node::AddAdjNode(Node* newNode){
+//	adjNodes.push_back(newNode);
+//}
 
 void Node::SwapCellsInConfiguration(int pos1, int pos2){
 	

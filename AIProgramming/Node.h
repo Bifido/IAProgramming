@@ -9,7 +9,7 @@ class Node{
 
 	Node* parent;
 	NodeState state;
-	std::list<Node*> adjNodes;
+	//std::list<Node*> adjNodes;
 
 	int g;
 	int h;
@@ -43,7 +43,7 @@ public:
 	void SetG(int);
 	void SetH(int);
 	void SwapCellsInConfiguration(int, int);
-	void AddAdjNode(Node*);
+	//void AddAdjNode(Node*);
 		
 	void CopyConfigurationFrom(const Node&);
 	bool operator==(const Node&) const;

@@ -22,19 +22,7 @@ void AStar::Run(){
 
 	PrintPath(actual);
 
-
-	// Free the allocated memory
-	typedef std::list<Node*>::iterator nodeIter;
-	
-	nodeIter end = nodesAlreadyOpen.end();
-	for (nodeIter i = nodesAlreadyOpen.begin(); i != end; ++i)
-		delete (*(i));
-	nodesAlreadyOpen.clear();
-	
-	end = qOpenList.end();
-	for (nodeIter i = qOpenList.begin(); i != end; ++i)
-		delete (*(i));
-	nodesAlreadyOpen.clear();
+	Clean();
 }
 
 Node* AStar::VisitNode(){
@@ -81,7 +69,7 @@ void AStar::CreateNodeAdj(Node* node){
 				// add the element to the open list (this step update also the G variable of the node)
 				AddNodeToOpenList(node, newAdjNode);
 				// add the element as NodeAdj (Maybe useless)
-				node->AddAdjNode(newAdjNode);
+				//node->AddAdjNode(newAdjNode);
 			}
 			else{
 				delete newAdjNode;
@@ -106,7 +94,7 @@ void AStar::CreateNodeAdj(Node* node){
 				// add the element to the open list (this step update also the G variable of the node)
 				AddNodeToOpenList(node, newAdjNode);
 				// add the element as NodeAdj (Maybe useless)
-				node->AddAdjNode(newAdjNode);
+				//node->AddAdjNode(newAdjNode);
 			}
 			else{
 				delete newAdjNode;
@@ -130,7 +118,7 @@ void AStar::CreateNodeAdj(Node* node){
 				// add the element to the open list (this step update also the G variable of the node)
 				AddNodeToOpenList(node, newAdjNode);
 				// add the element as NodeAdj (Maybe useless)
-				node->AddAdjNode(newAdjNode);
+				//node->AddAdjNode(newAdjNode);
 			}
 			else{
 				delete newAdjNode;
@@ -154,7 +142,7 @@ void AStar::CreateNodeAdj(Node* node){
 				// add the element to the open list (this step update also the G variable of the node)
 				AddNodeToOpenList(node, newAdjNode);
 				// add the element as NodeAdj (Maybe useless)
-				node->AddAdjNode(newAdjNode);
+				//node->AddAdjNode(newAdjNode);
 			}
 			else{
 				delete newAdjNode;
@@ -225,4 +213,19 @@ void AStar::PrintPath(Node* endNode) const{
 			path.pop_back();
 		}
 	}
+}
+
+void AStar::Clean(){
+	// Free the allocated memory
+	typedef std::list<Node*>::iterator nodeIter;
+
+	nodeIter end = nodesAlreadyOpen.end();
+	for (nodeIter i = nodesAlreadyOpen.begin(); i != end; ++i)
+		delete (*(i));
+	nodesAlreadyOpen.clear();
+
+	end = qOpenList.end();
+	for (nodeIter i = qOpenList.begin(); i != end; ++i)
+		delete (*(i));
+	nodesAlreadyOpen.clear();
 }

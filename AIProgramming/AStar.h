@@ -12,27 +12,27 @@ public:
     void Run();
 
 private:
-    const static int xMax = 5;
+    /*const static int xMax = 5;
     const static int yMax = 5;
     const static int iStartNode = 0;
-    const static int iEndNode = 25;
+    const static int iEndNode = 25;*/
     
-    void CreateGraph();
-    void CreateGraphAdjs();
+    //void CreateGraph();
+    //void CreateGraphAdjs();
     //void CreateNodeAdj(const int iRow, const int iCol);
     void CreateNodeAdj(Node* node);
     
-    void ComputeGraphHeuristics();
+    //void ComputeGraphHeuristics();
     
     void Clean();
     
-    void Search();
+    //void Search();
     Node* VisitNode();
     void AddNodeToOpenList(Node* pParent, Node* pNode);
     
     void PrintPath(Node* pNode) const;
     
-    Node* tRoot[xMax * yMax];
+    //Node* tRoot[xMax * yMax];
     
     std::list<Node*> qOpenList;
 	std::list<Node*> nodesAlreadyOpen;
