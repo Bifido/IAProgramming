@@ -18,9 +18,23 @@ void AStar::Run(){
 	Node* actual = x;
 	while (*actual != *finalNode)
 		actual = VisitNode();
+	// ** END
 
 	PrintPath(actual);
-	// ** END
+
+
+	// Free the allocated memory
+	typedef std::list<Node*>::iterator nodeIter;
+	
+	nodeIter end = nodesAlreadyOpen.end();
+	for (nodeIter i = nodesAlreadyOpen.begin(); i != end; ++i)
+		delete (*(i));
+	nodesAlreadyOpen.clear();
+	
+	end = qOpenList.end();
+	for (nodeIter i = qOpenList.begin(); i != end; ++i)
+		delete (*(i));
+	nodesAlreadyOpen.clear();
 }
 
 Node* AStar::VisitNode(){
