@@ -1,22 +1,24 @@
 #include "MyAStar.h"
 
-#include <algorithm>
+//#include <algorithm>
 
 void MyAStar::Initialize()
 {
-	//int initial[] = { 13, 5, 14, 11, 12, 15, 7, 2, 1, 10, 3, 9, 8, 6, 4, 0 };
-	//int initial[] = { 1, 2, 4, 8, 5, 0, 7, 12, 10, 6, 3, 11, 9, 13, 14, 15};
+	//int initial[] = { 15, 6, 3, 4, 1, 0, 7, 14, 12, 2, 5, 11, 10, 9, 13, 8 };
 	int initial[] = { 1, 0, 15, 7, 5, 11, 4, 3, 12, 2, 13, 14, 10, 9, 6, 8};
 
 	ChessConfiguration* root = new ChessConfiguration(initial);
 	AddToOpenList(root);
+
+	m_closedMap = new std::unordered_map <std::string, int>();
 }
 
 void MyAStar::Run()
 {
 	ChessConfiguration* analize;
 	analize = m_openList.back();
-	m_closedList.push_back(analize);
+	//m_closedList.push_back(analize);
+	(*m_closedMap)[analize->GetHash()] = analize->GetF();
 	m_openList.pop_back();
 
 	while (analize != nullptr && analize->GetH() != 0)
@@ -30,7 +32,8 @@ void MyAStar::Run()
 		{
 			analize = m_openList.back();
 			m_openList.pop_back();
-			m_closedList.push_back(analize);
+			//m_closedList.push_back(analize);
+			(*m_closedMap)[analize->GetHash()] = analize->GetF();
 		}
 		else
 		{
@@ -61,14 +64,17 @@ void MyAStar::ComputeAdj(ChessConfiguration* node)
 void MyAStar::InsertOrUpdateG(ChessConfiguration* obj)
 {
 	bool alreadyClosed = false;
-	std::list<ChessConfiguration*>::iterator it = m_closedList.begin();
-	for (; it != m_closedList.end(); ++it)
-	{
-		if ((*it)->Equal(*obj))
-		{
-			alreadyClosed = true;
-		}
-	}
+	//std::list<ChessConfiguration*>::iterator it = m_closedList.begin();
+	//for (; it != m_closedList.end(); ++it)
+	//{
+	//	if ((*it)->Equal(*obj))
+	//	{
+	//		alreadyClosed = true;
+	//	}
+	//}
+
+	if ((*m_closedMap).count(obj->GetHash()) != 0)
+		alreadyClosed = true;
 
 	if (!alreadyClosed)
 	{
@@ -91,8 +97,19 @@ void MyAStar::InsertOrUpdateG(ChessConfiguration* obj)
 
 void MyAStar::Clear()
 {
-	m_openList.clear();
-	m_closedList.clear();
+	std::list<ChessConfiguration*>::iterator it = m_closedList.begin();
+	std::list<ChessConfiguration*>::iterator end = m_closedList.end();
+	for (; it != end; ++it)
+	{
+		delete *it;
+	}
+
+	std::list<ChessConfiguration*>::iterator it2 = m_openList.begin();
+	std::list<ChessConfiguration*>::iterator end2 = m_openList.end();
+	for (; it2 != end2; ++it2)
+	{
+		delete *it2;
+	}
 }
 
 
@@ -126,20 +143,27 @@ void MyAStar::AddToOpenList(ChessConfiguration* node)
 
 void MyAStar::PrintSolution(ChessConfiguration* sol)
 {
-	std::vector<ChessConfiguration*> solutionList;
+	if (sol != nullptr){
+		std::vector<ChessConfiguration*> solutionList;
 
-	while (sol != nullptr)
-	{
-		solutionList.push_back(sol);
-		sol = sol->SetParent();
-	}
+		while (sol != nullptr)
+		{
+			solutionList.push_back(sol);
+			sol = sol->SetParent();
+		}
 
-	std::cout << std::endl << std::endl << "SOLUTION: in " << solutionList.size() << " moves" <<  std::endl;
-	std::vector<ChessConfiguration*>::iterator it = solutionList.end() -1;
-	for (; it != solutionList.begin(); --it)
-	{
+		std::cout << std::endl << std::endl << "SOLUTION: in " << solutionList.size() << " moves" << std::endl;
+		std::vector<ChessConfiguration*>::iterator it = solutionList.end() - 1;
+		for (; it != solutionList.begin(); --it)
+		{
+			(*it)->Print();
+		}
 		(*it)->Print();
+		std::cout << std::endl << std::endl << "SOLUTION: in " << solutionList.size() << " moves" << std::endl;
+		std::cout << "Open: " << m_openList.size() << " Closed: " << m_closedMap->size();
 	}
-	(*it)->Print();
-	std::cout << std::endl << std::endl << "SOLUTION: in " << solutionList.size() << " moves" << std::endl;
+	else
+	{
+		std::cout << std::endl << std::endl << "NO SOLUTION" << std::endl;
+	}
 }

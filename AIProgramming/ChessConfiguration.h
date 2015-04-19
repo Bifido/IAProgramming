@@ -25,7 +25,8 @@ public:
 	//NODE
 	inline int GetF() const { return m_h + m_g; };
 	inline int GetG() const { return m_g; };
-	inline int GetH() const { return m_h; }
+	inline int GetH() const { return m_h; };
+	inline std::string GetHash() const { return m_hash; };
 	inline void SetG(int g) { m_g = g; };
 	void UpdateG(int g);
 
@@ -37,8 +38,10 @@ private:
 	int m_zeroIndex;
 	int ComputeHeuristic() const;
 	int ComputeCellHeuristic(int index) const;
+	std::string ComputeHash();
 	//NODE
 	int m_h;
 	int m_g;
 	ChessConfiguration* m_parent;
+	std::string m_hash;
 };

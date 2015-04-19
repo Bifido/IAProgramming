@@ -1,4 +1,4 @@
-
+#include <sstream>
 #include "ChessConfiguration.h"
 
 ChessConfiguration::ChessConfiguration(const int* initialConf)
@@ -11,6 +11,7 @@ ChessConfiguration::ChessConfiguration(const int* initialConf)
 			m_zeroIndex = index;
 	}
 	m_h = ComputeHeuristic();
+	m_hash = ComputeHash();
 }
 
 ChessConfiguration::ChessConfiguration(const ChessConfiguration& copy)
@@ -23,6 +24,7 @@ ChessConfiguration::ChessConfiguration(const ChessConfiguration& copy)
 	}
 
 	m_h = ComputeHeuristic();
+	m_hash = ComputeHash();
 }
 
 ChessConfiguration& ChessConfiguration::operator= (const ChessConfiguration& copy)
@@ -33,6 +35,7 @@ ChessConfiguration& ChessConfiguration::operator= (const ChessConfiguration& cop
 		m_h = copy.m_h;
 		m_g = copy.m_g;
 		m_parent = copy.m_parent;
+		m_hash = copy.m_hash;
 		for (int index = 0; index < m_SIZE_ROW*m_SIZE_COL; ++index)
 		{
 			m_chess[index] = copy.m_chess[index];
@@ -122,6 +125,7 @@ void ChessConfiguration::Move(int moveIndex)
 		m_chess[moveIndex] = 0;
 		m_zeroIndex = moveIndex;
 		m_h = ComputeHeuristic();
+		m_hash = ComputeHash();
 	}
 }
 
@@ -185,4 +189,17 @@ bool ChessConfiguration::GreaterFThan(const ChessConfiguration& second) const
 	//}
 
 	return false;
+}
+
+std::string ChessConfiguration::ComputeHash()
+{
+	std::stringstream  hashString;
+	for (int index = 0; index < m_SIZE_ROW*m_SIZE_COL; ++index)
+	{
+		hashString << "-" << m_chess[index];
+	}
+
+	//static std::hash<std::string> hasher;
+	//return hasher(hashString);
+	return hashString.str();
 }
