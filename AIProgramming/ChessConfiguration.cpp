@@ -1,8 +1,14 @@
 #include <sstream>
 #include "ChessConfiguration.h"
 
+ChessConfiguration::ChessConfiguration()
+	:m_chess(new int[m_SIZE_ROW*m_SIZE_COL]), m_zeroIndex(16), m_g(0), m_h(0), m_parent(""), m_hash("")
+{
+
+}
+
 ChessConfiguration::ChessConfiguration(const int* initialConf)
-	:m_chess(new int[m_SIZE_ROW*m_SIZE_COL]), m_g(0), m_parent(nullptr)
+	:m_chess(new int[m_SIZE_ROW*m_SIZE_COL]), m_g(0), m_parent("")
 {
 	for (int index = 0; index < m_SIZE_ROW*m_SIZE_COL; ++index)
 	{
@@ -18,6 +24,8 @@ ChessConfiguration::ChessConfiguration(const ChessConfiguration& copy)
 	: m_chess(new int[copy.m_SIZE_ROW*copy.m_SIZE_COL]), m_zeroIndex(copy.m_zeroIndex),
 	m_g(copy.m_g), m_parent(copy.m_parent)
 {
+	//delete m_chess;
+	//m_chess = copy.m_chess;
 	for (int index = 0; index < m_SIZE_ROW*m_SIZE_COL; ++index)
 	{
 		m_chess[index] = copy.m_chess[index];
@@ -27,15 +35,32 @@ ChessConfiguration::ChessConfiguration(const ChessConfiguration& copy)
 	m_hash = ComputeHash();
 }
 
+ChessConfiguration::ChessConfiguration(ChessConfiguration& copy, int moveIndex)
+	: m_chess(new int[copy.m_SIZE_ROW*copy.m_SIZE_COL]), m_zeroIndex(copy.m_zeroIndex),
+	m_g(copy.m_g)//, m_parent(&copy)
+{
+	m_parent = copy.GetHash();
+	for (int index = 0; index < m_SIZE_ROW*m_SIZE_COL; ++index)
+	{
+		m_chess[index] = copy.m_chess[index];
+	}
+
+	Move(moveIndex);
+	//m_h and m_hash are computed internally in the Move
+}
+
 ChessConfiguration& ChessConfiguration::operator= (const ChessConfiguration& copy)
 {
 	if (this != &copy)
 	{
+		//delete m_chess;
 		m_zeroIndex = copy.m_zeroIndex;
 		m_h = copy.m_h;
 		m_g = copy.m_g;
 		m_parent = copy.m_parent;
 		m_hash = copy.m_hash;
+		//m_chess = copy.m_chess;
+		
 		for (int index = 0; index < m_SIZE_ROW*m_SIZE_COL; ++index)
 		{
 			m_chess[index] = copy.m_chess[index];
@@ -170,15 +195,17 @@ void ChessConfiguration::Print() const
 
 //NODE
 
-void ChessConfiguration::UpdateG(int g)
+void ChessConfiguration::UpdateG(int g, std::string parent)
 {
-	if (m_g > g)
+	if (m_g > g){
 		m_g = g;
+		m_parent = parent;
+	}
 }
 
 bool ChessConfiguration::GreaterFThan(const ChessConfiguration& second) const
 {
-	if (GetF() > second.GetF())
+	if (GetF() >= second.GetF())
 	{
 		return true;
 	}
