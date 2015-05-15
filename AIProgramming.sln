@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AIProgramming", "AIProgramm
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ProfAStar", "ProfAStar\ProfAStar.vcxproj", "{E83FDD72-6A1B-45E8-AE62-2411B9725903}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FMSSteering", "FMSSteering\FMSSteering.vcxproj", "{A33B1F99-9220-4AEF-874D-BAEF75C2545E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -21,6 +23,10 @@ Global
 		{E83FDD72-6A1B-45E8-AE62-2411B9725903}.Debug|Win32.Build.0 = Debug|Win32
 		{E83FDD72-6A1B-45E8-AE62-2411B9725903}.Release|Win32.ActiveCfg = Release|Win32
 		{E83FDD72-6A1B-45E8-AE62-2411B9725903}.Release|Win32.Build.0 = Release|Win32
+		{A33B1F99-9220-4AEF-874D-BAEF75C2545E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A33B1F99-9220-4AEF-874D-BAEF75C2545E}.Debug|Win32.Build.0 = Debug|Win32
+		{A33B1F99-9220-4AEF-874D-BAEF75C2545E}.Release|Win32.ActiveCfg = Release|Win32
+		{A33B1F99-9220-4AEF-874D-BAEF75C2545E}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
