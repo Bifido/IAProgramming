@@ -85,17 +85,26 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="inc\FiniteStateMachine.h" />
-    <ClInclude Include="inc\NanoAgent.h" />
+    <ClInclude Include="inc\FSMCore.h" />
+    <ClInclude Include="inc\NanoBehaviour\HomeNano.h" />
+    <ClInclude Include="inc\NanoBehaviour\IdleNano.h" />
+    <ClInclude Include="inc\NanoBehaviour\MineNano.h" />
+    <ClInclude Include="inc\NanoBehaviour\NanoAgent.h" />
+    <ClInclude Include="inc\NanoBehaviour\NanoFSMCore.h" />
     <ClInclude Include="inc\State.h" />
-    <ClInclude Include="inc\Walk.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Main\Main.cpp" />
-    <ClCompile Include="src\Main\MainMarco.cpp" />
+    <ClCompile Include="src\NanoBehaviour\HomeNano.cpp" />
+    <ClCompile Include="src\NanoBehaviour\IdleNano.cpp" />
+    <ClCompile Include="src\NanoBehaviour\MineNano.cpp" />
+    <ClCompile Include="src\NanoBehaviour\NanoFSMCore.cpp" />
+    <ClCompile Include="src\NanoBehaviour\WalkNano.cpp" />
+    <ClInclude Include="src\Main\MainMarco.cpp" />
     <ClCompile Include="src\Main\MainRicky.cpp" />
+    <ClInclude Include="inc\NanoBehaviour\WalkNano.h" />
     <ClInclude Include="src\Main\MainVale.cpp" />
-    <ClCompile Include="src\NanoAgent.cpp" />
-    <ClCompile Include="src\Walk.cpp" />
+    <ClCompile Include="src\NanoBehaviour\NanoAgent.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
