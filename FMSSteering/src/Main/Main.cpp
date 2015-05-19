@@ -16,7 +16,7 @@
 	#include "MainRicky.cpp"
 #endif
 void MainLoop();
-
+static void Draw(sf::Sprite sprite);
 
 int main(){
 

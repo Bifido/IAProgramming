@@ -97,6 +97,9 @@
     <ClCompile Include="src\NanoAgent.cpp" />
     <ClCompile Include="src\Walk.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="resources\dwarf.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
