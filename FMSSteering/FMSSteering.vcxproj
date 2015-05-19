@@ -90,7 +90,10 @@
     <ClInclude Include="inc\Walk.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\Main\Main.cpp" />
+    <ClCompile Include="src\Main\MainMarco.cpp" />
+    <ClCompile Include="src\Main\MainRicky.cpp" />
+    <ClInclude Include="src\Main\MainVale.cpp" />
     <ClCompile Include="src\NanoAgent.cpp" />
     <ClCompile Include="src\Walk.cpp" />
   </ItemGroup>

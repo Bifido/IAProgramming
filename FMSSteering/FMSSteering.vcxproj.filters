@@ -27,15 +27,24 @@
     <ClInclude Include="inc\Walk.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Main\MainVale.cpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\NanoAgent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Walk.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Main\Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Main\MainMarco.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Main\MainRicky.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
