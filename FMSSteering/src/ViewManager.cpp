@@ -84,20 +84,20 @@ ViewManager::ViewManager(){
 	temp.setTexture(m_HutTexture);
 	temp.setScale(0.5f, 0.5f);
 	temp.setTextureRect(IntRect(0, 0, 256, 256));
-	temp.setPosition(128, 64);
+	temp.setPosition(FromNormalizedToScreenPixelWIDTH(POS_BACKGROUND_HOUSE.x), FromNormalizedToScreenPixelHEIGHT(POS_BACKGROUND_HOUSE.y));
 	m_Sprites.push_back(temp);
 
 	m_MineTexture.loadFromFile("resources/mine.png");
 	temp.setTexture(m_MineTexture);
 	temp.setTextureRect(IntRect(0, 0, 256, 256));
-	temp.setPosition(608, 256);
+	temp.setPosition(FromNormalizedToScreenPixelWIDTH(POS_BACKGROUND_MINE.x), FromNormalizedToScreenPixelHEIGHT(POS_BACKGROUND_MINE.y));
 	m_Sprites.push_back(temp);
 
 	m_FenceTexture.loadFromFile("resources/fence.png");
 	temp.setTexture(m_FenceTexture);
 	temp.setScale(1, 1);
 	temp.setTextureRect(IntRect(0, 0, 256, 256));
-	temp.setPosition(64, 320);
+	temp.setPosition(FromNormalizedToScreenPixelWIDTH(POS_BACKGROUND_FENCE.x), FromNormalizedToScreenPixelHEIGHT(POS_BACKGROUND_FENCE.y));
 	m_Sprites.push_back(temp);
 
 	m_DogTexture.loadFromFile("resources/dog.png");
