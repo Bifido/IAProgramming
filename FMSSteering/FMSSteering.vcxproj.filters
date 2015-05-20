@@ -24,6 +24,7 @@
     <ClInclude Include="src\Main\MainMarco.cpp" />
     <ClInclude Include="inc\NanoBehaviour\WalkNano.h" />
     <ClInclude Include="src\Main\MainVale.cpp" />
+    <ClInclude Include="inc\Vector2.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\dwarf.png" />
