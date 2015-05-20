@@ -9,8 +9,8 @@ public:
 	HomeNano();
 	~HomeNano();
 
-	void OnEnter(const NanoAgent* agent);
-	void OnExit(const NanoAgent* agent);
-	void Update(const NanoAgent* agent);
-	State<NanoAgent>* CheckTransition(const NanoAgent* agent) const;
+	void OnEnter(NanoAgent* agent) const;
+	void OnExit(NanoAgent* agent) const;
+	void Update(NanoAgent* agent) const;
+	State<NanoAgent>* CheckTransition(NanoAgent* agent) const;
 };

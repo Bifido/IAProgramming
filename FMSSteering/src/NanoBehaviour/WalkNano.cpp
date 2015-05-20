@@ -8,14 +8,14 @@ WalkNano::WalkNano()
 WalkNano::~WalkNano()
 {}
 
-void WalkNano::OnEnter(const NanoAgent* agent)
+void WalkNano::OnEnter(NanoAgent* agent) const
 {}
-void WalkNano::OnExit(const NanoAgent* agent)
+void WalkNano::OnExit(NanoAgent* agent) const
 {}
-void WalkNano::Update(const NanoAgent* agent)
+void WalkNano::Update(NanoAgent* agent) const
 {}
 
-State<NanoAgent>* WalkNano::CheckTransition(const NanoAgent* agent) const
+State<NanoAgent>* WalkNano::CheckTransition(NanoAgent* agent) const
 { 
 	return FSMCore<NanoAgent>::GetInstance().GetDefaultState(); 
 }

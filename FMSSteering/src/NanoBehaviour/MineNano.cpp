@@ -8,14 +8,14 @@ MineNano::MineNano()
 MineNano::~MineNano()
 {}
 
-void MineNano::OnEnter(const NanoAgent* agent)
+void MineNano::OnEnter(NanoAgent* agent) const
 {}
-void MineNano::OnExit(const NanoAgent* agent)
+void MineNano::OnExit(NanoAgent* agent) const
 {}
-void MineNano::Update(const NanoAgent* agent)
+void MineNano::Update(NanoAgent* agent) const
 {}
 
-State<NanoAgent>* MineNano::CheckTransition(const NanoAgent* agent) const
+State<NanoAgent>* MineNano::CheckTransition(NanoAgent* agent) const
 {
 	return FSMCore<NanoAgent>::GetInstance().GetDefaultState();
 }

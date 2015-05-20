@@ -12,16 +12,16 @@ IdleNano::IdleNano()
 IdleNano::~IdleNano()
 {}
 
-void IdleNano::OnEnter(const NanoAgent* agent)
+void IdleNano::OnEnter(NanoAgent* agent) const
 {}
-void IdleNano::OnExit(const NanoAgent* agent)
+void IdleNano::OnExit(NanoAgent* agent) const
 {}
-void IdleNano::Update(const NanoAgent* agent)
+void IdleNano::Update(NanoAgent* agent) const
 {
 	// TODO: Sprite animation?
 }
 
-State<NanoAgent>* IdleNano::CheckTransition(const NanoAgent* agent) const
+State<NanoAgent>* IdleNano::CheckTransition(NanoAgent* agent) const
 {
 	assert(agent != nullptr);
 

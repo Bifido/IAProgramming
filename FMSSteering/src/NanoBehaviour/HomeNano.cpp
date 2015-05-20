@@ -8,14 +8,14 @@ HomeNano::HomeNano()
 HomeNano::~HomeNano()
 {}
 
-void HomeNano::OnEnter(const NanoAgent* agent)
+void HomeNano::OnEnter( NanoAgent* agent) const
 {}
-void HomeNano::OnExit(const NanoAgent* agent)
+void HomeNano::OnExit( NanoAgent* agent) const
 {}
-void HomeNano::Update(const NanoAgent* agent)
+void HomeNano::Update( NanoAgent* agent) const
 {}
 
-State<NanoAgent>* HomeNano::CheckTransition(const NanoAgent* agent) const
+State<NanoAgent>* HomeNano::CheckTransition( NanoAgent* agent) const
 {
 	//return FSMCore<NanoAgent>::GetInstance().GetDefaultState();
 	return nullptr;
