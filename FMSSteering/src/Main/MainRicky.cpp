@@ -25,7 +25,7 @@ void InitRicky(){
 	newNano.SetPosition(pos);
 
 	pos.x = 0.5f;
-	pos.y = 0.9f;
+	pos.y = 0.7f;
 	mine.SetPosition(pos);
 	newNano.SetMine(&mine);
 
