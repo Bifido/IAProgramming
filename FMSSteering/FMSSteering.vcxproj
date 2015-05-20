@@ -93,6 +93,8 @@
     <ClInclude Include="inc\Constants.h" />
     <ClInclude Include="inc\FiniteStateMachine.h" />
     <ClInclude Include="inc\FSMCore.h" />
+    <ClInclude Include="inc\GlobalArc.h" />
+    <ClInclude Include="inc\NanoBehaviour\GlobalNano.h" />
     <ClInclude Include="inc\NanoBehaviour\HomeNano.h" />
     <ClInclude Include="inc\NanoBehaviour\IdleNano.h" />
     <ClInclude Include="inc\NanoBehaviour\MineNano.h" />
@@ -105,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Main\Main.cpp" />
+    <ClCompile Include="src\NanoBehaviour\GlobalNano.cpp" />
     <ClCompile Include="src\NanoBehaviour\HomeNano.cpp" />
     <ClCompile Include="src\NanoBehaviour\IdleNano.cpp" />
     <ClCompile Include="src\NanoBehaviour\MineNano.cpp" />
@@ -125,6 +128,9 @@
     <Image Include="resources\hut.png" />
     <Image Include="resources\mine.png" />
     <Image Include="resources\sheep.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="inc\README.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

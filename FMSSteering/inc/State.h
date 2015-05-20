@@ -1,15 +1,19 @@
 #pragma once
+#include "FSMCore.h"
 
 template<typename Agent>
 class State
 {
 public:
-	State() { }
+	State(const FSMCore < Agent > & fsmCore) : m_fsmCore(fsmCore){ }
 	virtual ~State() { }
 
-	virtual void OnEnter(Agent*) = 0;
-	virtual void OnExit(Agent*) = 0;
-	virtual void Update(Agent*) = 0;
-	virtual State* CheckTransition() = 0;
+	virtual void OnEnter(const Agent*) = 0;
+	virtual void OnExit(const Agent*) = 0;
+	virtual void Update(const Agent*) = 0;
+	virtual State* CheckTransition(const Agent*) const = 0;
+
+protected:
+	const FSMCore<Agent>& m_fsmCore;
 };
 

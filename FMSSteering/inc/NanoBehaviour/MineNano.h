@@ -9,8 +9,8 @@ public:
 	MineNano();
 	~MineNano();
 
-	void OnEnter(NanoAgent*);
-	void OnExit(NanoAgent*);
-	void Update(NanoAgent*);
-	State<NanoAgent>* CheckTransition();
+	void OnEnter(const NanoAgent* agent);
+	void OnExit(const NanoAgent* agent);
+	void Update(const NanoAgent* agent);
+	State<NanoAgent>* CheckTransition(const NanoAgent* agent) const;
 };
