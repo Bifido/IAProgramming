@@ -1,13 +1,41 @@
 #include "SFML\Graphics.hpp"
+#include "Vector2.h"
 
 class ViewManager{
 	public:
-		enum SPRITES{DWARF = 0,BACKGROUND = 1, HUT = 2, MINE = 3, FENCE = 4, COUNT};
+		enum SPRITES{DWARF = 0,BACKGROUND = 1, HUT = 2, MINE = 3, FENCE = 4, DOG=5 ,SHEEP=6, COUNT};
 
 		/* @returns The instance of ViewManager. if is the first time, it create the obj. */
 		static ViewManager& GetInstace();
-		sf::Sprite& GetSprite();
+		
+		/**
+		* Draw the sprites
+		*/
 		void Draw(sf::RenderWindow& window) const;
+
+		/**
+		* Transform the pos normalized between 0 to 1 in an integer between 0 to screenSize HEIGHT
+		* @NOTE
+		* if the transformation is not precise, the value is trunc into the nearest small integer
+		*/
+		int FromNormalizedToScreenPixelHEIGHT(float pos) const;
+
+		/**
+		* Transform the pos normalized between 0 to 1 in an integer between 0 to screenSize WIDTH
+		* @NOTE
+		* if the transformation is not precise, the value is trunc into the nearest small integer
+		*/
+		int FromNormalizedToScreenPixelWIDTH(float pos) const;
+
+		/**
+		* Transform the pos normalized between 0 to 1 in an integer between 0 to screenSize
+		* @NOTE
+		* if the transformation is not precise, the value is trunc into the nearest small integer
+		* @Param
+		* pixelPosX = output variable
+		* pixelPosY = output variable
+		*/
+		void FromNormalizedToScreenPixel(VectorStruct::Vector2 pos, int& pixelPosX, int& pixelPosY);
 
 	private:
 		ViewManager();
@@ -27,6 +55,8 @@ class ViewManager{
 		sf::Texture m_HutTexture;
 		sf::Texture m_MineTexture;
 		sf::Texture m_FenceTexture;
+		sf::Texture m_DogTexture;
+		sf::Texture m_SheepTexture;
 
 		std::vector<sf::Sprite> m_Sprites;
 };

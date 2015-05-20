@@ -1,5 +1,7 @@
+#include "Constants.h"
 #include "ViewManager.h"
 #include <iostream>
+using namespace MagicNumber;
 using namespace sf;
 using namespace std;
 /* @returns The instance of ViewManager. if is the first time, it create the obj. */
@@ -8,19 +10,32 @@ ViewManager& ViewManager::GetInstace(){
 	static ViewManager m_instace;
 	return m_instace;
 }
-Sprite& ViewManager::GetSprite(){
-	return m_Background;
-}
 void ViewManager::Draw(RenderWindow& window) const {
 	// clear the window with black color
 	window.clear(sf::Color::Black);
 
 	// draw everything here...
 	DrawBackground(window);
-	window.draw(m_Sprites[DWARF]);
+	//window.draw(m_Sprites[DWARF]);
+	//window.draw(m_Sprites[DOG]);
+	window.draw(m_Sprites[SHEEP]);
 
 	// end the current frame
 	window.display();
+}
+
+
+int ViewManager::FromNormalizedToScreenPixelHEIGHT(float pos) const{
+	return static_cast<int>(pos * HEIGHT);
+}
+
+int ViewManager::FromNormalizedToScreenPixelWIDTH(float pos) const{
+	return static_cast<int>(pos * HEIGHT);
+}
+
+void ViewManager::FromNormalizedToScreenPixel(VectorStruct::Vector2 pos, int& pixelPosX, int& pixelPosY){
+	pixelPosX = FromNormalizedToScreenPixelWIDTH(pos.x);
+	pixelPosY = FromNormalizedToScreenPixelHEIGHT(pos.y);
 }
 
 void ViewManager::DrawBackground(RenderWindow& window) const{
@@ -42,7 +57,7 @@ ViewManager::ViewManager(){
 	m_GrassTexture.setRepeated(true);
 	temp.setScale(1, 1);
 	temp.setTexture(m_GrassTexture);
-	temp.setTextureRect(IntRect(0, 0, 800, 600));
+	temp.setTextureRect(IntRect(0, 0, WIDTH, HEIGHT));
 	m_Sprites.push_back(temp);
 
 	m_HutTexture.loadFromFile("resources/hut.png");
@@ -63,6 +78,20 @@ ViewManager::ViewManager(){
 	temp.setScale(1, 1);
 	temp.setTextureRect(IntRect(0, 0, 256, 256));
 	temp.setPosition(64, 320);
+	m_Sprites.push_back(temp);
+
+	m_DogTexture.loadFromFile("resources/dog.png");
+	temp.setTexture(m_DogTexture);
+	temp.setScale(0.5, 0.5);
+	temp.setTextureRect(IntRect(0, 0, 64, 64));
+	temp.setPosition(0, 0);
+	m_Sprites.push_back(temp);
+
+	m_SheepTexture.loadFromFile("resources/sheep.png");
+	temp.setTexture(m_SheepTexture);
+	//temp.setScale(0.5, 0.5);
+	temp.setTextureRect(IntRect(0, 0, 64, 64));
+	temp.setPosition(0, 0);
 	m_Sprites.push_back(temp);
 }
 ViewManager::~ViewManager(){

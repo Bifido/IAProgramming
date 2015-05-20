@@ -90,6 +90,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="inc\Constants.h" />
     <ClInclude Include="inc\FiniteStateMachine.h" />
     <ClInclude Include="inc\FSMCore.h" />
     <ClInclude Include="inc\NanoBehaviour\HomeNano.h" />
@@ -117,11 +118,13 @@
     <ClCompile Include="src\NanoBehaviour\NanoAgent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="resources\dog.png" />
     <Image Include="resources\dwarf.png" />
     <Image Include="resources\fence.png" />
     <Image Include="resources\grass.png" />
     <Image Include="resources\hut.png" />
     <Image Include="resources\mine.png" />
+    <Image Include="resources\sheep.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
