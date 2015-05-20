@@ -12,8 +12,7 @@
     <ClCompile Include="src\NanoBehaviour\NanoAgent.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="inc\FiniteStateMachine.h" />
-    <ClInclude Include="inc\FSMCore.h" />
+        <ClInclude Include="inc\FSMCore.h" />
     <ClInclude Include="inc\NanoBehaviour\HomeNano.h" />
     <ClInclude Include="inc\NanoBehaviour\IdleNano.h" />
     <ClInclude Include="inc\NanoBehaviour\MineNano.h" />
@@ -24,6 +23,8 @@
     <ClInclude Include="src\Main\MainMarco.cpp" />
     <ClInclude Include="inc\NanoBehaviour\WalkNano.h" />
     <ClInclude Include="src\Main\MainVale.cpp" />
+    <ClInclude Include="inc\Vector2.h" />
+    <ClInclude Include="inc\FiniteStateMachine.h" />
     <ClInclude Include="inc\ViewComponent.h" />
   </ItemGroup>
   <ItemGroup>

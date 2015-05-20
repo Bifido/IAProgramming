@@ -81,7 +81,6 @@
     <ClCompile Include="AStar.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Node.cpp" />
-    <ClCompile Include="Scacchiera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AStar.h" />
