@@ -29,6 +29,10 @@ unsigned int NanoAgent::GetCarriedStonesNumber() const{
 	return numOfCarriedStones;
 }
 
+ViewComponent* NanoAgent::GetViewComponent() const{
+	return viewInfo;
+}
+
 void NanoAgent::SetPosition(const Vector2& newPosition){
 	// The position must be expressed in term of numbers between 0 and 1
 	assert(newPosition.x <= 1 && newPosition.x >= -1 && newPosition.y <= 1 && newPosition.y >= -1);
@@ -39,6 +43,11 @@ void NanoAgent::SetPosition(const Vector2& newPosition){
 void NanoAgent::SetVelocity(const Vector2& newVelocity){
 	velocity = newVelocity;
 }
+
+void NanoAgent::SetViewComponent(ViewComponent* viewComp){
+	viewInfo = viewComp;
+}
+
 
 void NanoAgent::SetStamina(unsigned int newStamina){
 	// the stamina can't be a negative value **DEPRECATED**

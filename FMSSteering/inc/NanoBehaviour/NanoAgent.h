@@ -1,6 +1,10 @@
 #pragma once
 #include "Vector2.h"
 
+// ** Forward dec
+class ViewComponent;
+// ** END
+
 class NanoAgent
 {
 
@@ -14,9 +18,11 @@ public:
 	const VectorStruct::Vector2& GetVelocity() const;
 	unsigned int GetStamina() const;
 	unsigned int GetCarriedStonesNumber() const;
+	ViewComponent* GetViewComponent() const;
 
 	void SetPosition(const VectorStruct::Vector2& newPosition);
 	void SetVelocity(const VectorStruct::Vector2& newVelocity);
+	void SetViewComponent(ViewComponent* viewComp);
 	
 	void SetStamina(unsigned int newStamina);
 	unsigned int IncrementStamina(unsigned int staminaToAdd);
@@ -38,5 +44,7 @@ private:
 
 	unsigned int stamina;
 	unsigned int numOfCarriedStones;
+
+	ViewComponent* viewInfo;
 };
 
