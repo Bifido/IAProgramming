@@ -1,6 +1,7 @@
 #include "Constants.h"
 #include "ViewManager.h"
 #include <iostream>
+
 using namespace MagicNumber;
 using namespace sf;
 using namespace std;
@@ -10,15 +11,18 @@ ViewManager& ViewManager::GetInstace(){
 	static ViewManager m_instace;
 	return m_instace;
 }
-void ViewManager::Draw(RenderWindow& window) const {
+
+void ViewManager::AddViewComponent(const ViewComponent& viewComponent){
+	m_Agents.push_back(viewComponent);
+}
+
+void ViewManager::Draw(RenderWindow& window) {
 	// clear the window with black color
 	window.clear(sf::Color::Black);
 
 	// draw everything here...
 	DrawBackground(window);
-	//window.draw(m_Sprites[DWARF]);
-	//window.draw(m_Sprites[DOG]);
-	window.draw(m_Sprites[SHEEP]);
+	DrawDynamic(window);
 
 	// end the current frame
 	window.display();
@@ -33,7 +37,7 @@ int ViewManager::FromNormalizedToScreenPixelWIDTH(float pos) const{
 	return static_cast<int>(pos * HEIGHT);
 }
 
-void ViewManager::FromNormalizedToScreenPixel(VectorStruct::Vector2 pos, int& pixelPosX, int& pixelPosY){
+void ViewManager::FromNormalizedToScreenPixel(Vector2<float> pos, int& pixelPosX, int& pixelPosY){
 	pixelPosX = FromNormalizedToScreenPixelWIDTH(pos.x);
 	pixelPosY = FromNormalizedToScreenPixelHEIGHT(pos.y);
 }
@@ -43,6 +47,22 @@ void ViewManager::DrawBackground(RenderWindow& window) const{
 	window.draw(m_Sprites[HUT]);
 	window.draw(m_Sprites[MINE]);
 	window.draw(m_Sprites[FENCE]);
+}
+
+void ViewManager::DrawDynamic(RenderWindow& window){
+	//window.draw(m_Sprites[DWARF]);
+	//window.draw(m_Sprites[DOG]);
+	//window.draw(m_Sprites[SHEEP]);
+
+	Sprite temp;
+	for (vector<ViewComponent>::iterator it = m_Agents.begin(); it != m_Agents.end(); ++it){
+		//cout << "DRAWING " << it->GetSpriteIndex() << endl;
+		temp = m_Sprites[it->GetSpriteIndex()];
+		temp.setOrigin(0.5f, 0.5f);
+		//temp.setPosition(FromNormalizedToScreenPixelWIDTH(it->GetPos().x), FromNormalizedToScreenPixelHEIGHT(it->GetPos().y));
+		temp.setRotation(it->GetDegree());
+		window.draw(temp);
+	}
 }
 
 ViewManager::ViewManager(){	

@@ -1,5 +1,5 @@
 #include "SFML\Graphics.hpp"
-#include "Vector2.h"
+#include "ViewComponent.h"
 
 class ViewManager{
 	public:
@@ -7,11 +7,13 @@ class ViewManager{
 
 		/* @returns The instance of ViewManager. if is the first time, it create the obj. */
 		static ViewManager& GetInstace();
+
+		void AddViewComponent(const ViewComponent& viewComponent);
 		
 		/**
 		* Draw the sprites
 		*/
-		void Draw(sf::RenderWindow& window) const;
+		void Draw(sf::RenderWindow& window);
 
 		/**
 		* Transform the pos normalized between 0 to 1 in an integer between 0 to screenSize HEIGHT
@@ -35,13 +37,14 @@ class ViewManager{
 		* pixelPosX = output variable
 		* pixelPosY = output variable
 		*/
-		void FromNormalizedToScreenPixel(VectorStruct::Vector2 pos, int& pixelPosX, int& pixelPosY);
+		void FromNormalizedToScreenPixel(sf::Vector2<float> pos, int& pixelPosX, int& pixelPosY);
 
 	private:
 		ViewManager();
 		~ViewManager();
 
 		void DrawBackground(sf::RenderWindow& window) const;
+		void DrawDynamic(sf::RenderWindow& window);
 
 		ViewManager(const ViewManager& viewManager) = delete;
 		const ViewManager& operator=(const ViewManager& viewManager) = delete;
@@ -58,5 +61,6 @@ class ViewManager{
 		sf::Texture m_DogTexture;
 		sf::Texture m_SheepTexture;
 
-		std::vector<sf::Sprite> m_Sprites;
+		std::vector<sf::Sprite>			m_Sprites;
+		std::vector<ViewComponent>		m_Agents;
 };

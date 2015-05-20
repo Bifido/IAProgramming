@@ -101,7 +101,6 @@
     <ClInclude Include="inc\NanoBehaviour\NanoAgent.h" />
     <ClInclude Include="inc\NanoBehaviour\NanoFSMCore.h" />
     <ClInclude Include="inc\State.h" />
-    <ClInclude Include="inc\Vector2.h" />
     <ClInclude Include="inc\ViewComponent.h" />
     <ClInclude Include="inc\ViewManager.h" />
   </ItemGroup>

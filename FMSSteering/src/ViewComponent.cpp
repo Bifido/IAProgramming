@@ -1,9 +1,14 @@
 #include "ViewComponent.h"
+#include "ViewManager.h"
+#include "SFML\System\Vector2.hpp"
 
-ViewComponent::ViewComponent(const unsigned int spriteIndex, const Vector2& pos, const float degree) :
+using namespace sf;
+ViewComponent::ViewComponent(const unsigned int spriteIndex, const Vector2<float>& pos, const float degree) :
 	m_Pos(pos),
 	m_SpriteIndex(spriteIndex),
 	m_Degree(degree){
+
+	ViewManager::GetInstace().AddViewComponent(*this);
 }
 
 ViewComponent::~ViewComponent(){}
@@ -15,11 +20,7 @@ int			ViewComponent::GetSpriteIndex() const{
 	return m_SpriteIndex;
 }
 
-//void		ViewComponent::SetPos(const Vector2& pos){
-//	m_Pos = pos;
-//}
-
-const Vector2&	ViewComponent::GetPos() const{
+const Vector2<float>&	ViewComponent::GetPos() const{
 	return m_Pos;
 }
 

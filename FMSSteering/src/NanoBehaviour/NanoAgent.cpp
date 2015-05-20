@@ -1,23 +1,23 @@
 #include <assert.h>
 #include "NanoBehaviour\NanoAgent.h"
 
-using namespace VectorStruct;
+using namespace sf;
 
 NanoAgent::NanoAgent(unsigned int maxStone, unsigned int maxStamina) :
 	MAX_STAMINA(maxStamina),
 	MAX_STONE(maxStone),
-	pos(Vector2(0, 0)),
-	velocity(Vector2(0, 0)),
+	pos(Vector2<float>(0, 0)),
+	velocity(Vector2<float>(0, 0)),
 	stamina(MAX_STAMINA),
 	numOfCarriedStones(0) { 
 }
 
 
-const Vector2& NanoAgent::GetPosition() const{
+const Vector2<float>& NanoAgent::GetPosition() const{
 	return pos;
 }
 
-const Vector2& NanoAgent::GetVelocity() const{
+const Vector2<float>& NanoAgent::GetVelocity() const{
 	return velocity;
 }
 
@@ -33,14 +33,14 @@ ViewComponent* NanoAgent::GetViewComponent() const{
 	return viewInfo;
 }
 
-void NanoAgent::SetPosition(const Vector2& newPosition){
+void NanoAgent::SetPosition(const Vector2<float>& newPosition){
 	// The position must be expressed in term of numbers between 0 and 1
-	assert(newPosition.x <= 1 && newPosition.x >= -1 && newPosition.y <= 1 && newPosition.y >= -1);
+	assert(newPosition.x <= 1 && newPosition.x >= 0 && newPosition.y <= 1 && newPosition.y >= 0);
 
 	pos = newPosition;
 }
 
-void NanoAgent::SetVelocity(const Vector2& newVelocity){
+void NanoAgent::SetVelocity(const Vector2<float>& newVelocity){
 	velocity = newVelocity;
 }
 

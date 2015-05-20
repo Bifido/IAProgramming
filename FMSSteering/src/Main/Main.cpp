@@ -1,5 +1,5 @@
-//#define Vale
-#define Marco
+#define Vale
+//#define Marco
 //#define Ricky
 
 #include "SFML\Graphics.hpp"
@@ -30,6 +30,8 @@ void DrawTexture(sf::RenderWindow& window){
 
 int main(){
 
+	ViewManager& viewMan = ViewManager::GetInstace();
+
 	#ifndef Ricky
 		#ifndef Marco
 			#ifdef Vale
@@ -41,8 +43,6 @@ int main(){
 	#else
 		InitRicky();
 	#endif
-
-	ViewManager& viewMan = ViewManager::GetInstace();
 
 	// create the window
 	sf::RenderWindow window(sf::VideoMode(WIDTH,HEIGHT), "Son of WhiteSnow");

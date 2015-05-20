@@ -1,17 +1,23 @@
+#include "NanoBehaviour\NanoAgent.h"
+#include "NanoBehaviour\NanoFSMCore.h"
+#include "FiniteStateMachine.h"
+#include "ViewComponent.h"
+#include "SFML\System\Vector2.hpp"
+
 #include <iostream>
 using namespace std;
+using namespace sf;
+
 void InitVale(){
-	/*cout << "Init vale" << endl;
+	FiniteStateMachine<NanoAgent> x;
 
-	sf::Texture texture;
-	if (!texture.loadFromFile("resources/dwarf.png")){
-		cout << "image not loaded" << endl;
-	}
-	cout << "image LOADED" << endl;
+	NanoAgent newNano(10, 100);
+	Vector2<float> pos(0.0f, 0.0f);
+	newNano.SetPosition(pos);
+	ViewComponent* viewNano = new ViewComponent(ViewManager::DWARF, newNano.GetPosition(), 0);
+	newNano.SetViewComponent(viewNano);
 
-	sf::Sprite sprite;
-	sprite.setTexture(texture);*/
-
+	//FSMCore<NanoAgent>& x = FSMCore<NanoAgent>::GetInstance();
 }
 
 void StartVale(){
