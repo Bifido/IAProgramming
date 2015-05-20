@@ -10,6 +10,8 @@
     <ClCompile Include="src\Main\MainRicky.cpp" />
     <ClCompile Include="src\ViewManager.cpp" />
     <ClCompile Include="src\NanoBehaviour\NanoAgent.cpp" />
+    <ClCompile Include="src\NanoBehaviour\GlobalNano.cpp" />
+    <ClCompile Include="src\ViewComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\FSMCore.h" />
@@ -27,6 +29,8 @@
     <ClInclude Include="inc\FiniteStateMachine.h" />
     <ClInclude Include="inc\ViewComponent.h" />
     <ClInclude Include="inc\Constants.h" />
+    <ClInclude Include="inc\GlobalArc.h" />
+    <ClInclude Include="inc\NanoBehaviour\GlobalNano.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\dwarf.png" />
@@ -36,5 +40,8 @@
     <Image Include="resources\fence.png" />
     <Image Include="resources\dog.png" />
     <Image Include="resources\sheep.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="inc\README.txt" />
   </ItemGroup>
 </Project>
