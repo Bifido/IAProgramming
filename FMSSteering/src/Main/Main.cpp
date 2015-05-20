@@ -1,5 +1,5 @@
-#define Vale
-//#define Marco
+//#define Vale
+#define Marco
 //#define Ricky
 
 #include "SFML\Graphics.hpp"
