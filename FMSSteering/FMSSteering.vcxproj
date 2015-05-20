@@ -87,6 +87,7 @@
     <ClInclude Include="inc\FiniteStateMachine.h" />
     <ClInclude Include="inc\NanoAgent.h" />
     <ClInclude Include="inc\State.h" />
+    <ClInclude Include="inc\ViewManager.h" />
     <ClInclude Include="inc\Walk.h" />
   </ItemGroup>
   <ItemGroup>
@@ -95,10 +96,12 @@
     <ClCompile Include="src\Main\MainRicky.cpp" />
     <ClInclude Include="src\Main\MainVale.cpp" />
     <ClCompile Include="src\NanoAgent.cpp" />
+    <ClCompile Include="src\ViewManager.cpp" />
     <ClCompile Include="src\Walk.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\dwarf.png" />
+    <Image Include="resources\grass.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

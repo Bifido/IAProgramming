@@ -3,6 +3,7 @@
 //#define Ricky
 
 #include "SFML\Graphics.hpp"
+#include "ViewManager.h"
 
 #ifndef Ricky
 	#ifndef Marco
@@ -32,6 +33,8 @@ int main(){
 		InitRicky();
 	#endif
 
+	ViewManager& viewMan = ViewManager::GetInstace();
+
 	// create the window
 	sf::RenderWindow window(sf::VideoMode(800, 600), "Son of WhiteSnow");
 	// run the program as long as the window is open
@@ -48,7 +51,8 @@ int main(){
 		window.clear(sf::Color::Black);
 
 		// draw everything here...
-		// window.draw(...);
+		//TODO updateLogica
+		 window.draw(viewMan.GetSprite());
 
 		// end the current frame
 		window.display();
