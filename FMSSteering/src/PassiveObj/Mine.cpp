@@ -15,6 +15,10 @@ ViewComponent* Mine::GetViewComponent() const{
 	return viewInfo;
 }
 
+const sf::Vector2<float>& Mine::GetPosition() const{
+	return pos;
+}
+
 unsigned int Mine::DecrementStonesNumber(unsigned int stoneToRemove){
 	numberOfStoneAvailable -= stoneToRemove;
 	numberOfStoneAvailable > 0 ? numberOfStoneAvailable : 0;
@@ -24,6 +28,10 @@ unsigned int Mine::DecrementStonesNumber(unsigned int stoneToRemove){
 
 void Mine::SetViewComponent(ViewComponent* newViewComponent){
 	viewInfo = newViewComponent;
+}
+
+void Mine::SetPosition(const sf::Vector2<float>& newPos){
+	pos = newPos;
 }
 
 Mine::~Mine(){ }

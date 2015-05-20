@@ -9,7 +9,10 @@ NanoAgent::NanoAgent(unsigned int maxStone, unsigned int maxStamina) :
 	pos(Vector2<float>(0, 0)),
 	velocity(Vector2<float>(0, 0)),
 	stamina(MAX_STAMINA),
-	numOfCarriedStones(0) { 
+	numOfCarriedStones(0),
+	viewInfo(nullptr),
+	myMine(nullptr),
+	myHome(nullptr){ 
 }
 
 
@@ -19,6 +22,10 @@ const Vector2<float>& NanoAgent::GetPosition() const{
 
 const Vector2<float>& NanoAgent::GetVelocity() const{
 	return velocity;
+}
+
+const sf::Vector2<float>& NanoAgent::GetTarget() const{
+	return target;
 }
 
 unsigned int NanoAgent::GetStamina() const{
@@ -33,6 +40,14 @@ ViewComponent* NanoAgent::GetViewComponent() const{
 	return viewInfo;
 }
 
+Home* NanoAgent::GetHome() const{
+	return myHome;
+}
+
+Mine* NanoAgent::GetMine() const{
+	return myMine;
+}
+
 void NanoAgent::SetPosition(const Vector2<float>& newPosition){
 	// The position must be expressed in term of numbers between 0 and 1
 	assert(newPosition.x <= 1 && newPosition.x >= 0 && newPosition.y <= 1 && newPosition.y >= 0);
@@ -44,8 +59,20 @@ void NanoAgent::SetVelocity(const Vector2<float>& newVelocity){
 	velocity = newVelocity;
 }
 
+void NanoAgent::SetTarget(const sf::Vector2<float>& newTarget){
+	target = newTarget;
+}
+
 void NanoAgent::SetViewComponent(ViewComponent* viewComp){
 	viewInfo = viewComp;
+}
+
+void NanoAgent::SetHome(Home* nanoHome){
+	myHome = nanoHome;
+}
+
+void NanoAgent::SetMine(Mine* nanoMine){
+	myMine = nanoMine;
 }
 
 
