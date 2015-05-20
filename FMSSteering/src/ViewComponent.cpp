@@ -2,8 +2,8 @@
 
 ViewComponent::ViewComponent(const unsigned int spriteIndex,Vector2& pos, const float degree):
 	m_Pos(pos),
-	m_SpriteIndex(m_SpriteIndex),
-	m_Degree(m_Degree){
+	m_SpriteIndex(spriteIndex),
+	m_Degree(degree){
 }
 
 ViewComponent::~ViewComponent(){}
