@@ -1,90 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
+    <ClCompile Include="src\Main\Main.cpp" />
+    <ClCompile Include="src\NanoBehaviour\HomeNano.cpp" />
+    <ClCompile Include="src\NanoBehaviour\IdleNano.cpp" />
+    <ClCompile Include="src\NanoBehaviour\MineNano.cpp" />
+    <ClCompile Include="src\NanoBehaviour\NanoFSMCore.cpp" />
+    <ClCompile Include="src\NanoBehaviour\WalkNano.cpp" />
+    <ClCompile Include="src\Main\MainRicky.cpp" />
+    <ClCompile Include="src\ViewManager.cpp" />
+    <ClCompile Include="src\NanoBehaviour\NanoAgent.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="inc\FiniteStateMachine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\State.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Main\MainVale.cpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\FSMCore.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Main\MainMarco.cpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\ViewManager.h">
-    <ClInclude Include="inc\NanoBehaviour\WalkNano.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\NanoBehaviour\NanoAgent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\NanoBehaviour\NanoFSMCore.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\NanoBehaviour\IdleNano.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\NanoBehaviour\MineNano.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\NanoBehaviour\HomeNano.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClInclude Include="inc\FiniteStateMachine.h" />
+    <ClInclude Include="inc\FSMCore.h" />
+    <ClInclude Include="inc\NanoBehaviour\HomeNano.h" />
+    <ClInclude Include="inc\NanoBehaviour\IdleNano.h" />
+    <ClInclude Include="inc\NanoBehaviour\MineNano.h" />
+    <ClInclude Include="inc\NanoBehaviour\NanoAgent.h" />
+    <ClInclude Include="inc\NanoBehaviour\NanoFSMCore.h" />
+    <ClInclude Include="inc\State.h" />
+    <ClInclude Include="inc\ViewManager.h" />
+    <ClInclude Include="src\Main\MainMarco.cpp" />
+    <ClInclude Include="inc\NanoBehaviour\WalkNano.h" />
+    <ClInclude Include="src\Main\MainVale.cpp" />
+    <ClInclude Include="inc\ViewComponent.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Main\Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Main\MainRicky.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\NanoBehaviour\WalkNano.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\NanoBehaviour\NanoAgent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\NanoBehaviour\IdleNano.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\NanoBehaviour\MineNano.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\NanoBehaviour\HomeNano.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\NanoBehaviour\NanoFSMCore.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ViewManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="resources\dwarf.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="resources\grass.png">
-      <Filter>Resource Files</Filter>
-    </Image>
+    <Image Include="resources\dwarf.png" />
+    <Image Include="resources\grass.png" />
+    <Image Include="resources\hut.png" />
+    <Image Include="resources\mine.png" />
+    <Image Include="resources\fence.png" />
   </ItemGroup>
 </Project>

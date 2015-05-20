@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 void InitVale(){
-	cout << "Init vale" << endl;
+	/*cout << "Init vale" << endl;
 
 	sf::Texture texture;
 	if (!texture.loadFromFile("resources/dwarf.png")){
@@ -10,7 +10,7 @@ void InitVale(){
 	cout << "image LOADED" << endl;
 
 	sf::Sprite sprite;
-	sprite.setTexture(texture);
+	sprite.setTexture(texture);*/
 
 }
 

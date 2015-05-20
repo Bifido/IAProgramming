@@ -8,24 +8,62 @@ ViewManager& ViewManager::GetInstace(){
 	static ViewManager m_instace;
 	return m_instace;
 }
-
 Sprite& ViewManager::GetSprite(){
-	return m_Sprite;
+	return m_Background;
+}
+void ViewManager::Draw(RenderWindow& window) const {
+	// clear the window with black color
+	window.clear(sf::Color::Black);
+
+	// draw everything here...
+	DrawBackground(window);
+	window.draw(m_Sprites[DWARF]);
+
+	// end the current frame
+	window.display();
 }
 
-ViewManager::ViewManager(){
-	m_Texture.create(64, 64);
-	
-	
-	m_Dwarf.loadFromFile("resources/dwarf.png");
-	m_Grass.loadFromFile("resources/grass.png");
-	m_Grass.setRepeated(true);
-	
-	m_Sprite.setTexture(m_Grass);
-	m_Sprite.setTextureRect(sf::IntRect(0, 0, 800, 600));
-	/*m_Texture.update(m_Dwarf);
-	m_Sprite.setTexture(m_Texture);*/
+void ViewManager::DrawBackground(RenderWindow& window) const{
+	window.draw(m_Sprites[BACKGROUND]);
+	window.draw(m_Sprites[HUT]);
+	window.draw(m_Sprites[MINE]);
+	window.draw(m_Sprites[FENCE]);
 }
 
+ViewManager::ViewManager(){	
+	Sprite temp;
+
+	m_DwarfTexture.loadFromFile("resources/dwarf.png");
+	temp.setTexture(m_DwarfTexture);
+	temp.setScale(0.5f, 0.5f);
+	m_Sprites.push_back(temp);
+
+	m_GrassTexture.loadFromFile("resources/grass.png");
+	m_GrassTexture.setRepeated(true);
+	temp.setScale(1, 1);
+	temp.setTexture(m_GrassTexture);
+	temp.setTextureRect(IntRect(0, 0, 800, 600));
+	m_Sprites.push_back(temp);
+
+	m_HutTexture.loadFromFile("resources/hut.png");
+	temp.setTexture(m_HutTexture);
+	temp.setScale(0.5f, 0.5f);
+	temp.setTextureRect(IntRect(0, 0, 256, 256));
+	temp.setPosition(128, 64);
+	m_Sprites.push_back(temp);
+
+	m_MineTexture.loadFromFile("resources/mine.png");
+	temp.setTexture(m_MineTexture);
+	temp.setTextureRect(IntRect(0, 0, 256, 256));
+	temp.setPosition(608, 256);
+	m_Sprites.push_back(temp);
+
+	m_FenceTexture.loadFromFile("resources/fence.png");
+	temp.setTexture(m_FenceTexture);
+	temp.setScale(1, 1);
+	temp.setTextureRect(IntRect(0, 0, 256, 256));
+	temp.setPosition(64, 320);
+	m_Sprites.push_back(temp);
+}
 ViewManager::~ViewManager(){
 }
