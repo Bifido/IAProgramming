@@ -30,9 +30,7 @@
     <ClInclude Include="src\Main\MainMarco.cpp">
       <Filter>Source Files</Filter>
     </ClInclude>
-<<<<<<< HEAD
     <ClInclude Include="inc\ViewManager.h">
-=======
     <ClInclude Include="inc\NanoBehaviour\WalkNano.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -49,7 +47,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="inc\NanoBehaviour\HomeNano.h">
->>>>>>> origin/master
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

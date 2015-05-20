@@ -92,11 +92,8 @@
     <ClInclude Include="inc\NanoBehaviour\NanoAgent.h" />
     <ClInclude Include="inc\NanoBehaviour\NanoFSMCore.h" />
     <ClInclude Include="inc\State.h" />
-<<<<<<< HEAD
     <ClInclude Include="inc\ViewManager.h" />
     <ClInclude Include="inc\Walk.h" />
-=======
->>>>>>> origin/master
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Main\Main.cpp" />
@@ -109,13 +106,10 @@
     <ClCompile Include="src\Main\MainRicky.cpp" />
     <ClInclude Include="inc\NanoBehaviour\WalkNano.h" />
     <ClInclude Include="src\Main\MainVale.cpp" />
-<<<<<<< HEAD
     <ClCompile Include="src\NanoAgent.cpp" />
     <ClCompile Include="src\ViewManager.cpp" />
     <ClCompile Include="src\Walk.cpp" />
-=======
     <ClCompile Include="src\NanoBehaviour\NanoAgent.cpp" />
->>>>>>> origin/master
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\dwarf.png" />
