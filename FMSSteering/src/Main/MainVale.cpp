@@ -8,16 +8,16 @@
 using namespace std;
 using namespace sf;
 
+NanoAgent newNano(10, 100);
+
 void InitVale(){
 	FiniteStateMachine<NanoAgent> x;
 
-	NanoAgent newNano(10, 100);
-	Vector2<float> pos(0.0f, 0.0f);
+	Vector2<float> pos(0.5f, 0.5f);
 	newNano.SetPosition(pos);
-	ViewComponent* viewNano = new ViewComponent(ViewManager::DWARF, newNano.GetPosition(), 0);
+	ViewComponent* viewNano = new ViewComponent(ViewManager::DWARF, newNano.GetPosition(), 0); // LEAK
 	newNano.SetViewComponent(viewNano);
 
-	//FSMCore<NanoAgent>& x = FSMCore<NanoAgent>::GetInstance();
 }
 
 void StartVale(){

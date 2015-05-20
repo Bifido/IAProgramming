@@ -34,7 +34,7 @@ int ViewManager::FromNormalizedToScreenPixelHEIGHT(float pos) const{
 }
 
 int ViewManager::FromNormalizedToScreenPixelWIDTH(float pos) const{
-	return static_cast<int>(pos * HEIGHT);
+	return static_cast<int>(pos * WIDTH);
 }
 
 void ViewManager::FromNormalizedToScreenPixel(Vector2<float> pos, int& pixelPosX, int& pixelPosY){
@@ -59,7 +59,7 @@ void ViewManager::DrawDynamic(RenderWindow& window){
 		//cout << "DRAWING " << it->GetSpriteIndex() << endl;
 		temp = m_Sprites[it->GetSpriteIndex()];
 		temp.setOrigin(0.5f, 0.5f);
-		//temp.setPosition(FromNormalizedToScreenPixelWIDTH(it->GetPos().x), FromNormalizedToScreenPixelHEIGHT(it->GetPos().y));
+		temp.setPosition(FromNormalizedToScreenPixelWIDTH(it->GetPos().x), FromNormalizedToScreenPixelHEIGHT(it->GetPos().y));
 		temp.setRotation(it->GetDegree());
 		window.draw(temp);
 	}
