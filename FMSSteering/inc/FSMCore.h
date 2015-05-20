@@ -8,7 +8,7 @@ class FSMCore
 {
 public:
 	static FSMCore& GetInstance();
-	static State<Agent>* GetDefaultState();
+	State<Agent>* GetDefaultState();
 private:
 	void Init();
 	FSMCore();
