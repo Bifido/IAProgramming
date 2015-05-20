@@ -37,10 +37,10 @@ State<NanoAgent>* WalkNano::CheckTransition(NanoAgent* agent) const
 {
 	assert(agent != nullptr);
 
-	if (agent->GetPosition() == agent->GetMine()->GetPosition()){ // TODO: add tollerance (with this velocity caluculations, it isn't needed)
+	if (agent->GetMine() != nullptr && agent->GetPosition() == agent->GetMine()->GetPosition()){ // TODO: add tollerance (with this velocity caluculations, it isn't needed)
 		return m_fsmCore.GetState(FSMCore<NanoAgent>::MINE);
 	}
-	else if (agent->GetPosition() == agent->GetHome()->GetPosition()){ // TODO: add tollerance (with this velocity caluculations, it isn't needed)
+	else if (agent->GetHome() != nullptr && agent->GetPosition() == agent->GetHome()->GetPosition()){ // TODO: add tollerance (with this velocity caluculations, it isn't needed)
 		return m_fsmCore.GetState(FSMCore<NanoAgent>::HOME);
 	}
 	return m_fsmCore.GetState(FSMCore<NanoAgent>::WALK);

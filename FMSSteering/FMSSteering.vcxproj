@@ -115,7 +115,7 @@
     <ClCompile Include="src\NanoBehaviour\NanoFSMCore.cpp" />
     <ClCompile Include="src\NanoBehaviour\WalkNano.cpp" />
     <ClInclude Include="src\Main\MainMarco.cpp" />
-    <ClCompile Include="src\Main\MainRicky.cpp" />
+    <ClInclude Include="src\Main\MainRicky.cpp" />
     <ClInclude Include="inc\NanoBehaviour\WalkNano.h" />
     <ClInclude Include="src\Main\MainVale.cpp" />
     <ClCompile Include="src\PassiveObj\Home.cpp" />

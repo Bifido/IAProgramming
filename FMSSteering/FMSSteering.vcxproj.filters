@@ -7,7 +7,6 @@
     <ClCompile Include="src\NanoBehaviour\MineNano.cpp" />
     <ClCompile Include="src\NanoBehaviour\NanoFSMCore.cpp" />
     <ClCompile Include="src\NanoBehaviour\WalkNano.cpp" />
-    <ClCompile Include="src\Main\MainRicky.cpp" />
     <ClCompile Include="src\ViewManager.cpp" />
     <ClCompile Include="src\NanoBehaviour\NanoAgent.cpp" />
     <ClCompile Include="src\NanoBehaviour\GlobalNano.cpp" />
@@ -34,6 +33,7 @@
     <ClInclude Include="inc\NanoBehaviour\GlobalNano.h" />
     <ClInclude Include="inc\PassiveObj\Mine.h" />
     <ClInclude Include="inc\PassiveObj\Home.h" />
+    <ClInclude Include="src\Main\MainRicky.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\dwarf.png" />
