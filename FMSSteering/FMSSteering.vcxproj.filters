@@ -12,6 +12,8 @@
     <ClCompile Include="src\NanoBehaviour\NanoAgent.cpp" />
     <ClCompile Include="src\NanoBehaviour\GlobalNano.cpp" />
     <ClCompile Include="src\ViewComponent.cpp" />
+    <ClCompile Include="src\PassiveObj\Mine.cpp" />
+    <ClCompile Include="src\PassiveObj\Home.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\FSMCore.h" />
@@ -30,6 +32,8 @@
     <ClInclude Include="inc\Constants.h" />
     <ClInclude Include="inc\GlobalArc.h" />
     <ClInclude Include="inc\NanoBehaviour\GlobalNano.h" />
+    <ClInclude Include="inc\PassiveObj\Mine.h" />
+    <ClInclude Include="inc\PassiveObj\Home.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\dwarf.png" />
