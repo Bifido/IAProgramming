@@ -48,7 +48,7 @@ void FiniteStateMachine<Agent>::Run(){
 
 		// Check if the FSM changes state
 		State<Agent>* newState = globalArc->CheckTransition();
-		if (newState != nullptr)
+		if (newState != actualState)
 		{
 			actualState->OnExit();
 			actualState = newState;
