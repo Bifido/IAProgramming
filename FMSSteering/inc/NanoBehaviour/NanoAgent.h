@@ -10,13 +10,13 @@ public:
 
 	NanoAgent(unsigned int maxStone, unsigned int maxStamina);
 
-	const Vector2& GetPosition() const;
-	const Vector2& GetVelocity() const;
+	const VectorStruct::Vector2& GetPosition() const;
+	const VectorStruct::Vector2& GetVelocity() const;
 	unsigned int GetStamina() const;
 	unsigned int GetCarriedStonesNumber() const;
 
-	void SetPosition(const Vector2& newPosition);
-	void SetVelocity(const Vector2& newVelocity);
+	void SetPosition(const VectorStruct::Vector2& newPosition);
+	void SetVelocity(const VectorStruct::Vector2& newVelocity);
 	
 	void SetStamina(unsigned int newStamina);
 	unsigned int IncrementStamina(unsigned int staminaToAdd);
@@ -33,8 +33,8 @@ public:
 	~NanoAgent();
 private:
 
-	Vector2 pos; // each value, go from 0 to 1 (Normalized)
-	Vector2 velocity;
+	VectorStruct::Vector2 pos; // each value, go from 0 to 1 (Normalized)
+	VectorStruct::Vector2 velocity;
 
 	unsigned int stamina;
 	unsigned int numOfCarriedStones;

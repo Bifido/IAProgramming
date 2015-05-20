@@ -1,6 +1,7 @@
 #include <assert.h>
 #include "NanoBehaviour\NanoAgent.h"
 
+using namespace VectorStruct;
 
 NanoAgent::NanoAgent(unsigned int maxStone, unsigned int maxStamina) :
 	MAX_STAMINA(maxStamina),
