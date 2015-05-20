@@ -93,7 +93,6 @@
     <ClInclude Include="inc\NanoBehaviour\NanoFSMCore.h" />
     <ClInclude Include="inc\State.h" />
     <ClInclude Include="inc\ViewManager.h" />
-    <ClInclude Include="inc\Walk.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Main\Main.cpp" />
@@ -106,9 +105,7 @@
     <ClCompile Include="src\Main\MainRicky.cpp" />
     <ClInclude Include="inc\NanoBehaviour\WalkNano.h" />
     <ClInclude Include="src\Main\MainVale.cpp" />
-    <ClCompile Include="src\NanoAgent.cpp" />
     <ClCompile Include="src\ViewManager.cpp" />
-    <ClCompile Include="src\Walk.cpp" />
     <ClCompile Include="src\NanoBehaviour\NanoAgent.cpp" />
   </ItemGroup>
   <ItemGroup>
