@@ -22,7 +22,7 @@ public:
 	FiniteStateMachine();
 	~FiniteStateMachine();
 
-	void Run();
+	void Run(Agent* actual);
 };
 
 
@@ -42,33 +42,34 @@ template<typename Agent>
 FiniteStateMachine<Agent>::~FiniteStateMachine() { };
 
 template<typename Agent>
-void FiniteStateMachine<Agent>::Run(){
+void FiniteStateMachine<Agent>::Run(Agent* actualAgent){
 
 	if (actualState != nullptr){
 
-		// Check if the FSM changes state
-		State<Agent>* newState = globalArc->CheckTransition();
+		// Check if the FSM changes state 
+		// if no globalArc => the state remain the same!
+		State<Agent>* newState = globalArc != nullptr ? globalArc->CheckTransition(actualAgent) : actualState;
 		if (newState != actualState)
 		{
-			actualState->OnExit();
+			actualState->OnExit(actualAgent);
 			actualState = newState;
-			actualState->OnEnter();
+			actualState->OnEnter(actualAgent);
 		}
 		else
 		{
 			// Check if the FSM changes state
-			newState = actualState->CheckTransition();
+			newState = actualState->CheckTransition(actualAgent);
 
 			// If new state is changed, changing state!
 			if (newState != actualState){
-				actualState->OnExit();
+				actualState->OnExit(actualAgent);
 				actualState = newState;
-				actualState->OnEnter();
+				actualState->OnEnter(actualAgent);
 			}
 		}
 
 		// Update acual state
-		actualState->Update();
+		actualState->Update(actualAgent);
 	}
 
 }

@@ -11,17 +11,21 @@
 using namespace std;
 using namespace sf;
 
+
+
+
 NanoAgent newNano(10, 100);
 Mine mine(1000);
 
+FiniteStateMachine<NanoAgent> x;
+
 void InitRicky(){
-	FiniteStateMachine<NanoAgent> x;
 
 	Vector2<float> pos(0.0f, 0.0f);
 	newNano.SetPosition(pos);
 
-	pos.x = 0.9f;
-	pos.y = 0.5f;
+	pos.x = 0.5f;
+	pos.y = 0.9f;
 	mine.SetPosition(pos);
 	newNano.SetMine(&mine);
 
@@ -33,7 +37,7 @@ void InitRicky(){
 }
 
 void RunRicky(){
-
+	x.Run(&newNano);
 }
 
 void StartRicky(){

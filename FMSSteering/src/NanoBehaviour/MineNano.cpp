@@ -17,5 +17,6 @@ void MineNano::Update(NanoAgent* agent) const
 
 State<NanoAgent>* MineNano::CheckTransition(NanoAgent* agent) const
 {
-	return FSMCore<NanoAgent>::GetInstance().GetDefaultState();
+	// TODO: To implement
+	return m_fsmCore.GetState(FSMCore<NanoAgent>::MINE); 
 }
