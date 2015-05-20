@@ -1,4 +1,5 @@
 #include "NanoBehaviour\NanoFSMCore.h"
+#include <assert.h>
 
 FSMCore<NanoAgent>::FSMCore()
 {
@@ -20,7 +21,14 @@ FSMCore<NanoAgent>& FSMCore<NanoAgent>::GetInstance()
 	return m_instance;
 }
 
-State<NanoAgent>* FSMCore<NanoAgent>::GetDefaultState()
+State<NanoAgent>* FSMCore<NanoAgent>::GetDefaultState() const
 {
 	return statesArray[IDLE];
+}
+
+State<NanoAgent>* FSMCore<NanoAgent>::GetState(unsigned int stateId) const
+{
+	assert(stateId < COUNT);
+
+	return statesArray[stateId];
 }

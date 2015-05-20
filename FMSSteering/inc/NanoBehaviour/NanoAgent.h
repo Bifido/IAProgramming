@@ -10,10 +10,10 @@ public:
 
 	NanoAgent(unsigned int maxStone, unsigned int maxStamina);
 
-	const Vector2& GetPosition();
-	const Vector2& GetVelocity();
-	unsigned int GetStamina();
-	unsigned int GetCarriedStonesNumber();
+	const Vector2& GetPosition() const;
+	const Vector2& GetVelocity() const;
+	unsigned int GetStamina() const;
+	unsigned int GetCarriedStonesNumber() const;
 
 	void SetPosition(const Vector2& newPosition);
 	void SetVelocity(const Vector2& newVelocity);
@@ -26,9 +26,9 @@ public:
 	unsigned int IncrementStoneCarried(unsigned int stoneToAdd);
 	unsigned int DecrementStoneCarried(unsigned int stoneToRemove);
 
-	bool HasReachedMaxStone();
-	bool HasStillStamina();
-	bool HasEnoughStamina(unsigned int staminaRequired);
+	bool HasReachedMaxStone() const;
+	bool HasStillStamina() const;
+	bool HasEnoughStamina(unsigned int staminaRequired) const;
 
 	~NanoAgent();
 private:

@@ -12,19 +12,19 @@ NanoAgent::NanoAgent(unsigned int maxStone, unsigned int maxStamina) :
 }
 
 
-const Vector2& NanoAgent::GetPosition(){
+const Vector2& NanoAgent::GetPosition() const{
 	return pos;
 }
 
-const Vector2& NanoAgent::GetVelocity(){
+const Vector2& NanoAgent::GetVelocity() const{
 	return velocity;
 }
 
-unsigned int NanoAgent::GetStamina(){
+unsigned int NanoAgent::GetStamina() const{
 	return stamina;
 }
 
-unsigned int NanoAgent::GetCarriedStonesNumber(){
+unsigned int NanoAgent::GetCarriedStonesNumber() const{
 	return numOfCarriedStones;
 }
 
@@ -93,15 +93,15 @@ unsigned int NanoAgent::DecrementStoneCarried(unsigned int stoneToRemove){
 	return numOfCarriedStones;
 }
 
-bool NanoAgent::HasReachedMaxStone(){
+bool NanoAgent::HasReachedMaxStone() const{
 	return (numOfCarriedStones == MAX_STONE);
 }
 
-bool NanoAgent::HasStillStamina(){
+bool NanoAgent::HasStillStamina() const{
 	return (stamina > 0);
 }
 
-bool NanoAgent::HasEnoughStamina(unsigned int staminaRequired){
+bool NanoAgent::HasEnoughStamina(unsigned int staminaRequired) const{
 	return (stamina >= staminaRequired);
 }
 
