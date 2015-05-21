@@ -4,7 +4,6 @@
 
 
 GlobalNano::GlobalNano()
-	:GlobalArc(FSMCore < NanoAgent > ::GetInstance())
 {
 }
 
@@ -12,10 +11,10 @@ GlobalNano::~GlobalNano()
 {
 }
 
-State<NanoAgent>* GlobalNano::CheckTransition(NanoAgent& agent) const
+int GlobalNano::CheckTransition(NanoAgent& agent) const
 {
 	if (!agent.HasStillStamina())
-		return m_fsmCore.GetState(m_fsmCore.WALK);
+		return FSMCore<NanoAgent>::States::WALK;
 	else
-		return nullptr;
+		return FSMCore<NanoAgent>::States::NOT_VALID;
 }

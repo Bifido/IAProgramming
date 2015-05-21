@@ -12,7 +12,8 @@ class FSMCore < NanoAgent >
 {
 
 public:
-	enum {
+	enum States{
+		NOT_VALID = -1,
 		IDLE = 0,
 		WALK = 1,
 		MINE = 2,
@@ -22,7 +23,7 @@ public:
 
 	static FSMCore& GetInstance();
 	State<NanoAgent>* GetDefaultState() const;
-	State<NanoAgent>* GetState(unsigned int stateId) const;
+	State<NanoAgent>* GetState(States stateId) const;
 private:
 	FSMCore();
 	~FSMCore();

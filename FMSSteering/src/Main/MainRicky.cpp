@@ -47,7 +47,7 @@ void InitRicky(){
 }
 
 void RunRicky(){
-	x.Run(&newNano);
+	x.Run(newNano);
 }
 
 void StartRicky(){

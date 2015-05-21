@@ -9,6 +9,6 @@ public:
 	GlobalNano();
 	~GlobalNano();
 
-	State<NanoAgent>* CheckTransition(NanoAgent& agent) const;
+	int CheckTransition(NanoAgent& agent) const;
 };
 

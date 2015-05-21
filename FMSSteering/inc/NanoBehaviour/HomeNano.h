@@ -12,5 +12,5 @@ public:
 	void OnEnter(NanoAgent& agent) const;
 	void OnExit(NanoAgent& agent) const;
 	void Update(NanoAgent& agent) const;
-	State<NanoAgent>* CheckTransition(NanoAgent& agent) const;
+	int CheckTransition(NanoAgent& agent) const;
 };

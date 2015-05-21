@@ -8,7 +8,6 @@
 #include <iostream>
 
 HomeNano::HomeNano()
-	: State(FSMCore < NanoAgent > ::GetInstance())
 {}
 HomeNano::~HomeNano()
 {}
@@ -34,7 +33,7 @@ void HomeNano::Update( NanoAgent& agent) const
 	agent.IncrementStamina(agent.GetHome()->GetStaminaRecovered());
 }
 
-State<NanoAgent>* HomeNano::CheckTransition( NanoAgent& agent) const
+int HomeNano::CheckTransition(NanoAgent& agent) const
 {
 	// if exist a home for this dwarf and he is full of stones, WALK TO HOME!
 	if (agent.GetMine() != nullptr && agent.GetStamina() >= agent.MAX_STAMINA)
@@ -42,8 +41,8 @@ State<NanoAgent>* HomeNano::CheckTransition( NanoAgent& agent) const
 		// Setting the mine position as new target
 		agent.SetTarget(agent.GetMine()->GetPosition()); // TODO: Substitute this statement with agent->SetHomeAsTarget() ?
 		// go to state: WALK
-		return m_fsmCore.GetState(FSMCore<NanoAgent>::WALK);
+		return FSMCore<NanoAgent>::States::WALK;
 	}
 	// TODO: To implement
-	return m_fsmCore.GetState(FSMCore<NanoAgent>::HOME);
+	return FSMCore<NanoAgent>::States::HOME;
 }

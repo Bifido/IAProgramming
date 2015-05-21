@@ -7,9 +7,11 @@ template <typename Agent>
 class FSMCore
 {
 public:
-	static FSMCore& GetInstance() = 0;
-	State<Agent>* GetDefaultState() const = 0;
-	State<Agent>* GetState(unsigned int stateId) const = 0;
+	enum States{};
+
+	static FSMCore& GetInstance();
+	State<Agent>* GetDefaultState() const;
+	State<Agent>* GetState(States stateId) const;
 private:
 	FSMCore();
 	~FSMCore();

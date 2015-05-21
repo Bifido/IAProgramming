@@ -7,7 +7,6 @@
 #include <assert.h>
 
 IdleNano::IdleNano()
-	: State(FSMCore < NanoAgent > ::GetInstance())
 {}
 IdleNano::~IdleNano()
 {}
@@ -21,14 +20,14 @@ void IdleNano::Update(NanoAgent& agent) const
 	// TODO: Sprite animation?
 }
 
-State<NanoAgent>* IdleNano::CheckTransition(NanoAgent& agent) const
+int IdleNano::CheckTransition(NanoAgent& agent) const
 {
 	// if exist a mine for this dwarf and has at least 1 stone, WALK TO MINE!
 	if (agent.GetMine() != nullptr && agent.GetMine()->GetActualStonesNumber() > 0){
 		// Setting the mine position as new target
 		agent.SetTarget(agent.GetMine()->GetPosition()); // TODO: Substitute this statement with agent->SetMineAsTarget() ?
 		// go to state: WALK
-		return m_fsmCore.GetState(FSMCore<NanoAgent>::WALK);
+		return FSMCore<NanoAgent>::States::WALK;
 	}
-	return m_fsmCore.GetState(FSMCore<NanoAgent>::IDLE);
+	return FSMCore<NanoAgent>::States::IDLE;
 }
