@@ -13,6 +13,7 @@
     <ClCompile Include="src\ViewComponent.cpp" />
     <ClCompile Include="src\PassiveObj\Mine.cpp" />
     <ClCompile Include="src\PassiveObj\Home.cpp" />
+    <ClCompile Include="src\Agent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\FSMCore.h" />
@@ -34,6 +35,7 @@
     <ClInclude Include="inc\PassiveObj\Mine.h" />
     <ClInclude Include="inc\PassiveObj\Home.h" />
     <ClInclude Include="src\Main\MainRicky.cpp" />
+    <ClInclude Include="inc\Agent.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\dwarf.png" />
