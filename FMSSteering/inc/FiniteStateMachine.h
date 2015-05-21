@@ -48,28 +48,28 @@ void FiniteStateMachine<Agent>::Run(Agent* actualAgent){
 
 		// Check if the FSM changes state 
 		// if no globalArc => the state remain the same!
-		State<Agent>* newState = globalArc != nullptr ? globalArc->CheckTransition(actualAgent) : actualState;
+		State<Agent>* newState = globalArc != nullptr ? globalArc->CheckTransition(*actualAgent) : actualState;
 		if (newState != actualState)
 		{
-			actualState->OnExit(actualAgent);
+			actualState->OnExit(*actualAgent);
 			actualState = newState;
-			actualState->OnEnter(actualAgent);
+			actualState->OnEnter(*actualAgent);
 		}
 		else
 		{
 			// Check if the FSM changes state
-			newState = actualState->CheckTransition(actualAgent);
+			newState = actualState->CheckTransition(*actualAgent);
 
 			// If new state is changed, changing state!
 			if (newState != actualState){
-				actualState->OnExit(actualAgent);
+				actualState->OnExit(*actualAgent);
 				actualState = newState;
-				actualState->OnEnter(actualAgent);
+				actualState->OnEnter(*actualAgent);
 			}
 		}
 
 		// Update acual state
-		actualState->Update(actualAgent);
+		actualState->Update(*actualAgent);
 	}
 
 }

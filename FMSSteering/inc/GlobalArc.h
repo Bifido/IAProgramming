@@ -12,7 +12,7 @@ public:
 	GlobalArc(const FSMCore < Agent > & fsmCore) : m_fsmCore(fsmCore){ }
 	virtual ~GlobalArc() { }
 
-	virtual State<Agent>* CheckTransition(const Agent*) const = 0;
+	virtual State<Agent>* CheckTransition(Agent&) const = 0;
 
 protected:
 	GlobalArc(){};

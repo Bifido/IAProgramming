@@ -1,6 +1,6 @@
-#define Vale
+//#define Vale
 //#define Marco
-//#define Ricky
+#define Ricky
 
 #include "SFML\Graphics.hpp"
 #include "ViewManager.h"
@@ -57,6 +57,19 @@ int main(){
 		}
 
 		//TODO updateLogica
+		#ifndef Ricky
+			#ifndef Marco
+				#ifdef Vale
+					RunVale();
+				#endif
+			#else 
+				RunMarco();
+			#endif
+		#else
+			RunRicky();
+		#endif
+
+
 		viewMan.Draw(window);
 	}
 
@@ -77,15 +90,5 @@ void MainLoop(){
 	#endif
 
 
-	#ifndef Ricky
-		#ifndef Marco
-			#ifdef Vale
-				RunVale();
-			#endif
-		#else 
-			RunMarco();
-		#endif
-	#else
-		RunRicky();
-	#endif
+
 }

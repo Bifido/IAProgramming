@@ -6,7 +6,8 @@ using namespace sf;
 ViewComponent::ViewComponent(const unsigned int spriteIndex, const Vector2<float>& pos, const float degree) :
 	m_Pos(pos),
 	m_SpriteIndex(spriteIndex),
-	m_Degree(degree){
+	m_Degree(degree),
+	m_Drawable(true){
 
 	ViewManager::GetInstace().AddViewComponent(*this);
 }
@@ -29,4 +30,14 @@ void		ViewComponent::SetDegree(const float degree){
 }
 float		ViewComponent::GetDegree() const{
 	return m_Degree;
+}
+
+bool ViewComponent::IsDrawable()
+{
+	return m_Drawable;
+}
+
+void ViewComponent::SetDrawable(bool drawable)
+{
+	m_Drawable = drawable;
 }

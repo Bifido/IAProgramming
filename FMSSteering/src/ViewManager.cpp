@@ -57,11 +57,14 @@ void ViewManager::DrawDynamic(RenderWindow& window){
 	Sprite temp;
 	for (vector<ViewComponent>::iterator it = m_Agents.begin(); it != m_Agents.end(); ++it){
 		//cout << "DRAWING " << it->GetSpriteIndex() << endl;
-		temp = m_Sprites[it->GetSpriteIndex()];
-		temp.setOrigin(0.5f, 0.5f);
-		temp.setPosition(FromNormalizedToScreenPixelWIDTH(it->GetPos().x), FromNormalizedToScreenPixelHEIGHT(it->GetPos().y));
-		temp.setRotation(it->GetDegree());
-		window.draw(temp);
+		if (it->IsDrawable())
+		{
+			temp = m_Sprites[it->GetSpriteIndex()];
+			temp.setOrigin(0.5f, 0.5f);
+			temp.setPosition(FromNormalizedToScreenPixelWIDTH(it->GetPos().x), FromNormalizedToScreenPixelHEIGHT(it->GetPos().y));
+			temp.setRotation(it->GetDegree());
+			window.draw(temp);
+		}
 	}
 }
 

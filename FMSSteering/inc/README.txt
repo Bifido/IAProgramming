@@ -16,3 +16,7 @@ FiniteStateMachine
 			nel scondo ci sono le cose su cui potresti fare reverse (ma se lo fai dopo devi sistemare qualche const e nome))
 
 
+
+il ViewComponent in ViewManager è una copia != da quella nel Nano
+
+

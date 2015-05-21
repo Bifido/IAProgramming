@@ -12,7 +12,7 @@ GlobalNano::~GlobalNano()
 {
 }
 
-State<NanoAgent>* GlobalNano::CheckTransition(const NanoAgent& agent) const
+State<NanoAgent>* GlobalNano::CheckTransition(NanoAgent& agent) const
 {
 	if (!agent.HasStillStamina())
 		return m_fsmCore.GetState(m_fsmCore.WALK);

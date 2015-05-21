@@ -14,8 +14,12 @@ public:
 	void							SetDegree(const float degree);
 	float							GetDegree() const;
 
+	bool IsDrawable();
+	void SetDrawable(bool drawable);
+
 private:
 	int								m_SpriteIndex;
 	const sf::Vector2<float>&	m_Pos;
 	float							m_Degree;
+	bool							m_Drawable;
 };
