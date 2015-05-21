@@ -1,9 +1,12 @@
+#include "Constants.h"
+#include "FiniteStateMachine.h"
 #include "NanoBehaviour\NanoAgent.h"
 #include "NanoBehaviour\NanoFSMCore.h"
-#include "FiniteStateMachine.h"
+#include "PassiveObj\Home.h";
+#include "PassiveObj\Mine.h";
 #include "ViewComponent.h"
+#include "ViewManager.h"
 #include "SFML\System\Vector2.hpp"
-#include "Constants.h"
 
 #include <iostream>
 using namespace std;
@@ -14,9 +17,20 @@ NanoAgent newNano(10, 100);
 NanoAgent newNano2(10, 100);
 NanoAgent newNano3(10, 100);
 NanoAgent newNano4(10, 100);		//IS A SHEEP!
+NanoAgent newNano5(10, 100);		//IS A DOG!
+Mine mine(1000);
+Home home(1);
 
 void InitVale(){
 	FiniteStateMachine<NanoAgent> x;
+
+	newNano.SetMine(&mine);
+
+	home.SetPosition(MagicNumber::POS_NANO_HOUSE);
+	newNano.SetHome(&home);
+
+	mine.SetPosition(MagicNumber::POS_NANO_MINE);
+	newNano.SetMine(&mine);
 
 	Vector2<float> pos(0.5f, 0.5f);
 	newNano.SetPosition(pos);
@@ -35,6 +49,11 @@ void InitVale(){
 	newNano4.SetPosition(pos4);
 	ViewComponent* viewNano4 = new ViewComponent(ViewManager::SHEEP, newNano4.GetPosition(), 0);
 	newNano4.SetViewComponent(viewNano4);
+
+	Vector2<float> pos5(0.6f, 0.6f);
+	newNano5.SetPosition(pos5);
+	ViewComponent* viewNano5 = new ViewComponent(ViewManager::DOG, newNano5.GetPosition(), 0);
+	newNano5.SetViewComponent(viewNano5);
 
 }
 

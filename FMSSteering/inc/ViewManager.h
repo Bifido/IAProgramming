@@ -10,6 +10,9 @@ class ViewManager{
 		static ViewManager& GetInstace();
 
 		void AddViewComponent(const ViewComponent& viewComponent);
+
+		/* Changes the x position of the house and the y position of mine */
+		void ChangeHouseMinePos();
 		
 		/**
 		* Draw the sprites

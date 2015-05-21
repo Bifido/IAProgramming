@@ -7,12 +7,20 @@ namespace MagicNumber{
 	const int WIDTH = 800;
 
 	//USE THIS AS TARGET FOR DWARFS
-	const sf::Vector2<float> POS_NANO_HOUSE(0.21f, 0.28f);
-	const sf::Vector2<float> POS_NANO_MINE(0.81f, 0.58f);
+	static sf::Vector2<float> POS_NANO_HOUSE(0.21f, 0.28f);
+	static sf::Vector2<float> POS_NANO_MINE(0.81f, 0.58f);
 
 	//USED ONLY TO DRAW BACKGROUND
-	const sf::Vector2<float> POS_BACKGROUND_HOUSE(0.16f, 0.10f);
-	const sf::Vector2<float> POS_BACKGROUND_MINE(0.77f, 0.41f);
+	static sf::Vector2<float> POS_BACKGROUND_HOUSE(0.16f, 0.10f);
+	static sf::Vector2<float> POS_BACKGROUND_MINE(0.77f, 0.41f);
+
+	static float GENERATION_HOUSE_LO(0.1f);
+	static float GENERATION_HOUSE_HI(0.6f);
+
+	static float GENERATION_MINE_LO(0.3f);
+	static float GENERATION_MINE_HI(0.8f);
+
+	//fence never changes
 	const sf::Vector2<float> POS_BACKGROUND_FENCE(0.05f, 0.53f);
 
 	//FENCE LIMIT FOR SHEEPS

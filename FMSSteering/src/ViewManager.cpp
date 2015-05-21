@@ -1,5 +1,6 @@
 #include "Constants.h"
 #include "ViewManager.h"
+
 #include <iostream>
 
 using namespace MagicNumber;
@@ -14,6 +15,18 @@ ViewManager& ViewManager::GetInstace(){
 
 void ViewManager::AddViewComponent(const ViewComponent& viewComponent){
 	m_Agents.push_back(viewComponent);
+}
+
+void ViewManager::ChangeHouseMinePos(){
+	float x = GENERATION_HOUSE_LO + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (GENERATION_HOUSE_HI - GENERATION_HOUSE_LO)));
+	POS_BACKGROUND_HOUSE.x = x;
+	m_Sprites[HUT].setPosition(FromNormalizedToScreenPixelWIDTH(POS_BACKGROUND_HOUSE.x), FromNormalizedToScreenPixelHEIGHT(POS_BACKGROUND_HOUSE.y));
+	POS_NANO_HOUSE.x = POS_BACKGROUND_HOUSE.x + 0.5f;
+
+	float y = GENERATION_MINE_LO + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (GENERATION_MINE_HI - GENERATION_MINE_LO)));
+	POS_BACKGROUND_MINE.y = y;
+	m_Sprites[MINE].setPosition(FromNormalizedToScreenPixelWIDTH(POS_BACKGROUND_MINE.x), FromNormalizedToScreenPixelHEIGHT(POS_BACKGROUND_MINE.y));
+	POS_NANO_MINE.y = POS_BACKGROUND_MINE.y + 0.17f;
 }
 
 void ViewManager::Draw(RenderWindow& window) {
