@@ -10,7 +10,7 @@ class GlobalArc
 {
 public:
 
-	virtual int CheckTransition(Agent&) const = 0;
+	virtual FSMStates CheckTransition(Agent&) const = 0;
 
 protected:
 	GlobalArc(){};

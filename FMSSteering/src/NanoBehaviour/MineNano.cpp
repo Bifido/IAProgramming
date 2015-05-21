@@ -28,7 +28,7 @@ void MineNano::Update(NanoAgent& agent) const
 	agent.IncrementStoneCarried(1);
 }
 
-int MineNano::CheckTransition(NanoAgent& agent) const
+FSMStates MineNano::CheckTransition(NanoAgent& agent) const
 {
 	// if exist a home for this dwarf and he is full of stones, WALK TO HOME!
 	if (agent.GetHome() != nullptr && agent.HasReachedMaxStone())

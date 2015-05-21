@@ -20,7 +20,7 @@ void IdleNano::Update(NanoAgent& agent) const
 	// TODO: Sprite animation?
 }
 
-int IdleNano::CheckTransition(NanoAgent& agent) const
+FSMStates IdleNano::CheckTransition(NanoAgent& agent) const
 {
 	// if exist a mine for this dwarf and has at least 1 stone, WALK TO MINE!
 	if (agent.GetMine() != nullptr && agent.GetMine()->GetActualStonesNumber() > 0){

@@ -33,7 +33,7 @@ void HomeNano::Update( NanoAgent& agent) const
 	agent.IncrementStamina(agent.GetHome()->GetStaminaRecovered());
 }
 
-int HomeNano::CheckTransition(NanoAgent& agent) const
+FSMStates HomeNano::CheckTransition(NanoAgent& agent) const
 {
 	// if exist a home for this dwarf and he is full of stones, WALK TO HOME!
 	if (agent.GetMine() != nullptr && agent.GetStamina() >= agent.MAX_STAMINA)

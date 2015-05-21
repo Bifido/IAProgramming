@@ -48,9 +48,8 @@ void FiniteStateMachine<Agent>::Run(Agent& actualAgent){
 
 		// Check if the FSM changes state 
 		// if no globalArc => the state remain the same!
-		FSMCore<Agent>::States newState = (globalArc != nullptr) ? 
-			static_cast<FSMCore<Agent>::States>(globalArc->CheckTransition(actualAgent)) : FSMCore<Agent>::NOT_VALID;
-		if (newState != FSMCore<Agent>::NOT_VALID)
+		FSMStates newState = (globalArc != nullptr) ? globalArc->CheckTransition(actualAgent) : FSMCore<Agent>::GetNotValidState();
+		if (FSMCore<Agent>::IsStateValid(newState))
 		{
 			actualState->OnExit(actualAgent);
 			actualState = sharedStates.GetState(newState);
@@ -59,10 +58,10 @@ void FiniteStateMachine<Agent>::Run(Agent& actualAgent){
 		else
 		{
 			// Check if the FSM changes state
-			newState = static_cast<FSMCore<Agent>::States>(actualState->CheckTransition(actualAgent));
+			newState = actualState->CheckTransition(actualAgent);
 
 			// If new state is changed, changing state!
-			if (sharedStates.GetState(newState) != actualState){
+			if (FSMCore<Agent>::IsStateValid(newState) && sharedStates.GetState(newState) != actualState){
 				actualState->OnExit(actualAgent);
 				actualState = sharedStates.GetState(newState);
 				actualState->OnEnter(actualAgent);

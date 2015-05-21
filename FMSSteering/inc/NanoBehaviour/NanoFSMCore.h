@@ -23,7 +23,10 @@ public:
 
 	static FSMCore& GetInstance();
 	State<NanoAgent>* GetDefaultState() const;
-	State<NanoAgent>* GetState(States stateId) const;
+	State<NanoAgent>* GetState(FSMStates stateId) const;
+
+	static bool IsStateValid(FSMStates stateId);
+	static FSMStates GetNotValidState();
 private:
 	FSMCore();
 	~FSMCore();
