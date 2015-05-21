@@ -18,7 +18,7 @@ using namespace sf;
 
 
 NanoAgent newNano(10000, 100);
-Mine mine(1000);
+Mine mine(100);
 Home home(1);
 
 FiniteStateMachine<NanoAgent> x;
@@ -28,10 +28,10 @@ void InitRicky(){
 	Vector2<float> pos(0.0f, 0.0f);
 	newNano.SetPosition(pos);
 
-	pos.x = 0.5f;
-	pos.y = 0.7f;
-	mine.SetPosition(pos);
-	newNano.SetMine(&mine);
+	//pos.x = 0.5f;
+	//pos.y = 0.7f;
+	//mine.SetPosition(pos);
+	//newNano.SetMine(&mine);
 
 	home.SetPosition(MagicNumber::POS_NANO_HOUSE);
 	newNano.SetHome(&home);

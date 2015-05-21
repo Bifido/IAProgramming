@@ -6,6 +6,7 @@
 #include "PassiveObj\Home.h"
 
 #include <assert.h>
+#include <iostream>
 
 int HasReachTarget(const sf::Vector2<float>&, const sf::Vector2<float>&, const sf::Vector2<float>&);
 
@@ -16,7 +17,8 @@ WalkNano::~WalkNano()
 {}
 
 void WalkNano::OnEnter(NanoAgent& agent) const{
-	agent.SetVelocity( (agent.GetTarget() - agent.GetPosition()) * 0.0001f );
+	agent.SetVelocity( (agent.GetTarget() - agent.GetPosition()) * 0.001f );
+	std::cout << "Target: " << agent.GetTarget().x << " " << agent.GetTarget().y << std::endl;
 }
 
 void WalkNano::OnExit(NanoAgent& agent) const{
@@ -28,6 +30,8 @@ void WalkNano::Update(NanoAgent& agent) const {
 	
 	sf::Vector2<float> vel = agent.GetVelocity(); // NOTA: the velocities must be in the order of 0.001 ~ 0.0001
 	agent.SetPosition(agent.GetPosition() + vel);
+
+	std::cout << "Position: " << agent.GetPosition().x << " " << agent.GetPosition().y << std::endl;
 }
 
 State<NanoAgent>* WalkNano::CheckTransition(NanoAgent& agent) const
@@ -45,9 +49,9 @@ State<NanoAgent>* WalkNano::CheckTransition(NanoAgent& agent) const
 Checks if the point 1, with a certain tollerance based on velocity, is near the position 2
 */
 int HasReachTarget(const sf::Vector2<float>& pos1, const sf::Vector2<float>& pos2, const sf::Vector2<float>& velocity){
-	bool toReturn = ((pos1.x + velocity.x) >= pos2.x) && ((pos1.x - velocity.x) <= pos2.x);
+	bool toReturn = ((pos1.x + abs(velocity.x) * 10) >= pos2.x) && ((pos1.x - abs(velocity.x) * 10) <= pos2.x);
 	if (toReturn){
-		return ((pos1.y + velocity.y) >= pos2.y) && ((pos1.y - velocity.y) <= pos2.y);
+		return ((pos1.y + abs(velocity.y) * 10) >= pos2.y) && ((pos1.y - abs(velocity.y) * 10) <= pos2.y);
 	}
 	return false;
 }
