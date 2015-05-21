@@ -8,6 +8,7 @@ FSMCore<NanoAgent>::FSMCore()
 	statesArray[States::MINE] = new MineNano();
 	statesArray[States::HOME] = new HomeNano();
 
+	globalArc = new GlobalNano();
 }
 
 FSMCore<NanoAgent>::~FSMCore()
@@ -31,6 +32,11 @@ State<NanoAgent>* FSMCore<NanoAgent>::GetState(FSMStates stateId) const
 	assert(stateId < States::COUNT && stateId != States::NOT_VALID);
 
 	return statesArray[stateId];
+}
+
+GlobalArc<NanoAgent>* FSMCore<NanoAgent>::GetGlobalArc() const
+{
+	return globalArc;
 }
 
 bool FSMCore<NanoAgent>::IsStateValid(FSMStates stateId)

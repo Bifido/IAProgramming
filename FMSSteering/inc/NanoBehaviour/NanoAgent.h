@@ -14,8 +14,12 @@ class NanoAgent : public Agent
 public:
 	const unsigned int MAX_STAMINA;
 	const unsigned int MAX_STONE;
+	const unsigned int STONES_RATIO;
+	const unsigned int STAMINA_USAGE;
+	const unsigned int STAMINA_RECOVER;
 
-	NanoAgent(unsigned int maxStone, unsigned int maxStamina);
+	NanoAgent(unsigned int maxStone, unsigned int maxStamina, unsigned int stonesRatio = 1,
+		unsigned int staminaUsage = 1, unsigned int staminaRecover = 1);
 
 	unsigned int GetStamina() const;
 	unsigned int GetCarriedStonesNumber() const;
@@ -37,11 +41,15 @@ public:
 	bool HasStillStamina() const;
 	bool HasEnoughStamina(unsigned int staminaRequired) const;
 
+	void SetStaminaRecovering(bool staminaRecovering);
+	bool IsInStaminaRecovering() const;
+
 	~NanoAgent();
 private:
 
-	unsigned int stamina;
-	unsigned int numOfCarriedStones;
+	unsigned int m_stamina;
+	unsigned int m_numOfCarriedStones;
+	bool m_staminaRecovering;
 
 	Mine* myMine;
 	Home* myHome;

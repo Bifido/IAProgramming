@@ -3,7 +3,7 @@
 
 class NanoAgent;
 
-class GlobalNano : GlobalArc<NanoAgent>
+class GlobalNano : public GlobalArc<NanoAgent>
 {
 public:
 	GlobalNano();

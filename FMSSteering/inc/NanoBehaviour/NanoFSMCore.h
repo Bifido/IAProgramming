@@ -1,5 +1,6 @@
 #pragma once
 #include "FSMCore.h"
+#include "GlobalNano.h"
 #include "WalkNano.h"
 #include "IdleNano.h"
 #include "MineNano.h"
@@ -24,6 +25,7 @@ public:
 	static FSMCore& GetInstance();
 	State<NanoAgent>* GetDefaultState() const;
 	State<NanoAgent>* GetState(FSMStates stateId) const;
+	GlobalArc<NanoAgent>* GetGlobalArc() const;
 
 	static bool IsStateValid(FSMStates stateId);
 	static FSMStates GetNotValidState();
@@ -32,4 +34,5 @@ private:
 	~FSMCore();
 
 	State<NanoAgent>* statesArray[COUNT];
+	GlobalArc<NanoAgent>* globalArc;
 };

@@ -17,7 +17,7 @@ using namespace sf;
 
 
 
-NanoAgent newNano(10000, 100);
+NanoAgent newNano(100, 1000, 5);
 Mine mine(100);
 Home home(1);
 

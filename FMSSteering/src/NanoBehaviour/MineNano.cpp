@@ -2,7 +2,10 @@
 #include "NanoBehaviour\NanoFSMCore.h"
 #include "NanoBehaviour\NanoAgent.h"
 #include "PassiveObj\Home.h"
+#include "PassiveObj\Mine.h"
 #include "ViewComponent.h"
+
+#include <iostream>
 
 MineNano::MineNano()
 {}
@@ -15,6 +18,8 @@ void MineNano::OnEnter(NanoAgent& agent) const
 	{
 		agent.GetViewComponent()->SetDrawable(false);
 	}
+
+	std::cout << "Mine stones " << agent.GetMine()->GetActualStonesNumber() << std::endl;
 }
 void MineNano::OnExit(NanoAgent& agent) const
 {
@@ -25,13 +30,15 @@ void MineNano::OnExit(NanoAgent& agent) const
 }
 void MineNano::Update(NanoAgent& agent) const
 {
-	agent.IncrementStoneCarried(1);
+	agent.DecrementStamina(agent.STAMINA_USAGE);
+	agent.IncrementStoneCarried(agent.STONES_RATIO);
+	agent.GetMine()->DecrementStonesNumber(agent.STONES_RATIO);
 }
 
 FSMStates MineNano::CheckTransition(NanoAgent& agent) const
 {
 	// if exist a home for this dwarf and he is full of stones, WALK TO HOME!
-	if (agent.GetHome() != nullptr && agent.HasReachedMaxStone())
+	if (agent.GetHome() != nullptr && (agent.HasReachedMaxStone() || agent.GetMine()->GetActualStonesNumber() <= 0))
 	{
 		// Setting the mine position as new target
 		agent.SetTarget(agent.GetHome()->GetPosition()); // TODO: Substitute this statement with agent->SetHomeAsTarget() ?
