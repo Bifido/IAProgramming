@@ -3,12 +3,12 @@
 
 class NanoAgent;
 
-class GlobalNano : GlobalArc<NanoAgent>
+class GlobalNano : public GlobalArc<NanoAgent>
 {
 public:
 	GlobalNano();
 	~GlobalNano();
 
-	State<NanoAgent>* CheckTransition(NanoAgent& agent) const;
+	FSMStates CheckTransition(NanoAgent& agent) const;
 };
 

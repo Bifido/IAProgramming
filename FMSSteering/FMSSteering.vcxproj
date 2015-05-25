@@ -90,6 +90,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="inc\Agent.h" />
     <ClInclude Include="inc\Constants.h" />
     <ClInclude Include="inc\FiniteStateMachine.h" />
     <ClInclude Include="inc\FSMCore.h" />
@@ -107,6 +108,7 @@
     <ClInclude Include="inc\ViewManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Agent.cpp" />
     <ClCompile Include="src\Main\Main.cpp" />
     <ClCompile Include="src\NanoBehaviour\GlobalNano.cpp" />
     <ClCompile Include="src\NanoBehaviour\HomeNano.cpp" />

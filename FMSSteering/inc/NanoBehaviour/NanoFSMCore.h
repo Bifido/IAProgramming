@@ -1,5 +1,6 @@
 #pragma once
 #include "FSMCore.h"
+#include "GlobalNano.h"
 #include "WalkNano.h"
 #include "IdleNano.h"
 #include "MineNano.h"
@@ -12,7 +13,8 @@ class FSMCore < NanoAgent >
 {
 
 public:
-	enum {
+	enum States{
+		NOT_VALID = -1,
 		IDLE = 0,
 		WALK = 1,
 		MINE = 2,
@@ -22,10 +24,15 @@ public:
 
 	static FSMCore& GetInstance();
 	State<NanoAgent>* GetDefaultState() const;
-	State<NanoAgent>* GetState(unsigned int stateId) const;
+	State<NanoAgent>* GetState(FSMStates stateId) const;
+	GlobalArc<NanoAgent>* GetGlobalArc() const;
+
+	static bool IsStateValid(FSMStates stateId);
+	static FSMStates GetNotValidState();
 private:
 	FSMCore();
 	~FSMCore();
 
 	State<NanoAgent>* statesArray[COUNT];
+	GlobalArc<NanoAgent>* globalArc;
 };

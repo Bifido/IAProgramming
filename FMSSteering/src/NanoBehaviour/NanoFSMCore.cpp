@@ -3,11 +3,12 @@
 
 FSMCore<NanoAgent>::FSMCore()
 {
-	statesArray[IDLE] = new IdleNano();
-	statesArray[WALK] = new WalkNano();
-	statesArray[MINE] = new MineNano();
-	statesArray[HOME] = new HomeNano();
+	statesArray[States::IDLE] = new IdleNano();
+	statesArray[States::WALK] = new WalkNano();
+	statesArray[States::MINE] = new MineNano();
+	statesArray[States::HOME] = new HomeNano();
 
+	globalArc = new GlobalNano();
 }
 
 FSMCore<NanoAgent>::~FSMCore()
@@ -23,12 +24,27 @@ FSMCore<NanoAgent>& FSMCore<NanoAgent>::GetInstance()
 
 State<NanoAgent>* FSMCore<NanoAgent>::GetDefaultState() const
 {
-	return statesArray[IDLE];
+	return statesArray[States::IDLE];
 }
 
-State<NanoAgent>* FSMCore<NanoAgent>::GetState(unsigned int stateId) const
+State<NanoAgent>* FSMCore<NanoAgent>::GetState(FSMStates stateId) const
 {
-	assert(stateId < COUNT);
+	assert(stateId < States::COUNT && stateId != States::NOT_VALID);
 
 	return statesArray[stateId];
+}
+
+GlobalArc<NanoAgent>* FSMCore<NanoAgent>::GetGlobalArc() const
+{
+	return globalArc;
+}
+
+bool FSMCore<NanoAgent>::IsStateValid(FSMStates stateId)
+{
+	return (stateId != States::NOT_VALID);
+}
+
+FSMStates FSMCore<NanoAgent>::GetNotValidState()
+{
+	return States::NOT_VALID;
 }

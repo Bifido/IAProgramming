@@ -17,12 +17,11 @@ class FiniteStateMachine
 {
 	FSMCore<Agent>& sharedStates;
 	State<Agent>* actualState;
-	GlobalArc<Agent>* globalArc;
 public:
 	FiniteStateMachine();
 	~FiniteStateMachine();
 
-	void Run(Agent* actual);
+	void Run(Agent& actual);
 };
 
 
@@ -42,34 +41,34 @@ template<typename Agent>
 FiniteStateMachine<Agent>::~FiniteStateMachine() { };
 
 template<typename Agent>
-void FiniteStateMachine<Agent>::Run(Agent* actualAgent){
+void FiniteStateMachine<Agent>::Run(Agent& actualAgent){
 
 	if (actualState != nullptr){
 
 		// Check if the FSM changes state 
 		// if no globalArc => the state remain the same!
-		State<Agent>* newState = globalArc != nullptr ? globalArc->CheckTransition(*actualAgent) : actualState;
-		if (newState != actualState)
+		FSMStates newState = (sharedStates.GetGlobalArc() != nullptr) ? sharedStates.GetGlobalArc()->CheckTransition(actualAgent) : FSMCore<Agent>::GetNotValidState();
+		if (FSMCore<Agent>::IsStateValid(newState) && sharedStates.GetState(newState) != actualState)
 		{
-			actualState->OnExit(*actualAgent);
-			actualState = newState;
-			actualState->OnEnter(*actualAgent);
+			actualState->OnExit(actualAgent);
+			actualState = sharedStates.GetState(newState);
+			actualState->OnEnter(actualAgent);
 		}
-		else
+		
 		{
 			// Check if the FSM changes state
-			newState = actualState->CheckTransition(*actualAgent);
+			newState = actualState->CheckTransition(actualAgent);
 
 			// If new state is changed, changing state!
-			if (newState != actualState){
-				actualState->OnExit(*actualAgent);
-				actualState = newState;
-				actualState->OnEnter(*actualAgent);
+			if (FSMCore<Agent>::IsStateValid(newState) && sharedStates.GetState(newState) != actualState){
+				actualState->OnExit(actualAgent);
+				actualState = sharedStates.GetState(newState);
+				actualState->OnEnter(actualAgent);
 			}
 		}
 
 		// Update acual state
-		actualState->Update(*actualAgent);
+		actualState->Update(actualAgent);
 	}
 
 }

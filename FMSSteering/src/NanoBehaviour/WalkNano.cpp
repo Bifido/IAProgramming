@@ -11,14 +11,12 @@
 int HasReachTarget(const sf::Vector2<float>&, const sf::Vector2<float>&, const sf::Vector2<float>&);
 
 WalkNano::WalkNano()
-	: State(FSMCore < NanoAgent > ::GetInstance())
 {}
 WalkNano::~WalkNano()
 {}
 
 void WalkNano::OnEnter(NanoAgent& agent) const{
 	agent.SetVelocity( (agent.GetTarget() - agent.GetPosition()) * 0.001f );
-	std::cout << "Target: " << agent.GetTarget().x << " " << agent.GetTarget().y << std::endl;
 }
 
 void WalkNano::OnExit(NanoAgent& agent) const{
@@ -30,19 +28,17 @@ void WalkNano::Update(NanoAgent& agent) const {
 	
 	sf::Vector2<float> vel = agent.GetVelocity(); // NOTA: the velocities must be in the order of 0.001 ~ 0.0001
 	agent.SetPosition(agent.GetPosition() + vel);
-
-	std::cout << "Position: " << agent.GetPosition().x << " " << agent.GetPosition().y << std::endl;
 }
 
-State<NanoAgent>* WalkNano::CheckTransition(NanoAgent& agent) const
+FSMStates WalkNano::CheckTransition(NanoAgent& agent) const
 {
 	if (agent.GetMine() != nullptr && HasReachTarget(agent.GetPosition(), agent.GetMine()->GetPosition(), agent.GetVelocity()) ){ 
-		return m_fsmCore.GetState(FSMCore<NanoAgent>::MINE);
+		return FSMCore<NanoAgent>::States::MINE;
 	}
 	else if (agent.GetHome() != nullptr && HasReachTarget(agent.GetPosition(), agent.GetHome()->GetPosition(), agent.GetVelocity())){
-		return m_fsmCore.GetState(FSMCore<NanoAgent>::HOME);
+		return FSMCore<NanoAgent>::States::HOME;
 	}
-	return m_fsmCore.GetState(FSMCore<NanoAgent>::WALK);
+	return FSMCore<NanoAgent>::States::WALK;
 }
 
 /*
