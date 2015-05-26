@@ -20,8 +20,11 @@ using namespace sf;
 NanoAgent newNano(100, 1000, 5);
 Mine mine(100);
 Home home(1);
-
-FiniteStateMachine<NanoAgent> x;
+enum A
+{
+	FSM1 = 0
+};
+FiniteStateMachine<NanoAgent,1> x;
 
 void InitRicky(){
 

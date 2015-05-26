@@ -20,8 +20,8 @@ FSMStates GlobalNano::CheckTransition(NanoAgent& agent) const
 		// Setting the mine position as new target
 		agent.SetTarget(agent.GetHome()->GetPosition()); // TODO: Substitute this statement with agent->SetHomeAsTarget() ?
 		// go to state: WALK
-		return FSMCore<NanoAgent>::States::WALK;
+		return FSMCore<NanoAgent, 0>::States::WALK;
 	}
 	else
-		return FSMCore<NanoAgent>::States::NOT_VALID;
+		return FSMCore<NanoAgent, 0>::States::NOT_VALID;
 }

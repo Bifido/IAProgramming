@@ -14,6 +14,8 @@
     <ClCompile Include="src\PassiveObj\Mine.cpp" />
     <ClCompile Include="src\PassiveObj\Home.cpp" />
     <ClCompile Include="src\Agent.cpp" />
+    <ClCompile Include="src\NanoBehaviour\WalkNanoLeft.cpp" />
+    <ClCompile Include="src\NanoBehaviour\WalkNanoRight.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\FSMCore.h" />
@@ -36,6 +38,8 @@
     <ClInclude Include="inc\PassiveObj\Home.h" />
     <ClInclude Include="src\Main\MainRicky.cpp" />
     <ClInclude Include="inc\Agent.h" />
+    <ClInclude Include="inc\NanoBehaviour\WalkNanoLeft.h" />
+    <ClInclude Include="inc\NanoBehaviour\WalkNanoRight.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\dwarf.png" />

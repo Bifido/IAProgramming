@@ -5,7 +5,20 @@ typedef int FSMStates;
 template <typename Agent>
 class State;
 
-template <typename Agent>
+template <int I>
+struct intToType
+{
+	enum
+	{
+		value = I
+	};
+};
+
+//void SwitchCamera(intToType<5>);
+
+//SwitchCamera(5);
+
+template <typename Agent, int I>
 class FSMCore
 {
 public:

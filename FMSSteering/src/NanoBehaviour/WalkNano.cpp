@@ -33,12 +33,12 @@ void WalkNano::Update(NanoAgent& agent) const {
 FSMStates WalkNano::CheckTransition(NanoAgent& agent) const
 {
 	if (agent.GetMine() != nullptr && HasReachTarget(agent.GetPosition(), agent.GetMine()->GetPosition(), agent.GetVelocity()) ){ 
-		return FSMCore<NanoAgent>::States::MINE;
+		return FSMCore<NanoAgent, 0>::States::MINE;
 	}
 	else if (agent.GetHome() != nullptr && HasReachTarget(agent.GetPosition(), agent.GetHome()->GetPosition(), agent.GetVelocity())){
-		return FSMCore<NanoAgent>::States::HOME;
+		return FSMCore<NanoAgent, 0>::States::HOME;
 	}
-	return FSMCore<NanoAgent>::States::WALK;
+	return FSMCore<NanoAgent, 0>::States::WALK;
 }
 
 /*
