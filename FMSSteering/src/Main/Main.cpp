@@ -1,6 +1,6 @@
-//#define Vale
+#define Vale
 //#define Marco
-#define Ricky
+//#define Ricky
 
 #include "SFML\Graphics.hpp"
 #include "ViewManager.h"
@@ -17,8 +17,6 @@
 #else
 	#include "MainRicky.cpp"
 #endif
-
-using namespace MagicNumber;
 
 void MainLoop();
 static void Draw(sf::Sprite sprite);
@@ -54,6 +52,10 @@ int main(){
 			// "close requested" event: we close the window
 			if (event.type == sf::Event::Closed)
 				window.close();
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+				window.close();
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+				viewMan.ChangeHouseMinePos();
 		}
 
 		//TODO updateLogica
