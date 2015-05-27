@@ -1,5 +1,7 @@
 #include <assert.h>
 #include "NanoBehaviour\NanoAgent.h"
+#include "NanoBehaviour\NanoFSMCore.h"
+//#include "FiniteStateMachine.h"
 
 using namespace sf;
 
@@ -10,10 +12,13 @@ NanoAgent::NanoAgent(unsigned int maxStone, unsigned int maxStamina, unsigned in
 	STONES_RATIO(stonesRatio),
 	STAMINA_USAGE(staminaUsage),
 	STAMINA_RECOVER(staminaRecover),
+	fsm(*this),
 	m_stamina(MAX_STAMINA),
 	m_numOfCarriedStones(0),
 	myMine(nullptr),
-	myHome(nullptr){ 
+	myHome(nullptr)
+{
+	fsm.AddFSM(DefaultNanoFSMCore::GetInstance());
 }
 
 unsigned int NanoAgent::GetStamina() const{
@@ -61,9 +66,7 @@ unsigned int NanoAgent::IncrementStamina(unsigned int staminaToAdd){
 unsigned int NanoAgent::DecrementStamina(unsigned int staminaLost){
 	// the stamina lost can't be a negative value **DEPRECATED**
 	//assert(staminaLost >= 0);
-
-	m_stamina -= staminaLost;
-	m_stamina = m_stamina > 0 ? m_stamina : 0;
+	m_stamina = (m_stamina > staminaLost) ? (m_stamina - staminaLost) : 0;
 
 	return m_stamina;
 }
@@ -89,8 +92,9 @@ unsigned int NanoAgent::DecrementStoneCarried(unsigned int stoneToRemove){
 	// the number of carried stone dropped can't be a negative value **DEPRECATED**
 	//assert(stoneToRemove >= 0);
 
-	m_numOfCarriedStones -= stoneToRemove;
-	m_numOfCarriedStones = m_numOfCarriedStones > 0 ? m_numOfCarriedStones : 0;
+	m_numOfCarriedStones = (m_numOfCarriedStones > stoneToRemove) ? (m_numOfCarriedStones - stoneToRemove) : 0;
+	//m_numOfCarriedStones -= stoneToRemove;
+	//m_numOfCarriedStones = m_numOfCarriedStones > 0 ? m_numOfCarriedStones : 0;
 
 	return m_numOfCarriedStones;
 }
@@ -118,3 +122,16 @@ bool NanoAgent::IsInStaminaRecovering() const
 }
 
 NanoAgent::~NanoAgent(){ }
+
+void NanoAgent::FSMAdd(FSMCore<NanoAgent>* sharedStates)
+{
+	fsm.AddFSM(sharedStates);
+}
+void NanoAgent::FSMRemove()
+{
+	fsm.RemoveFSM();
+}
+void NanoAgent::FSMRun()
+{
+	fsm.Run();
+}

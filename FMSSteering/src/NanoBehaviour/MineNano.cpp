@@ -31,8 +31,11 @@ void MineNano::OnExit(NanoAgent& agent) const
 void MineNano::Update(NanoAgent& agent) const
 {
 	agent.DecrementStamina(agent.STAMINA_USAGE);
-	agent.IncrementStoneCarried(agent.STONES_RATIO);
-	agent.GetMine()->DecrementStonesNumber(agent.STONES_RATIO);
+	if (agent.GetMine()->GetActualStonesNumber() > 0)
+	{
+		agent.IncrementStoneCarried(agent.STONES_RATIO);
+		agent.GetMine()->DecrementStonesNumber(agent.STONES_RATIO);
+	}
 }
 
 FSMStates MineNano::CheckTransition(NanoAgent& agent) const
@@ -43,8 +46,8 @@ FSMStates MineNano::CheckTransition(NanoAgent& agent) const
 		// Setting the mine position as new target
 		agent.SetTarget(agent.GetHome()->GetPosition()); // TODO: Substitute this statement with agent->SetHomeAsTarget() ?
 		// go to state: WALK
-		return FSMCore<NanoAgent, 0>::States::WALK;
+		return DefaultNanoFSMCore::States::WALK;
 	}
 	// TODO: To implement
-	return FSMCore<NanoAgent, 0>::States::MINE;
+	return DefaultNanoFSMCore::States::MINE;
 }

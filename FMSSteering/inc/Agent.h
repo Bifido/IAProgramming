@@ -3,6 +3,8 @@
 
 // ** Forward dec
 class ViewComponent;
+//template <typename Agent>
+//class FiniteStateMachine;
 // ** END
 
 class Agent
@@ -28,6 +30,8 @@ private:
 	sf::Vector2<float> pos; // each value, go from 0 to 1 (Normalized)
 	sf::Vector2<float> velocity;
 	sf::Vector2<float> target;
+
+	//FiniteStateMachine<Agent>* fsm;
 
 	ViewComponent* viewInfo;
 };

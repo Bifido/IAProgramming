@@ -8,7 +8,7 @@
 #include "NanoBehaviour\WalkNanoRight.h"
 #include <assert.h>
 
-FSMCore<NanoAgent,0>::FSMCore()
+DefaultNanoFSMCore::DefaultNanoFSMCore()
 {
 	statesArray[States::IDLE] = new IdleNano();
 	statesArray[States::WALK] = new WalkNano();
@@ -18,89 +18,86 @@ FSMCore<NanoAgent,0>::FSMCore()
 	globalArc = new GlobalNano();
 }
 
-FSMCore<NanoAgent,0>::~FSMCore()
+DefaultNanoFSMCore::~DefaultNanoFSMCore()
 {
 
 }
 
-FSMCore<NanoAgent,0>& FSMCore<NanoAgent,0>::GetInstance()
+FSMCore<NanoAgent>* DefaultNanoFSMCore::GetInstance()
 {
-	static FSMCore m_instance;
-	return m_instance;
+	static DefaultNanoFSMCore m_instance;
+	return &m_instance;
 }
 
-State<NanoAgent>* FSMCore<NanoAgent,0>::GetDefaultState() const
+State<NanoAgent>* DefaultNanoFSMCore::GetDefaultState() const
 {
 	return statesArray[States::IDLE];
 }
 
-State<NanoAgent>* FSMCore<NanoAgent,0>::GetState(FSMStates stateId) const
+State<NanoAgent>* DefaultNanoFSMCore::GetState(FSMStates stateId) const
 {
 	assert(stateId < States::COUNT && stateId != States::NOT_VALID);
 
 	return statesArray[stateId];
 }
 
-GlobalArc<NanoAgent>* FSMCore<NanoAgent, 0>::GetGlobalArc() const
+GlobalArc<NanoAgent>* DefaultNanoFSMCore::GetGlobalArc() const
 {
 	return globalArc;
 }
 
-bool FSMCore<NanoAgent, 0>::IsStateValid(FSMStates stateId)
+bool DefaultNanoFSMCore::IsStateValid(FSMStates stateId) const
 {
 	return (stateId != States::NOT_VALID);
 }
 
-FSMStates FSMCore<NanoAgent, 0>::GetNotValidState()
+FSMStates DefaultNanoFSMCore::GetNotValidState() const
 {
 	return States::NOT_VALID;
 }
 
 
 
-FSMCore<NanoAgent, 1>::FSMCore()
+SubWalkNanoFSMCore::SubWalkNanoFSMCore()
 {
-	statesArray[States::IDLE] = new IdleNano();
 	statesArray[States::LEFT] = new WalkNanoLeft();
 	statesArray[States::RIGHT] = new WalkNanoRight();
-
-	globalArc = new GlobalNano();
 }
 
-FSMCore<NanoAgent, 1>::~FSMCore()
+SubWalkNanoFSMCore::~SubWalkNanoFSMCore()
 {
 
 }
 
-FSMCore<NanoAgent, 1>& FSMCore<NanoAgent, 1>::GetInstance()
+FSMCore<NanoAgent>* SubWalkNanoFSMCore::GetInstance()
 {
-	static FSMCore m_instance;
-	return m_instance;
+	static SubWalkNanoFSMCore m_instance;
+	return &m_instance;
 }
 
-State<NanoAgent>* FSMCore<NanoAgent, 1>::GetDefaultState() const
+State<NanoAgent>* SubWalkNanoFSMCore::GetDefaultState() const
 {
-	return statesArray[States::IDLE];
+	return statesArray[States::LEFT];
 }
 
-State<NanoAgent>* FSMCore<NanoAgent, 1>::GetState(FSMStates stateId) const
+State<NanoAgent>* SubWalkNanoFSMCore::GetState(FSMStates stateId) const
 {
 	assert(stateId < States::COUNT && stateId != States::NOT_VALID);
 
 	return statesArray[stateId];
 }
 
-GlobalArc<NanoAgent>* FSMCore<NanoAgent, 1>::GetGlobalArc() const
+GlobalArc<NanoAgent>* SubWalkNanoFSMCore::GetGlobalArc() const
 {
 	return globalArc;
 }
 
-bool FSMCore<NanoAgent, 1>::IsStateValid(FSMStates stateId)
+bool SubWalkNanoFSMCore::IsStateValid(FSMStates stateId) const
 {
 	return (stateId != States::NOT_VALID);
 }
 
-FSMStates FSMCore<NanoAgent, 1>::GetNotValidState()
+FSMStates SubWalkNanoFSMCore::GetNotValidState() const
 {
 	return States::NOT_VALID;
 }
