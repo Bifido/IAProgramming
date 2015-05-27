@@ -27,7 +27,7 @@ FSMStates IdleNano::CheckTransition(NanoAgent& agent) const
 		// Setting the mine position as new target
 		agent.SetTarget(agent.GetMine()->GetPosition()); // TODO: Substitute this statement with agent->SetMineAsTarget() ?
 		// go to state: WALK
-		return FSMCore<NanoAgent>::States::WALK;
+		return DefaultNanoFSMCore::States::WALK;
 	}
-	return FSMCore<NanoAgent>::States::IDLE;
+	return DefaultNanoFSMCore::States::IDLE;
 }

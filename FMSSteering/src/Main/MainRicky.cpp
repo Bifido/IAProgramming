@@ -17,11 +17,14 @@ using namespace sf;
 
 
 
-NanoAgent newNano(100, 1000, 5);
+NanoAgent newNano(100, 10, 5);
 Mine mine(100);
 Home home(1);
-
-FiniteStateMachine<NanoAgent> x;
+enum A
+{
+	FSM1 = 0
+};
+//FiniteStateMachine<NanoAgent> x(newNano);
 
 void InitRicky(){
 
@@ -47,7 +50,7 @@ void InitRicky(){
 }
 
 void RunRicky(){
-	x.Run(newNano);
+	newNano.FSMRun();
 }
 
 void StartRicky(){

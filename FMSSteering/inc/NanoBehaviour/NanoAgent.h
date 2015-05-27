@@ -1,6 +1,7 @@
 #pragma once
 #include "SFML\System\Vector2.hpp"
 #include "Agent.h"
+#include "FiniteStateMachine.h"
 
 // ** Forward dec
 class ViewComponent;
@@ -45,6 +46,11 @@ public:
 	bool IsInStaminaRecovering() const;
 
 	~NanoAgent();
+
+	void FSMAdd(FSMCore<NanoAgent>* sharedStates);
+	void FSMRemove();
+	void FSMRun();
+
 private:
 
 	unsigned int m_stamina;
@@ -53,5 +59,6 @@ private:
 
 	Mine* myMine;
 	Home* myHome;
+	FiniteStateMachine<NanoAgent> fsm;
 };
 

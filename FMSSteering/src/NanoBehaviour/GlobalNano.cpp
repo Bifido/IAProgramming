@@ -17,11 +17,11 @@ FSMStates GlobalNano::CheckTransition(NanoAgent& agent) const
 {
 	if (!agent.IsInStaminaRecovering() && !agent.HasStillStamina())
 	{
-		// Setting the mine position as new target
+		// Setting the HOME position as new target
 		agent.SetTarget(agent.GetHome()->GetPosition()); // TODO: Substitute this statement with agent->SetHomeAsTarget() ?
 		// go to state: WALK
-		return FSMCore<NanoAgent>::States::WALK;
+		return DefaultNanoFSMCore::States::WALK;
 	}
 	else
-		return FSMCore<NanoAgent>::States::NOT_VALID;
+		return DefaultNanoFSMCore::States::NOT_VALID;
 }

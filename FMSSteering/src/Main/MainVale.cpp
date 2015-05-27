@@ -22,7 +22,7 @@ Mine mine(1000);
 Home home(1);
 
 void InitVale(){
-	FiniteStateMachine<NanoAgent> x;
+	FiniteStateMachine<NanoAgent,0> x;
 
 	newNano.SetMine(&mine);
 
