@@ -16,6 +16,8 @@
     <ClCompile Include="src\Agent.cpp" />
     <ClCompile Include="src\NanoBehaviour\WalkNanoLeft.cpp" />
     <ClCompile Include="src\NanoBehaviour\WalkNanoRight.cpp" />
+    <ClCompile Include="src\PassiveObj\Fence.cpp" />
+    <ClCompile Include="src\SheepBehaviour\SheepAgent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\FSMCore.h" />
@@ -40,6 +42,9 @@
     <ClInclude Include="inc\Agent.h" />
     <ClInclude Include="inc\NanoBehaviour\WalkNanoLeft.h" />
     <ClInclude Include="inc\NanoBehaviour\WalkNanoRight.h" />
+    <ClInclude Include="inc\SheepBehaviour\SheepAgent.h" />
+    <ClInclude Include="inc\PassiveObj\Fence.h" />
+    <ClInclude Include="inc\SheepBehaviour\SheepFSMCore.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\dwarf.png" />
