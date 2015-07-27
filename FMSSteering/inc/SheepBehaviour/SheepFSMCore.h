@@ -1,11 +1,10 @@
 #pragma once
 #include "FSMCore.h"
 
-// TODO review everything
-
 class SheepAgent;
-template <typename Agent> class GlobalArc;
 
+template <typename Agent>
+class GlobalArc;
 
 class DefaultSheepFSMCore : FSMCore < SheepAgent >
 {
@@ -13,10 +12,10 @@ class DefaultSheepFSMCore : FSMCore < SheepAgent >
 public: 
 	enum States{
 		NOT_VALID = -1,
-		IDLE = 0,
-		WALK = 1,
-		MINE = 2,
-		HOME = 3,
+		WALK = 0,
+		ESCAPE_FROM_FENCE = 1,
+		ESCAPE_FROM_DOG = 2,
+		BACK_IN_FENCE = 3,
 		COUNT
 	};
 
