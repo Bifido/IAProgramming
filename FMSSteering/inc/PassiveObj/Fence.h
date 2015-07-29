@@ -14,11 +14,16 @@ public:
 	const sf::Vector2<float>& GetLowerLeftCornerPos() const;
 	const sf::Vector2<float>& GetUpperRightCornerPos() const;
 
+	const sf::Vector2<float>& GetRandomPointInside() const;
+	const sf::Vector2<float>& GetRandomPointOutside() const;
+
+	bool IsPointInside(const sf::Vector2<float>& position) const;
+
 	void SetViewComponent(ViewComponent*);
 
 private:
-	sf::Vector2<float> m_vLowerLeftCorner = MagicNumber::POS_BACKGROUND_FENCE - MagicNumber::FENCE_HALF_SIZE;
-	sf::Vector2<float> m_vUpperRightCorner = MagicNumber::POS_BACKGROUND_FENCE + MagicNumber::FENCE_HALF_SIZE;
+	sf::Vector2<float> m_vLowerLeftCorner;
+	sf::Vector2<float> m_vUpperRightCorner;
 
 	ViewComponent* m_oViewInfo;
 };

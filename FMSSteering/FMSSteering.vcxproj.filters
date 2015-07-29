@@ -48,6 +48,7 @@
     <ClInclude Include="inc\PassiveObj\Fence.h" />
     <ClInclude Include="inc\SheepBehaviour\SheepFSMCore.h" />
     <ClInclude Include="inc\SheepBehaviour\WalkSheep.h" />
+    <ClInclude Include="inc\SheepBehaviour\GlobalSheep.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\dwarf.png" />

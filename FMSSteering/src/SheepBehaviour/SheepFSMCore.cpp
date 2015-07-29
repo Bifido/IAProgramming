@@ -1,14 +1,19 @@
 #include "SheepBehaviour\SheepFSMCore.h"
 #include "SheepBehaviour\WalkSheep.h"
+#include "SheepBehaviour\GlobalSheep.h"
 
 #include <assert.h>
 
 DefaultSheepFSMCore::DefaultSheepFSMCore()
 {
-	statesArray[States::WALK] = new WalkSheep();
+	//TODO check from here
 	/*statesArray[States::ESCAPE_FROM_FENCE] = new EscapeFromFenceSheep();
 	statesArray[States::ESCAPE_FROM_DOG] = new EscapeFromDogSheep();
 	statesArray[States::BACK_IN_FENCE] = new BackInFence();*/
+	statesArray[States::WALK] = new WalkSheep();
+
+	//NEVER USED. HERE ONLY TO SATISFY DefaultSheepFSMCore that inherit from FSMCore.h with pure virtual GetGlobalArc()
+	globalArc = new GlobalSheep();
 }
 
 DefaultSheepFSMCore::~DefaultSheepFSMCore()

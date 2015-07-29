@@ -106,6 +106,7 @@
     <ClInclude Include="inc\PassiveObj\Fence.h" />
     <ClInclude Include="inc\PassiveObj\Home.h" />
     <ClInclude Include="inc\PassiveObj\Mine.h" />
+    <ClInclude Include="inc\SheepBehaviour\GlobalSheep.h" />
     <ClInclude Include="inc\SheepBehaviour\SheepAgent.h" />
     <ClInclude Include="inc\SheepBehaviour\SheepFSMCore.h" />
     <ClInclude Include="inc\SheepBehaviour\WalkSheep.h" />

@@ -14,15 +14,17 @@ using namespace std;
 using namespace sf;
 using namespace MagicNumber;
 
-NanoAgent newNano(10, 100);		//start in 0/0
-NanoAgent newNano2(10, 100);	//start in 0/0
-NanoAgent newNano3(10, 100);	//start in 0/0
-
-Mine mine(1000);
-Home home(1);
-
-Fence fence();
+NanoAgent newNano(100, 10, 5);
 SheepAgent sheep;
+
+Mine mine(100);
+Home home(1);
+Fence fence();
+
+enum A
+{
+	FSM1 = 0
+};
 
 void InitVale(){
 	//FiniteStateMachine<NanoAgent> x;
@@ -33,18 +35,11 @@ void InitVale(){
 	newNano.SetHome(&home);
 	newNano.SetMine(&mine);
 
-	Vector2<float> pos(0.5f, 0.5f);
+	Vector2<float> pos(MagicNumber::POS_NANO_HOUSE);
 	newNano.SetPosition(pos);
+
 	ViewComponent* viewNano = new ViewComponent(ViewManager::DWARF, newNano.GetPosition(), 0);
 	newNano.SetViewComponent(viewNano);
-
-	newNano2.SetPosition(POS_NANO_HOUSE);
-	ViewComponent* viewNano2 = new ViewComponent(ViewManager::DWARF, newNano2.GetPosition(), 0);
-	newNano2.SetViewComponent(viewNano2);
-
-	newNano3.SetPosition(POS_NANO_MINE);
-	ViewComponent* viewNano3 = new ViewComponent(ViewManager::DWARF, newNano3.GetPosition(), 0);
-	newNano3.SetViewComponent(viewNano3);
 
 	Vector2<float> pos4(0.07f, 0.58f);
 	sheep.SetPosition(pos4);
@@ -62,4 +57,7 @@ void StartVale(){
 }
 
 void RunVale(){
+	newNano.FSMRun();
 }
+
+
