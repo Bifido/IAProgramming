@@ -5,6 +5,7 @@
 #include "SheepBehaviour\SheepAgent.h"
 #include "PassiveObj\Home.h";
 #include "PassiveObj\Mine.h";
+#include "PassiveObj\Fence.h";
 #include "ViewComponent.h"
 #include "ViewManager.h"
 #include "SFML\System\Vector2.hpp"
@@ -19,7 +20,7 @@ SheepAgent sheep;
 
 Mine mine(100);
 Home home(1);
-Fence fence();
+Fence fence(MagicNumber::POS_BACKGROUND_FENCE,MagicNumber::FENCE_SIZE);
 
 enum A
 {
@@ -45,6 +46,7 @@ void InitVale(){
 	sheep.SetPosition(pos4);
 	ViewComponent* viewSheep = new ViewComponent(ViewManager::SHEEP, sheep.GetPosition(), 0);
 	sheep.SetViewComponent(viewSheep);
+	sheep.SetFence(fence);
 
 	/*Vector2<float> pos5(0.6f, 0.6f);
 	newNano5.SetPosition(pos5);
@@ -58,6 +60,7 @@ void StartVale(){
 
 void RunVale(){
 	newNano.FSMRun();
+	sheep.FSMRun();
 }
 
 

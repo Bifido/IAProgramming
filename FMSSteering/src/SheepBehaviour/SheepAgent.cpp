@@ -14,7 +14,7 @@ SheepAgent::SheepAgent(bool isInFence, bool isEscaping):
 void SheepAgent::SetFence(const Fence& sheepFence){
 
 }
-Fence* SheepAgent::GetFence() const{
+const Fence* SheepAgent::GetFence() const{
 	return m_oFence;
 }
 

@@ -3,16 +3,28 @@
 #include <cstdlib>
 #include <ctime>
 
+#include <iostream>
+using namespace std;
 
-Fence::Fence() : 
-m_vLowerLeftCorner(MagicNumber::POS_BACKGROUND_FENCE.x, MagicNumber::POS_BACKGROUND_FENCE.y - MagicNumber::FENCE_SIZE.y),
-m_vUpperRightCorner(MagicNumber::POS_BACKGROUND_FENCE.x + MagicNumber::FENCE_SIZE.x, MagicNumber::POS_BACKGROUND_FENCE.y)
+Fence::Fence(const sf::Vector2<float> newPos,const sf::Vector2<float> fenceSize) :
+m_vPosition(newPos),
+m_vLowerLeftCorner(newPos.x,newPos.y - fenceSize.y),
+m_vUpperRightCorner(newPos.x + fenceSize.x, newPos.y)
 {
+	/*cout << "fence2 Costructor" << endl;
+	printf("%f ", GetPosition().x);
+	printf("%f ", GetPosition().y);
+	cout << endl;
+	printf("%f ", GetLowerLeftCornerPos().x);
+	printf("%f ", GetLowerLeftCornerPos().y);
+	cout << endl;
+	printf("%f ", GetUpperRightCornerPos().x);
+	printf("%f ", GetUpperRightCornerPos().y);
+	cout << "fence2 Costructor end" << endl;*/
 }
 
-
 const sf::Vector2<float>& Fence::GetPosition() const{
-	return MagicNumber::POS_BACKGROUND_FENCE;
+	return m_vPosition;
 }
 const sf::Vector2<float>& Fence::GetLowerLeftCornerPos() const{
 	return m_vLowerLeftCorner;

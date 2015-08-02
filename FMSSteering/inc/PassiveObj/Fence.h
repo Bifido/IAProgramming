@@ -7,8 +7,8 @@ class ViewComponent;
 class Fence{
 
 public:
-	Fence();
-	~Fence();
+	Fence(const sf::Vector2<float> pos, const sf::Vector2<float> fenceSize);
+	~Fence(){};
 
 	const sf::Vector2<float>& GetPosition() const;
 	const sf::Vector2<float>& GetLowerLeftCornerPos() const;
@@ -22,6 +22,7 @@ public:
 	void SetViewComponent(ViewComponent*);
 
 private:
+	sf::Vector2<float> m_vPosition;
 	sf::Vector2<float> m_vLowerLeftCorner;
 	sf::Vector2<float> m_vUpperRightCorner;
 

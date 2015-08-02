@@ -2,10 +2,23 @@
 #include "SheepBehaviour\SheepFSMCore.h"
 #include "SheepBehaviour\SheepAgent.h"
 
+#include "PassiveObj\Fence.h"
+
 #include <assert.h>
 #include <iostream>
 
 int HasReachTarget2(const sf::Vector2<float>&, const sf::Vector2<float>&, const sf::Vector2<float>&);
+
+/*
+Checks if the point 1, with a certain tollerance based on velocity, is near the position 2
+*/
+int HasReachTarget2(const sf::Vector2<float>& pos1, const sf::Vector2<float>& pos2, const sf::Vector2<float>& velocity){
+	bool toReturn = ((pos1.x + abs(velocity.x) * 10) >= pos2.x) && ((pos1.x - abs(velocity.x) * 10) <= pos2.x);
+	if (toReturn){
+		return ((pos1.y + abs(velocity.y) * 10) >= pos2.y) && ((pos1.y - abs(velocity.y) * 10) <= pos2.y);
+	}
+	return false;
+}
 
 WalkSheep::WalkSheep()
 {}
@@ -37,16 +50,8 @@ FSMStates WalkSheep::CheckTransition(SheepAgent& agent) const
 	else if (agent.GetHome() != nullptr && agent.GetTarget() == agent.GetHome()->GetPosition() && HasReachTarget(agent.GetPosition(), agent.GetHome()->GetPosition(), agent.GetVelocity())){
 		return DefaultNanoFSMCore::States::HOME;
 	}*/
-	return DefaultSheepFSMCore::States::WALK;
-}
-
-/*
-Checks if the point 1, with a certain tollerance based on velocity, is near the position 2
-*/
-int HasReachTarget2(const sf::Vector2<float>& pos1, const sf::Vector2<float>& pos2, const sf::Vector2<float>& velocity){
-	bool toReturn = ((pos1.x + abs(velocity.x) * 10) >= pos2.x) && ((pos1.x - abs(velocity.x) * 10) <= pos2.x);
-	if (toReturn){
-		return ((pos1.y + abs(velocity.y) * 10) >= pos2.y) && ((pos1.y - abs(velocity.y) * 10) <= pos2.y);
+	if (HasReachTarget2(agent.GetPosition(), agent.GetTarget(), agent.GetVelocity())){
+		agent.SetTarget(agent.GetFence()->GetRandomPointInside());
 	}
-	return false;
+	return DefaultSheepFSMCore::States::WALK;
 }

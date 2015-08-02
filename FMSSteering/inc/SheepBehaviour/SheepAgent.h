@@ -16,7 +16,7 @@ public:
 	SheepAgent(bool inInFence = true, bool isEscaping = false);
 
 	void SetFence(const Fence& sheepFence);
-	Fence* GetFence() const;
+	const Fence* GetFence() const;
 
 	const bool IsInFence() const;
 	const bool IsEscaping() const;
