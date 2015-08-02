@@ -13,16 +13,18 @@ class SheepAgent : public Agent
 
 public:
 	//Creates Sheep already in fence
-	SheepAgent(bool inInFence = true, bool isEscaping = false);
+	SheepAgent(bool inInFence = true, bool isEscaping = false, bool isCatched = false);
 
-	void SetFence(const Fence& sheepFence);
+	void SetFence(Fence* sheepFence);
 	const Fence* GetFence() const;
 
 	const bool IsInFence() const;
 	const bool IsEscaping() const;
+	const bool IsCatched() const;
 
 	void SetInFence(const bool inFence);
 	void SetEscaping(const bool escaping);
+	void SetCatched(const bool catched);
 
 	~SheepAgent(){};
 
@@ -33,6 +35,7 @@ public:
 private:
 	bool m_bIsInFence;
 	bool m_bIsEscaping;
+	bool m_bIsCatched;
 
 	Fence* m_oFence;
 	FiniteStateMachine<SheepAgent> m_oFsm;

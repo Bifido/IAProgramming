@@ -11,7 +11,7 @@ public:
 	~GlobalSheep(){};
 
 	FSMStates CheckTransition(SheepAgent& agent) const {
-		return DefaultSheepFSMCore::States::NOT_VALID;
+		return DefaultSheepFSMCore::States::BRUCA;
 	}
 };
 

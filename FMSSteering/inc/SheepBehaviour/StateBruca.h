@@ -3,11 +3,11 @@
 
 class SheepAgent;
 
-class WalkSheep : public State<SheepAgent>
+class StateBruca : public State<SheepAgent>
 {
 public:
-	WalkSheep();
-	~WalkSheep();
+	StateBruca();
+	~StateBruca();
 
 	void OnEnter(SheepAgent& agent) const;
 	void OnExit(SheepAgent& agent) const;

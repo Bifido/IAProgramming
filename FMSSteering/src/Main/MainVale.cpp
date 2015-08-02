@@ -46,7 +46,7 @@ void InitVale(){
 	sheep.SetPosition(pos4);
 	ViewComponent* viewSheep = new ViewComponent(ViewManager::SHEEP, sheep.GetPosition(), 0);
 	sheep.SetViewComponent(viewSheep);
-	sheep.SetFence(fence);
+	sheep.SetFence(&fence);
 
 	/*Vector2<float> pos5(0.6f, 0.6f);
 	newNano5.SetPosition(pos5);

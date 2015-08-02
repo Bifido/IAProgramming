@@ -108,8 +108,8 @@
     <ClInclude Include="inc\PassiveObj\Mine.h" />
     <ClInclude Include="inc\SheepBehaviour\GlobalSheep.h" />
     <ClInclude Include="inc\SheepBehaviour\SheepAgent.h" />
+    <ClInclude Include="inc\SheepBehaviour\StateBruca.h" />
     <ClInclude Include="inc\SheepBehaviour\SheepFSMCore.h" />
-    <ClInclude Include="inc\SheepBehaviour\WalkSheep.h" />
     <ClInclude Include="inc\State.h" />
     <ClInclude Include="inc\ViewComponent.h" />
     <ClInclude Include="inc\ViewManager.h" />
@@ -134,7 +134,7 @@
     <ClCompile Include="src\PassiveObj\Mine.cpp" />
     <ClCompile Include="src\SheepBehaviour\SheepAgent.cpp" />
     <ClCompile Include="src\SheepBehaviour\SheepFSMCore.cpp" />
-    <ClCompile Include="src\SheepBehaviour\WalkSheep.cpp" />
+    <ClCompile Include="src\SheepBehaviour\StateBruca.cpp" />
     <ClCompile Include="src\ViewComponent.cpp" />
     <ClCompile Include="src\ViewManager.cpp" />
     <ClCompile Include="src\NanoBehaviour\NanoAgent.cpp" />

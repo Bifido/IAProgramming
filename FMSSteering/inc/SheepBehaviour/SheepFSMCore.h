@@ -12,10 +12,10 @@ class DefaultSheepFSMCore : FSMCore < SheepAgent >
 public: 
 	enum States{
 		NOT_VALID = -1,
-		ESCAPE_FROM_FENCE = 0,
-		ESCAPE_FROM_DOG = 1,
-		BACK_IN_FENCE = 2,
-		WALK = 3,
+		BRUCA = 0,
+		/*ESCAPING_DOG = 1,
+		ESCAPING_FENCE = 2,
+		BACK_IN_FENCE = 3,*/
 		COUNT
 	};
 
