@@ -14,8 +14,8 @@ public:
 	const sf::Vector2<float>& GetLowerLeftCornerPos() const;
 	const sf::Vector2<float>& GetUpperRightCornerPos() const;
 
-	const sf::Vector2<float>& GetRandomPointInside() const;
-	const sf::Vector2<float>& GetRandomPointOutside() const;
+	const sf::Vector2<float> GetRandomPointInside() const;
+	const sf::Vector2<float> GetRandomPointOutside() const;
 
 	bool IsPointInside(const sf::Vector2<float>& position) const;
 

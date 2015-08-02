@@ -30,8 +30,8 @@ StateBruca::~StateBruca()
 
 void StateBruca::OnEnter(SheepAgent& agent) const{
 	//TODO SET Target
-	agent.SetTarget(agent.GetFence()->GetRandomPointInside());
-	cout << "Sheep Target" << agent.GetTarget().x << " " << agent.GetTarget().y << endl;
+	sf::Vector2<float> target = agent.GetFence()->GetRandomPointInside();
+	agent.SetTarget(target);
 }
 
 void StateBruca::OnExit(SheepAgent& agent) const{
@@ -39,9 +39,13 @@ void StateBruca::OnExit(SheepAgent& agent) const{
 }
 
 void StateBruca::Update(SheepAgent& agent) const {
-	cout << "Sheep Walk Uodate" <<endl;
-	sf::Vector2<float> vel = agent.GetVelocity(); // NOTA: the velocities must be in the order of 0.001 ~ 0.0001
-	agent.SetPosition(agent.GetPosition() + vel*0.1f);
+	cout << "Sheep Pos" << agent.GetPosition().x << " " << agent.GetPosition().y << endl;
+	sf::Vector2<float> direction = (agent.GetTarget() - agent.GetPosition());
+	sf::Vector2<float> newPos = agent.GetPosition();
+	newPos.x += direction.x * agent.GetVelocity().x;
+	newPos.y += direction.y * agent.GetVelocity().y;
+	agent.SetPosition(newPos);
+	cout << "Sheep new Pos" << newPos.x << " " << newPos.y << endl;
 
 }
 
@@ -63,6 +67,7 @@ FSMStates StateBruca::CheckTransition(SheepAgent& agent) const
 	else{
 		if (agent.IsInFence()){
 			if (HasReachTarget2(agent.GetPosition(), agent.GetTarget(), agent.GetVelocity())){
+				cout << "Sheep reached target " << endl;
 				return DefaultSheepFSMCore::States::BRUCA;
 				//TODO random between
 				/* se dentro, continuare a brucare oppure scappare dalla recinzione */

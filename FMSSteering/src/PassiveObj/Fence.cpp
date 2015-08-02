@@ -40,12 +40,12 @@ bool Fence::IsPointInside(const sf::Vector2<float>& position) const{
 			position.y < m_vUpperRightCorner.y;
 }
 
-const sf::Vector2<float>& Fence::GetRandomPointInside() const{
+const sf::Vector2<float> Fence::GetRandomPointInside() const{
 	float x = m_vLowerLeftCorner.x + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (m_vUpperRightCorner.x - m_vLowerLeftCorner.x)));
 	float y = m_vLowerLeftCorner.y + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (m_vUpperRightCorner.y - m_vLowerLeftCorner.y)));
 	return sf::Vector2<float>(x, y);
 }
-const sf::Vector2<float>& Fence::GetRandomPointOutside() const{
+const sf::Vector2<float> Fence::GetRandomPointOutside() const{
 	float x = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
 	float y;
 	if (x > m_vUpperRightCorner.x){

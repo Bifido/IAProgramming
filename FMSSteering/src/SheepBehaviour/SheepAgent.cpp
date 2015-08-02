@@ -9,7 +9,7 @@ SheepAgent::SheepAgent(bool isInFence, bool isEscaping,bool isCatched):
 	m_oFsm(*this),
 	m_oFence(nullptr)
 	{
-	
+	this->SetVelocity(sf::Vector2<float>(0.005f, 0.005f));
 	m_oFsm.AddFSM(DefaultSheepFSMCore::GetInstance());
 }
 

@@ -1,5 +1,6 @@
 #pragma once
 #include "State.h"
+#include "SFML\System\Vector2.hpp"
 
 class SheepAgent;
 

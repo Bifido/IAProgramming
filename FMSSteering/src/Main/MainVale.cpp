@@ -48,6 +48,8 @@ void InitVale(){
 	sheep.SetViewComponent(viewSheep);
 	sheep.SetFence(&fence);
 
+	sheep.SetTarget(fence.GetRandomPointInside());
+
 	/*Vector2<float> pos5(0.6f, 0.6f);
 	newNano5.SetPosition(pos5);
 	ViewComponent* viewNano5 = new ViewComponent(ViewManager::DOG, newNano5.GetPosition(), 0);
