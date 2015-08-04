@@ -13,8 +13,8 @@ public:
 	enum States{
 		NOT_VALID = -1,
 		BRUCA = 0,
+		ESCAPING_FENCE = 1,
 		/*ESCAPING_DOG = 1,
-		ESCAPING_FENCE = 2,
 		BACK_IN_FENCE = 3,*/
 		COUNT
 	};

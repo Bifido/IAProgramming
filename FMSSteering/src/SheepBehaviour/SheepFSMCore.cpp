@@ -1,5 +1,6 @@
 #include "SheepBehaviour\SheepFSMCore.h"
 #include "SheepBehaviour\StateBruca.h"
+#include "SheepBehaviour\StateEscapingFence.h"
 #include "SheepBehaviour\GlobalSheep.h"
 
 #include <assert.h>
@@ -10,10 +11,11 @@ using namespace std;
 DefaultSheepFSMCore::DefaultSheepFSMCore()
 {
 	//TODO check from here
-	/*statesArray[States::ESCAPE_FROM_FENCE] = new EscapeFromFenceSheep();
+	/*
 	statesArray[States::ESCAPE_FROM_DOG] = new EscapeFromDogSheep();
 	statesArray[States::BACK_IN_FENCE] = new BackInFence();*/
 	statesArray[States::BRUCA] = new StateBruca();
+	statesArray[States::ESCAPING_FENCE] = new StateEscapingFence();
 
 	//NEVER USED. HERE ONLY TO SATISFY DefaultSheepFSMCore that inherit from FSMCore.h with pure virtual GetGlobalArc()
 	globalArc = new GlobalSheep();
@@ -21,7 +23,6 @@ DefaultSheepFSMCore::DefaultSheepFSMCore()
 
 DefaultSheepFSMCore::~DefaultSheepFSMCore()
 {
-
 }
 
 FSMCore<SheepAgent>* DefaultSheepFSMCore::GetInstance()
@@ -32,7 +33,6 @@ FSMCore<SheepAgent>* DefaultSheepFSMCore::GetInstance()
 
 State<SheepAgent>* DefaultSheepFSMCore::GetDefaultState() const
 {
-	cout << "Default State Sheep = " << States::BRUCA << endl;
 	return statesArray[States::BRUCA];
 }
 

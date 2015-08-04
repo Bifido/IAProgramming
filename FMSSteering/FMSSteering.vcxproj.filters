@@ -20,6 +20,7 @@
     <ClCompile Include="src\SheepBehaviour\SheepAgent.cpp" />
     <ClCompile Include="src\SheepBehaviour\SheepFSMCore.cpp" />
     <ClCompile Include="src\SheepBehaviour\StateBruca.cpp" />
+    <ClCompile Include="src\SheepBehaviour\StateEscapingFence.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\FSMCore.h" />
@@ -49,6 +50,7 @@
     <ClInclude Include="inc\SheepBehaviour\SheepFSMCore.h" />
     <ClInclude Include="inc\SheepBehaviour\GlobalSheep.h" />
     <ClInclude Include="inc\SheepBehaviour\StateBruca.h" />
+    <ClInclude Include="inc\SheepBehaviour\StateEscapingFence.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\dwarf.png" />

@@ -29,53 +29,48 @@ StateBruca::~StateBruca()
 {}
 
 void StateBruca::OnEnter(SheepAgent& agent) const{
-	//TODO SET Target
 	sf::Vector2<float> target = agent.GetFence()->GetRandomPointInside();
 	agent.SetTarget(target);
 }
 
 void StateBruca::OnExit(SheepAgent& agent) const{
-	agent.SetVelocity(sf::Vector2<float>(0, 0));
 }
 
 void StateBruca::Update(SheepAgent& agent) const {
-	cout << "Sheep Pos" << agent.GetPosition().x << " " << agent.GetPosition().y << endl;
 	sf::Vector2<float> direction = (agent.GetTarget() - agent.GetPosition());
+	float magnitude = sqrt(direction.x * direction.x + direction.y * direction.y);
+	direction.x = direction.x / magnitude;
+	direction.y = direction.y / magnitude;
 	sf::Vector2<float> newPos = agent.GetPosition();
 	newPos.x += direction.x * agent.GetVelocity().x;
 	newPos.y += direction.y * agent.GetVelocity().y;
 	agent.SetPosition(newPos);
-	cout << "Sheep new Pos" << newPos.x << " " << newPos.y << endl;
 
 }
 
 FSMStates StateBruca::CheckTransition(SheepAgent& agent) const
 {
-	/*if (agent.GetMine() != nullptr && agent.GetTarget() == agent.GetMine()->GetPosition() && HasReachTarget(agent.GetPosition(), agent.GetMine()->GetPosition(), agent.GetVelocity())){
-	return DefaultNanoFSMCore::States::MINE;
-	}
-	else if (agent.GetHome() != nullptr && agent.GetTarget() == agent.GetHome()->GetPosition() && HasReachTarget(agent.GetPosition(), agent.GetHome()->GetPosition(), agent.GetVelocity())){
-	return DefaultNanoFSMCore::States::HOME;
-	}*/
-
-	cout << "Sheep Walk CheckTrans" << endl;
-	cout << "Sheep Target" << agent.GetTarget().x << " " << agent.GetTarget().y << endl;
-	if (agent.IsEscaping()){
-		//TODO substitute under with this return DefaultSheepFSMCore::States::ESCAPING_DOG;
-		return DefaultSheepFSMCore::States::BRUCA;
-	}
-	else{
-		if (agent.IsInFence()){
-			if (HasReachTarget2(agent.GetPosition(), agent.GetTarget(), agent.GetVelocity())){
-				cout << "Sheep reached target " << endl;
+	if (agent.IsInFence()){
+		if (HasReachTarget2(agent.GetPosition(), agent.GetTarget(), agent.GetVelocity())){
+				
+			float randomNumber = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+			if (randomNumber < 0.8f){
+				sf::Vector2<float> target = agent.GetFence()->GetRandomPointInside();
+				agent.SetTarget(target);
 				return DefaultSheepFSMCore::States::BRUCA;
-				//TODO random between
-				/* se dentro, continuare a brucare oppure scappare dalla recinzione */
+			}
+			else{
+				sf::Vector2<float> target = agent.GetFence()->GetEscapingPoint();
+				agent.SetTarget(target);
+				return DefaultSheepFSMCore::States::ESCAPING_FENCE;
 			}
 		}
-		else{
-			return DefaultSheepFSMCore::States::BRUCA;
-		}
 	}
-	return DefaultSheepFSMCore::States::BRUCA;
+	else{
+		if (HasReachTarget2(agent.GetPosition(), agent.GetTarget(), agent.GetVelocity())){
+			sf::Vector2<float> target = agent.GetFence()->GetRandomPointOutside();
+			agent.SetTarget(target);
+		}
+		return DefaultSheepFSMCore::States::BRUCA;
+	}
 }

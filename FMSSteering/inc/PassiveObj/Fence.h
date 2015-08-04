@@ -11,20 +11,26 @@ public:
 	~Fence(){};
 
 	const sf::Vector2<float>& GetPosition() const;
-	const sf::Vector2<float>& GetLowerLeftCornerPos() const;
-	const sf::Vector2<float>& GetUpperRightCornerPos() const;
+	const sf::Vector2<float>& GetUpperLeftCornerPos() const;
+	const sf::Vector2<float>& GetLowerRightCornerPos() const;
 
 	const sf::Vector2<float> GetRandomPointInside() const;
 	const sf::Vector2<float> GetRandomPointOutside() const;
+	const sf::Vector2<float>& GetEscapingPoint() const;
 
 	bool IsPointInside(const sf::Vector2<float>& position) const;
 
 	void SetViewComponent(ViewComponent*);
 
 private:
-	sf::Vector2<float> m_vPosition;
-	sf::Vector2<float> m_vLowerLeftCorner;
-	sf::Vector2<float> m_vUpperRightCorner;
+	/*	coord (0,0) is the upper left corner of the screen
+	*	coord (1,1) is the lower right corner of the screen
+	*	so if position is (x,y), the lowerRightCorner of the fence (position.x + fenceSize.x,position.y + fenceSize.y) */
+	sf::Vector2<float> m_vPosition;  
+
+	//it's (position.x + fenceSize.x,position.y + fenceSize.y);
+	sf::Vector2<float> m_vLowerRightCorner;
+	sf::Vector2<float> m_vEscapingPoint;
 
 	ViewComponent* m_oViewInfo;
 };

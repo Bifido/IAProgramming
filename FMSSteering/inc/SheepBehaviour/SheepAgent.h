@@ -33,6 +33,8 @@ public:
 	void FSMRun();
 
 private:
+	const sf::Vector2<float> SHEEP_SPEED = sf::Vector2<float>(0.0005f, 0.0005f);
+
 	bool m_bIsInFence;
 	bool m_bIsEscaping;
 	bool m_bIsCatched;
