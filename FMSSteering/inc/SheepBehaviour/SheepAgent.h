@@ -23,8 +23,11 @@ public:
 	const bool IsCatched() const;
 
 	void SetInFence(const bool inFence);
+	//TODO VALE: can become true if dog_is_near_X false otherwise if i have dog position
 	void SetEscaping(const bool escaping);
-	void SetCatched(const bool catched);
+	
+	//TODO RICKY DOG should use only this, If it's already in fence can't be catched otherwise yes
+	void SetCatched();
 
 	~SheepAgent(){};
 

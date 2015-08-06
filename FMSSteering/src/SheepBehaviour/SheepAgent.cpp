@@ -36,8 +36,13 @@ void SheepAgent::SetInFence(const bool inFence){
 void SheepAgent::SetEscaping(const bool isEscaping){
 	m_bIsEscaping = isEscaping;
 }
-void SheepAgent::SetCatched(const bool catched){
-	m_bIsCatched = catched;
+void SheepAgent::SetCatched(){
+	if (m_bIsInFence){
+		m_bIsCatched = false;
+	}
+	else{
+		m_bIsCatched = true;
+	}
 }
 
 void SheepAgent::FSMAdd(FSMCore<SheepAgent>* sharedStates){

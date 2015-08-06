@@ -108,8 +108,10 @@
     <ClInclude Include="inc\PassiveObj\Mine.h" />
     <ClInclude Include="inc\SheepBehaviour\GlobalSheep.h" />
     <ClInclude Include="inc\SheepBehaviour\SheepAgent.h" />
+    <ClInclude Include="inc\SheepBehaviour\StateBackToFence.h" />
     <ClInclude Include="inc\SheepBehaviour\StateBruca.h" />
     <ClInclude Include="inc\SheepBehaviour\SheepFSMCore.h" />
+    <ClInclude Include="inc\SheepBehaviour\StateEscapingDog.h" />
     <ClInclude Include="inc\SheepBehaviour\StateEscapingFence.h" />
     <ClInclude Include="inc\State.h" />
     <ClInclude Include="inc\ViewComponent.h" />
@@ -135,7 +137,9 @@
     <ClCompile Include="src\PassiveObj\Mine.cpp" />
     <ClCompile Include="src\SheepBehaviour\SheepAgent.cpp" />
     <ClCompile Include="src\SheepBehaviour\SheepFSMCore.cpp" />
+    <ClCompile Include="src\SheepBehaviour\StateBackToFence.cpp" />
     <ClCompile Include="src\SheepBehaviour\StateBruca.cpp" />
+    <ClCompile Include="src\SheepBehaviour\StateEscapingDog.cpp" />
     <ClCompile Include="src\SheepBehaviour\StateEscapingFence.cpp" />
     <ClCompile Include="src\ViewComponent.cpp" />
     <ClCompile Include="src\ViewManager.cpp" />

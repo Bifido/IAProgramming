@@ -29,13 +29,12 @@ StateEscapingFence::~StateEscapingFence()
 {}
 
 void StateEscapingFence::OnEnter(SheepAgent& agent) const{
-	agent.SetInFence(false);
 	sf::Vector2<float> target = agent.GetFence()->GetEscapingPoint();
 	agent.SetTarget(target);
 }
 
 void StateEscapingFence::OnExit(SheepAgent& agent) const{
-	//agent.SetVelocity(sf::Vector2<float>(0, 0));
+	agent.SetInFence(false);
 }
 
 void StateEscapingFence::Update(SheepAgent& agent) const {
