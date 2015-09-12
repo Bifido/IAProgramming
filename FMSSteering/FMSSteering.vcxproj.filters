@@ -16,6 +16,10 @@
     <ClCompile Include="src\Agent.cpp" />
     <ClCompile Include="src\NanoBehaviour\WalkNanoLeft.cpp" />
     <ClCompile Include="src\NanoBehaviour\WalkNanoRight.cpp" />
+    <ClCompile Include="src\Steering\Steering.cpp" />
+    <ClCompile Include="src\Steering\Seek.cpp" />
+    <ClCompile Include="src\Steering\Evade.cpp" />
+    <ClCompile Include="src\Steering\Arrive.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\FSMCore.h" />
@@ -40,6 +44,10 @@
     <ClInclude Include="inc\Agent.h" />
     <ClInclude Include="inc\NanoBehaviour\WalkNanoLeft.h" />
     <ClInclude Include="inc\NanoBehaviour\WalkNanoRight.h" />
+    <ClInclude Include="inc\Steering\Steering.h" />
+    <ClInclude Include="inc\Steering\Seek.h" />
+    <ClInclude Include="inc\Steering\Evade.h" />
+    <ClInclude Include="inc\Steering\Arrive.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\dwarf.png" />

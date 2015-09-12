@@ -5,6 +5,9 @@
 #include "PassiveObj\Mine.h"
 #include "PassiveObj\Home.h"
 
+#include "Steering\Seek.h"
+#include "Steering\Arrive.h"
+
 #include <assert.h>
 #include <iostream>
 
@@ -16,21 +19,26 @@ WalkNano::~WalkNano()
 {}
 
 void WalkNano::OnEnter(NanoAgent& agent) const{
-	agent.SetVelocity( (agent.GetTarget() - agent.GetPosition()) * 0.001f );
-	agent.FSMAdd(SubWalkNanoFSMCore::GetInstance());
+	//agent.SetVelocity( (agent.GetTarget() - agent.GetPosition()) * 0.001f );
+	//agent.FSMAdd(SubWalkNanoFSMCore::GetInstance());
+	//agent.SetCurrentSteering(new Seek("NanoSeek", &agent));
+	agent.SetCurrentSteering(new Arrive("NanoSeek", &agent, 0.1f, 0.00002f));
 }
 
 void WalkNano::OnExit(NanoAgent& agent) const{
 
 	agent.SetVelocity(sf::Vector2<float>(0, 0));
-	agent.FSMRemove();
+	//agent.FSMRemove();
+	//Seek* steering = (Seek*)agent.RemoveCurrentSteering();
+	Arrive* steering = (Arrive*)agent.RemoveCurrentSteering();
+	delete steering;
 }
 
 void WalkNano::Update(NanoAgent& agent) const {
 	
 	sf::Vector2<float> vel = agent.GetVelocity(); // NOTA: the velocities must be in the order of 0.001 ~ 0.0001
 	//agent.SetPosition(agent.GetPosition() + vel*0.1f);
-
+	agent.GetCurrentSteering()->Upadate(0.016f);
 }
 
 FSMStates WalkNano::CheckTransition(NanoAgent& agent) const
@@ -48,9 +56,9 @@ FSMStates WalkNano::CheckTransition(NanoAgent& agent) const
 Checks if the point 1, with a certain tollerance based on velocity, is near the position 2
 */
 int HasReachTarget(const sf::Vector2<float>& pos1, const sf::Vector2<float>& pos2, const sf::Vector2<float>& velocity){
-	bool toReturn = ((pos1.x + abs(velocity.x) * 10) >= pos2.x) && ((pos1.x - abs(velocity.x) * 10) <= pos2.x);
+	bool toReturn = ((pos1.x +0.01f + abs(velocity.x) * 10) >= pos2.x) && ((pos1.x - 0.01f - abs(velocity.x) * 10) <= pos2.x);
 	if (toReturn){
-		return ((pos1.y + abs(velocity.y) * 10) >= pos2.y) && ((pos1.y - abs(velocity.y) * 10) <= pos2.y);
+		return ((pos1.y + 0.01f+ abs(velocity.y) * 10) >= pos2.y) && ((pos1.y -0.01f- abs(velocity.y) * 10) <= pos2.y);
 	}
 	return false;
 }

@@ -7,6 +7,7 @@
 class ViewComponent;
 class Home;
 class Mine;
+class Steering;
 // ** END
 
 class NanoAgent : public Agent

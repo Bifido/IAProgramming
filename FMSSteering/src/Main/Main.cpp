@@ -1,6 +1,6 @@
-#define Vale
+//#define Vale
 //#define Marco
-//#define Ricky
+#define Ricky
 
 #include "SFML\Graphics.hpp"
 #include "ViewManager.h"

@@ -106,8 +106,12 @@
     <ClInclude Include="inc\PassiveObj\Home.h" />
     <ClInclude Include="inc\PassiveObj\Mine.h" />
     <ClInclude Include="inc\State.h" />
+    <ClInclude Include="inc\Steering\Arrive.h" />
+    <ClInclude Include="inc\Steering\Evade.h" />
+    <ClInclude Include="inc\Steering\Steering.h" />
     <ClInclude Include="inc\ViewComponent.h" />
     <ClInclude Include="inc\ViewManager.h" />
+    <ClInclude Include="inc\Steering\Seek.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Agent.cpp" />
@@ -126,6 +130,10 @@
     <ClCompile Include="src\NanoBehaviour\WalkNanoRight.cpp" />
     <ClCompile Include="src\PassiveObj\Home.cpp" />
     <ClCompile Include="src\PassiveObj\Mine.cpp" />
+    <ClCompile Include="src\Steering\Arrive.cpp" />
+    <ClCompile Include="src\Steering\Evade.cpp" />
+    <ClCompile Include="src\Steering\Seek.cpp" />
+    <ClCompile Include="src\Steering\Steering.cpp" />
     <ClCompile Include="src\ViewComponent.cpp" />
     <ClCompile Include="src\ViewManager.cpp" />
     <ClCompile Include="src\NanoBehaviour\NanoAgent.cpp" />

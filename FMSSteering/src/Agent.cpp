@@ -23,6 +23,15 @@ const sf::Vector2<float>& Agent::GetTarget() const{
 	return target;
 }
 
+float Agent::GetMaxSpeed() const
+{
+	return m_maxSpeed;
+}
+
+Steering* Agent::GetCurrentSteering() const
+{
+	return m_currentSteering;
+}
 
 ViewComponent* Agent::GetViewComponent() const{
 	return viewInfo;
@@ -43,8 +52,25 @@ void Agent::SetTarget(const sf::Vector2<float>& newTarget){
 	target = newTarget;
 }
 
+void Agent::SetMaxSpeed(float maxSpeed)
+{
+	m_maxSpeed = maxSpeed;
+}
+
+void Agent::SetCurrentSteering(Steering* steering)
+{
+	m_currentSteering = steering;
+}
+
 void Agent::SetViewComponent(ViewComponent* viewComp){
 	viewInfo = viewComp;
 }
 
 Agent::~Agent(){ }
+
+Steering* Agent::RemoveCurrentSteering()
+{
+	Steering* temp = m_currentSteering;
+	m_currentSteering = nullptr;
+	return temp;
+}
