@@ -20,6 +20,13 @@
     <ClCompile Include="src\Steering\Seek.cpp" />
     <ClCompile Include="src\Steering\Evade.cpp" />
     <ClCompile Include="src\Steering\Arrive.cpp" />
+    <ClCompile Include="src\PassiveObj\Fence.cpp" />
+    <ClCompile Include="src\SheepBehaviour\SheepAgent.cpp" />
+    <ClCompile Include="src\SheepBehaviour\SheepFSMCore.cpp" />
+    <ClCompile Include="src\SheepBehaviour\StateBruca.cpp" />
+    <ClCompile Include="src\SheepBehaviour\StateEscapingFence.cpp" />
+    <ClCompile Include="src\SheepBehaviour\StateEscapingDog.cpp" />
+    <ClCompile Include="src\SheepBehaviour\StateBackToFence.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\FSMCore.h" />
@@ -48,6 +55,14 @@
     <ClInclude Include="inc\Steering\Seek.h" />
     <ClInclude Include="inc\Steering\Evade.h" />
     <ClInclude Include="inc\Steering\Arrive.h" />
+    <ClInclude Include="inc\SheepBehaviour\SheepAgent.h" />
+    <ClInclude Include="inc\PassiveObj\Fence.h" />
+    <ClInclude Include="inc\SheepBehaviour\SheepFSMCore.h" />
+    <ClInclude Include="inc\SheepBehaviour\GlobalSheep.h" />
+    <ClInclude Include="inc\SheepBehaviour\StateBruca.h" />
+    <ClInclude Include="inc\SheepBehaviour\StateEscapingFence.h" />
+    <ClInclude Include="inc\SheepBehaviour\StateEscapingDog.h" />
+    <ClInclude Include="inc\SheepBehaviour\StateBackToFence.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\dwarf.png" />

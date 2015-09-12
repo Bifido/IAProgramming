@@ -21,11 +21,9 @@ namespace MagicNumber{
 	static float GENERATION_MINE_HI(0.8f);
 
 	//fence never changes
-	const sf::Vector2<float> POS_BACKGROUND_FENCE(0.05f, 0.53f);
-
-	//FENCE LIMIT FOR SHEEPS
-	const float	LIMIT_FENCE_RIGHT = 0.3f;
-	const float LIMIT_FENCE_DOWN = 0.83f;
-	const float LIMIT_FENCE_LEFT = 0.07f;
-	const float LIMIT_FENCE_UPPER = 0.58f;
+	static const sf::Vector2<float> POS_BACKGROUND_FENCE(0.05f, 0.53f);		//this is the left upper corner
+	static const sf::Vector2<float> FENCE_SIZE(0.3f, 0.35f);
+	
+	//TODO probably deletable
+	static const sf::Vector2<float> FENCE_LOWER_RIGHT(POS_BACKGROUND_FENCE.x + FENCE_SIZE.x, POS_BACKGROUND_FENCE.y + FENCE_SIZE.y);		//this is the left upper corner
 }

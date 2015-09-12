@@ -4,7 +4,8 @@
 #include "FSMCore.h"
 #include <vector>
 #include <algorithm>
-
+#include <iostream>
+using namespace std;
 /**
 	State must implement 
 		OnEnter();
@@ -62,22 +63,19 @@ void FiniteStateMachine<Agent>::RemoveFSM()
 
 template<typename Agent>
 void FiniteStateMachine<Agent>::Run(){
-
-	for (unsigned int i = 0; i < m_actualState.size(); ++i)
-	{
+	for (unsigned int i = 0; i < m_actualState.size(); ++i){
 		if (m_actualState[i] != nullptr){
 
 			// Check if the FSM changes state 
 			// if no globalArc => the state remain the same!
 			FSMStates newState = (m_sharedStates[i]->GetGlobalArc() != nullptr) ? m_sharedStates[i]->GetGlobalArc()->CheckTransition(m_agent) : m_sharedStates[i]->GetNotValidState();
-			if (m_sharedStates[i]->IsStateValid(newState) && m_sharedStates[i]->GetState(newState) != m_actualState[i])
-			{
+			
+			if (m_sharedStates[i]->IsStateValid(newState) && m_sharedStates[i]->GetState(newState) != m_actualState[i]){
 				m_actualState[i]->OnExit(m_agent);
 				m_actualState[i] = m_sharedStates[i]->GetState(newState);
 				m_actualState[i]->OnEnter(m_agent);
 			}
 
-		{
 			// Check if the FSM changes state
 			newState = m_actualState[i]->CheckTransition(m_agent);
 
@@ -87,11 +85,10 @@ void FiniteStateMachine<Agent>::Run(){
 				m_actualState[i] = m_sharedStates[i]->GetState(newState);
 				m_actualState[i]->OnEnter(m_agent);
 			}
-		}
 
-			// Update acual state
-			m_actualState[i]->Update(m_agent);
+				// Update acual state
+				m_actualState[i]->Update(m_agent);
+			}
 		}
-	}
 
 }
