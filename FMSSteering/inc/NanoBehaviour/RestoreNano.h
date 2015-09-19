@@ -3,11 +3,11 @@
 
 class NanoAgent;
 
-class MineNano : public State<NanoAgent>
+class RestoreNano : public State<NanoAgent>
 {
 public:
-	MineNano();
-	~MineNano();
+	RestoreNano();
+	~RestoreNano();
 
 	void OnEnter(NanoAgent& agent) const;
 	void OnExit(NanoAgent& agent) const;

@@ -36,14 +36,15 @@ private:
 	GlobalArc<NanoAgent>* globalArc;
 };
 
-class SubWalkNanoFSMCore : FSMCore < NanoAgent>
+class SubHomeNanoFSMCore : FSMCore < NanoAgent>
 {
 
 public:
 	enum States{
 		NOT_VALID = -1,
-		LEFT = 0,
-		RIGHT = 1,
+		UNLOAD = 0,
+		RESTORE = 1,
+		WATCH_TV = 2,
 		COUNT
 	};
 
@@ -55,8 +56,8 @@ public:
 	bool IsStateValid(FSMStates stateId) const;
 	FSMStates GetNotValidState() const;
 private:
-	SubWalkNanoFSMCore();
-	~SubWalkNanoFSMCore();
+	SubHomeNanoFSMCore();
+	~SubHomeNanoFSMCore();
 
 	State<NanoAgent>* statesArray[COUNT];
 	GlobalArc<NanoAgent>* globalArc;

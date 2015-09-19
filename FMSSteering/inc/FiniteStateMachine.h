@@ -5,6 +5,7 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
+#include "Agent.h"
 using namespace std;
 /**
 	State must implement 
@@ -20,11 +21,13 @@ public:
 	FiniteStateMachine(Agent& agent);
 	~FiniteStateMachine();
 
-	void Run();
+	void Run(float dt);
 	void AddFSM(FSMCore<Agent>* sharedStates);
 	void RemoveFSM();
 
 private:
+	void ChangeState(int currentFSM, FSMStates newState);
+
 	std::vector< FSMCore<Agent>* > m_sharedStates;
 	std::vector< State<Agent>* >  m_actualState;
 	Agent& m_agent;
@@ -62,7 +65,7 @@ void FiniteStateMachine<Agent>::RemoveFSM()
 };
 
 template<typename Agent>
-void FiniteStateMachine<Agent>::Run(){
+void FiniteStateMachine<Agent>::Run(float dt){
 	for (unsigned int i = 0; i < m_actualState.size(); ++i){
 		if (m_actualState[i] != nullptr){
 
@@ -70,25 +73,28 @@ void FiniteStateMachine<Agent>::Run(){
 			// if no globalArc => the state remain the same!
 			FSMStates newState = (m_sharedStates[i]->GetGlobalArc() != nullptr) ? m_sharedStates[i]->GetGlobalArc()->CheckTransition(m_agent) : m_sharedStates[i]->GetNotValidState();
 			
-			if (m_sharedStates[i]->IsStateValid(newState) && m_sharedStates[i]->GetState(newState) != m_actualState[i]){
-				m_actualState[i]->OnExit(m_agent);
-				m_actualState[i] = m_sharedStates[i]->GetState(newState);
-				m_actualState[i]->OnEnter(m_agent);
-			}
+			ChangeState(i, newState);
 
 			// Check if the FSM changes state
 			newState = m_actualState[i]->CheckTransition(m_agent);
 
 			// If new state is changed, changing state!
-			if (m_sharedStates[i]->IsStateValid(newState) && m_sharedStates[i]->GetState(newState) != m_actualState[i]){
-				m_actualState[i]->OnExit(m_agent);
-				m_actualState[i] = m_sharedStates[i]->GetState(newState);
-				m_actualState[i]->OnEnter(m_agent);
-			}
+			ChangeState(i, newState);
 
-				// Update acual state
-				m_actualState[i]->Update(m_agent);
-			}
+			// Update acual state
+			m_actualState[i]->Update(m_agent, dt);
 		}
+	}
+}
 
+template<typename Agent>
+void FiniteStateMachine<Agent>::ChangeState(int currentFSM, FSMStates newState)
+{
+	if (m_sharedStates[currentFSM]->IsStateValid(newState) && m_sharedStates[currentFSM]->GetState(newState) != m_actualState[currentFSM]){
+		std::cout << "FSM "<< currentFSM << ": Agent: " << m_agent.GetName() << " Exit from " << m_actualState[currentFSM]->GetStateName() << std::endl;
+		m_actualState[currentFSM]->OnExit(m_agent);
+		m_actualState[currentFSM] = m_sharedStates[currentFSM]->GetState(newState);
+		std::cout << "FSM " << currentFSM << ": Agent: " << m_agent.GetName() << " Enter in: " << m_actualState[currentFSM]->GetStateName() << std::endl << std::endl;
+		m_actualState[currentFSM]->OnEnter(m_agent);
+	}
 }

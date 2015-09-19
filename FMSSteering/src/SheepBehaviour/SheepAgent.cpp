@@ -2,7 +2,8 @@
 #include "SheepBehaviour\SheepFSMCore.h"
 #include "PassiveObj\Fence.h"
 
-SheepAgent::SheepAgent(bool isInFence, bool isEscaping,bool isCatched):
+SheepAgent::SheepAgent(std::string name,bool isInFence, bool isEscaping,bool isCatched):
+	Agent(name),
 	m_bIsInFence(isInFence),
 	m_bIsEscaping(isEscaping),
 	m_bIsCatched(isCatched),
@@ -51,6 +52,6 @@ void SheepAgent::FSMAdd(FSMCore<SheepAgent>* sharedStates){
 void SheepAgent::FSMRemove(){
 	m_oFsm.RemoveFSM();
 }
-void SheepAgent::FSMRun(){
-	m_oFsm.Run();
+void SheepAgent::FSMRun(float dt){
+	m_oFsm.Run(dt);
 }

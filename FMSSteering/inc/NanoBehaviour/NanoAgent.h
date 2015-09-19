@@ -2,6 +2,7 @@
 #include "SFML\System\Vector2.hpp"
 #include "Agent.h"
 #include "FiniteStateMachine.h"
+#include <string>
 
 // ** Forward dec
 class ViewComponent;
@@ -20,7 +21,7 @@ public:
 	const unsigned int STAMINA_USAGE;
 	const unsigned int STAMINA_RECOVER;
 
-	NanoAgent(unsigned int maxStone, unsigned int maxStamina, unsigned int stonesRatio = 1,
+	NanoAgent(std::string name, int maxStone, unsigned int maxStamina, unsigned int stonesRatio = 1,
 		unsigned int staminaUsage = 1, unsigned int staminaRecover = 1);
 
 	unsigned int GetStamina() const;
@@ -50,7 +51,7 @@ public:
 
 	void FSMAdd(FSMCore<NanoAgent>* sharedStates);
 	void FSMRemove();
-	void FSMRun();
+	void FSMRun(float dt);
 
 private:
 

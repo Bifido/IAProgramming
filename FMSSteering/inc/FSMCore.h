@@ -7,19 +7,6 @@ class State;
 template <typename Agent>
 class GlobalArc;
 
-//template <int I>
-//struct intToType
-//{
-//	enum
-//	{
-//		value = I
-//	};
-//};
-
-//void SwitchCamera(intToType<5>);
-
-//SwitchCamera(5);
-
 template <typename Agent>
 class FSMCore
 {

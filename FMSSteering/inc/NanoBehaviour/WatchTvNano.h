@@ -3,14 +3,15 @@
 
 class NanoAgent;
 
-class WalkNanoLeft : public State<NanoAgent>
+class WatchTvNano : public State<NanoAgent>
 {
 public:
-	WalkNanoLeft();
-	~WalkNanoLeft();
+	WatchTvNano();
+	~WatchTvNano();
 
 	void OnEnter(NanoAgent& agent) const;
 	void OnExit(NanoAgent& agent) const;
-	void Update(NanoAgent& agent) const;
+	void Update(NanoAgent& agent, float dt) const;
 	FSMStates CheckTransition(NanoAgent& agent) const;
+	std::string GetStateName() const;
 };

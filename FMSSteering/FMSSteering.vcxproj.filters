@@ -14,8 +14,6 @@
     <ClCompile Include="src\PassiveObj\Mine.cpp" />
     <ClCompile Include="src\PassiveObj\Home.cpp" />
     <ClCompile Include="src\Agent.cpp" />
-    <ClCompile Include="src\NanoBehaviour\WalkNanoLeft.cpp" />
-    <ClCompile Include="src\NanoBehaviour\WalkNanoRight.cpp" />
     <ClCompile Include="src\Steering\Steering.cpp" />
     <ClCompile Include="src\Steering\Seek.cpp" />
     <ClCompile Include="src\Steering\Evade.cpp" />
@@ -27,6 +25,9 @@
     <ClCompile Include="src\SheepBehaviour\StateEscapingFence.cpp" />
     <ClCompile Include="src\SheepBehaviour\StateEscapingDog.cpp" />
     <ClCompile Include="src\SheepBehaviour\StateBackToFence.cpp" />
+    <ClCompile Include="src\NanoBehaviour\RestoreNano.cpp" />
+    <ClCompile Include="src\NanoBehaviour\UnloadStonesNano.cpp" />
+    <ClCompile Include="src\NanoBehaviour\WatchTvNano.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\FSMCore.h" />
@@ -49,8 +50,6 @@
     <ClInclude Include="inc\PassiveObj\Home.h" />
     <ClInclude Include="src\Main\MainRicky.cpp" />
     <ClInclude Include="inc\Agent.h" />
-    <ClInclude Include="inc\NanoBehaviour\WalkNanoLeft.h" />
-    <ClInclude Include="inc\NanoBehaviour\WalkNanoRight.h" />
     <ClInclude Include="inc\Steering\Steering.h" />
     <ClInclude Include="inc\Steering\Seek.h" />
     <ClInclude Include="inc\Steering\Evade.h" />
@@ -63,6 +62,9 @@
     <ClInclude Include="inc\SheepBehaviour\StateEscapingFence.h" />
     <ClInclude Include="inc\SheepBehaviour\StateEscapingDog.h" />
     <ClInclude Include="inc\SheepBehaviour\StateBackToFence.h" />
+    <ClInclude Include="inc\NanoBehaviour\UnloadStonesNano.h" />
+    <ClInclude Include="inc\NanoBehaviour\RestoreNano.h" />
+    <ClInclude Include="inc\NanoBehaviour\WatchTvNano.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\dwarf.png" />

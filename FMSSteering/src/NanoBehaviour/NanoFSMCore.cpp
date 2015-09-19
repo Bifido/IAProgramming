@@ -4,8 +4,9 @@
 #include "NanoBehaviour\IdleNano.h"
 #include "NanoBehaviour\MineNano.h"
 #include "NanoBehaviour\HomeNano.h"
-#include "NanoBehaviour\WalkNanoLeft.h"
-#include "NanoBehaviour\WalkNanoRight.h"
+#include "NanoBehaviour\UnloadStonesNano.h"
+#include "NanoBehaviour\RestoreNano.h"
+#include "NanoBehaviour\WatchTvNano.h"
 #include <assert.h>
 
 DefaultNanoFSMCore::DefaultNanoFSMCore()
@@ -20,7 +21,14 @@ DefaultNanoFSMCore::DefaultNanoFSMCore()
 
 DefaultNanoFSMCore::~DefaultNanoFSMCore()
 {
-
+	//for (int i = 0; i < States::COUNT; ++i)
+	//{
+	//	delete statesArray[i];
+	//}
+	delete (IdleNano*)statesArray[States::IDLE];
+	delete (WalkNano*)statesArray[States::WALK];
+	delete (MineNano*)statesArray[States::MINE];
+	delete (HomeNano*)statesArray[States::HOME];
 }
 
 FSMCore<NanoAgent>* DefaultNanoFSMCore::GetInstance()
@@ -58,46 +66,53 @@ FSMStates DefaultNanoFSMCore::GetNotValidState() const
 
 
 
-SubWalkNanoFSMCore::SubWalkNanoFSMCore()
+SubHomeNanoFSMCore::SubHomeNanoFSMCore()
 {
-	statesArray[States::LEFT] = new WalkNanoLeft();
-	statesArray[States::RIGHT] = new WalkNanoRight();
+	statesArray[States::UNLOAD] = new UnloadStonesNano();
+	statesArray[States::RESTORE] = new RestoreNano();
+	statesArray[States::WATCH_TV] = new WatchTvNano();
 }
 
-SubWalkNanoFSMCore::~SubWalkNanoFSMCore()
+SubHomeNanoFSMCore::~SubHomeNanoFSMCore()
 {
-
+	//for (int i = 0; i < States::COUNT; ++i)
+	//{
+	//	delete statesArray[i];
+	//}
+	delete (UnloadStonesNano*)statesArray[States::UNLOAD];
+	delete (RestoreNano*)statesArray[States::RESTORE];
+	delete (WatchTvNano*)statesArray[States::WATCH_TV];
 }
 
-FSMCore<NanoAgent>* SubWalkNanoFSMCore::GetInstance()
+FSMCore<NanoAgent>* SubHomeNanoFSMCore::GetInstance()
 {
-	static SubWalkNanoFSMCore m_instance;
+	static SubHomeNanoFSMCore m_instance;
 	return &m_instance;
 }
 
-State<NanoAgent>* SubWalkNanoFSMCore::GetDefaultState() const
+State<NanoAgent>* SubHomeNanoFSMCore::GetDefaultState() const
 {
-	return statesArray[States::LEFT];
+	return statesArray[States::UNLOAD];
 }
 
-State<NanoAgent>* SubWalkNanoFSMCore::GetState(FSMStates stateId) const
+State<NanoAgent>* SubHomeNanoFSMCore::GetState(FSMStates stateId) const
 {
 	assert(stateId < States::COUNT && stateId != States::NOT_VALID);
 
 	return statesArray[stateId];
 }
 
-GlobalArc<NanoAgent>* SubWalkNanoFSMCore::GetGlobalArc() const
+GlobalArc<NanoAgent>* SubHomeNanoFSMCore::GetGlobalArc() const
 {
 	return globalArc;
 }
 
-bool SubWalkNanoFSMCore::IsStateValid(FSMStates stateId) const
+bool SubHomeNanoFSMCore::IsStateValid(FSMStates stateId) const
 {
 	return (stateId != States::NOT_VALID);
 }
 
-FSMStates SubWalkNanoFSMCore::GetNotValidState() const
+FSMStates SubHomeNanoFSMCore::GetNotValidState() const
 {
 	return States::NOT_VALID;
 }

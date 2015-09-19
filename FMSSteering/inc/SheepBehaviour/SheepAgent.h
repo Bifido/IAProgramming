@@ -2,6 +2,7 @@
 #include "SFML\System\Vector2.hpp"
 #include "Agent.h"
 #include "FiniteStateMachine.h"
+#include <string>
 
 // ** Forward dec
 class ViewComponent;
@@ -13,7 +14,7 @@ class SheepAgent : public Agent
 
 public:
 	//Creates Sheep already in fence
-	SheepAgent(bool inInFence = true, bool isEscaping = false, bool isCatched = false);
+	SheepAgent(std::string name, bool inInFence = true, bool isEscaping = false, bool isCatched = false);
 
 	void SetFence(Fence* sheepFence);
 	const Fence* GetFence() const;
@@ -33,7 +34,7 @@ public:
 
 	void FSMAdd(FSMCore<SheepAgent>* sharedStates);
 	void FSMRemove();
-	void FSMRun();
+	void FSMRun(float dt);
 
 private:
 	const sf::Vector2<float> SHEEP_SPEED = sf::Vector2<float>(0.0005f, 0.0005f);

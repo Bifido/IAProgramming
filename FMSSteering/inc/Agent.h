@@ -1,5 +1,6 @@
 #pragma once
 #include "SFML\System\Vector2.hpp"
+#include <string>
 
 // ** Forward dec
 class ViewComponent;
@@ -12,9 +13,6 @@ class Agent
 {
 
 public:
-
-	Agent();
-
 	const sf::Vector2<float>& GetPosition() const;
 	const sf::Vector2<float>& GetVelocity() const;
 	const sf::Vector2<float>& GetTarget() const;
@@ -31,17 +29,24 @@ public:
 
 	Steering* RemoveCurrentSteering();
 
+	std::string GetName();
+
+protected:
+	Agent(std::string name);
 	~Agent();
+
 private:
 
-	sf::Vector2<float> pos; // each value, go from 0 to 1 (Normalized)
-	sf::Vector2<float> velocity;
-	sf::Vector2<float> target;
+	sf::Vector2<float> m_pos; // each value, go from 0 to 1 (Normalized)
+	sf::Vector2<float> m_velocity;
+	sf::Vector2<float> m_target;
 	Steering* m_currentSteering;
+
+	std::string m_name;
 
 	float m_maxSpeed;
 
 	//FiniteStateMachine<Agent>* fsm;
 
-	ViewComponent* viewInfo;
+	ViewComponent* m_viewInfo;
 };

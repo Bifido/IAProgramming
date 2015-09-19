@@ -36,7 +36,7 @@ void StateBruca::OnEnter(SheepAgent& agent) const{
 void StateBruca::OnExit(SheepAgent& agent) const{
 }
 
-void StateBruca::Update(SheepAgent& agent) const {
+void StateBruca::Update(SheepAgent& agent, float dt) const {
 	sf::Vector2<float> direction = (agent.GetTarget() - agent.GetPosition());
 	float magnitude = sqrt(direction.x * direction.x + direction.y * direction.y);
 	direction.x = direction.x / magnitude;
@@ -87,4 +87,9 @@ FSMStates StateBruca::CheckTransition(SheepAgent& agent) const
 			return DefaultSheepFSMCore::States::BRUCA;
 		}
 	}
+}
+
+std::string StateBruca::GetStateName() const
+{
+	return "StateBruca";
 }

@@ -28,7 +28,7 @@ void MineNano::OnExit(NanoAgent& agent) const
 		agent.GetViewComponent()->SetDrawable(true);
 	}
 }
-void MineNano::Update(NanoAgent& agent) const
+void MineNano::Update(NanoAgent& agent, float dt) const
 {
 	agent.DecrementStamina(agent.STAMINA_USAGE);
 	if (agent.GetMine()->GetActualStonesNumber() > 0)
@@ -50,4 +50,9 @@ FSMStates MineNano::CheckTransition(NanoAgent& agent) const
 	}
 	// TODO: To implement
 	return DefaultNanoFSMCore::States::MINE;
+}
+
+std::string MineNano::GetStateName() const
+{
+	return "MineNano";
 }

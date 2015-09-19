@@ -5,8 +5,9 @@
 
 using namespace sf;
 
-NanoAgent::NanoAgent(unsigned int maxStone, unsigned int maxStamina, unsigned int stonesRatio,
+NanoAgent::NanoAgent(std::string name,  int maxStone, unsigned int maxStamina, unsigned int stonesRatio,
 	unsigned int staminaUsage, unsigned int staminaRecover) :
+	Agent(name),
 	MAX_STAMINA(maxStamina),
 	MAX_STONE(maxStone),
 	STONES_RATIO(stonesRatio),
@@ -131,7 +132,7 @@ void NanoAgent::FSMRemove()
 {
 	fsm.RemoveFSM();
 }
-void NanoAgent::FSMRun()
+void NanoAgent::FSMRun(float dt)
 {
-	fsm.Run();
+	fsm.Run(dt);
 }

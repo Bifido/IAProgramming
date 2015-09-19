@@ -101,8 +101,9 @@
     <ClInclude Include="inc\NanoBehaviour\MineNano.h" />
     <ClInclude Include="inc\NanoBehaviour\NanoAgent.h" />
     <ClInclude Include="inc\NanoBehaviour\NanoFSMCore.h" />
-    <ClInclude Include="inc\NanoBehaviour\WalkNanoLeft.h" />
-    <ClInclude Include="inc\NanoBehaviour\WalkNanoRight.h" />
+    <ClInclude Include="inc\NanoBehaviour\RestoreNano.h" />
+    <ClInclude Include="inc\NanoBehaviour\UnloadStonesNano.h" />
+    <ClInclude Include="inc\NanoBehaviour\WatchTvNano.h" />
     <ClInclude Include="inc\PassiveObj\Fence.h" />
     <ClInclude Include="inc\PassiveObj\Home.h" />
     <ClInclude Include="inc\PassiveObj\Mine.h" />
@@ -134,8 +135,9 @@
     <ClInclude Include="src\Main\MainRicky.cpp" />
     <ClInclude Include="inc\NanoBehaviour\WalkNano.h" />
     <ClInclude Include="src\Main\MainVale.cpp" />
-    <ClCompile Include="src\NanoBehaviour\WalkNanoLeft.cpp" />
-    <ClCompile Include="src\NanoBehaviour\WalkNanoRight.cpp" />
+    <ClCompile Include="src\NanoBehaviour\RestoreNano.cpp" />
+    <ClCompile Include="src\NanoBehaviour\UnloadStonesNano.cpp" />
+    <ClCompile Include="src\NanoBehaviour\WatchTvNano.cpp" />
     <ClCompile Include="src\PassiveObj\Fence.cpp" />
     <ClCompile Include="src\PassiveObj\Home.cpp" />
     <ClCompile Include="src\PassiveObj\Mine.cpp" />

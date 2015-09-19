@@ -37,7 +37,7 @@ void StateEscapingDog::OnExit(SheepAgent& agent) const
 {
 }
 
-void StateEscapingDog::Update(SheepAgent& agent) const
+void StateEscapingDog::Update(SheepAgent& agent, float dt) const
 {
 	//TODO VALE:check if IsCatched
 	if (agent.IsCatched()){
@@ -89,4 +89,9 @@ FSMStates StateEscapingDog::CheckTransition(SheepAgent& agent) const
 	else{
 		return DefaultSheepFSMCore::States::ESCAPE_FROM_DOG;
 	}
+}
+
+std::string StateEscapingDog::GetStateName() const
+{
+	return "StateEscapingDog";
 }

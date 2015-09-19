@@ -15,7 +15,7 @@ void IdleNano::OnEnter(NanoAgent& agent) const
 {}
 void IdleNano::OnExit(NanoAgent& agent) const
 {}
-void IdleNano::Update(NanoAgent& agent) const
+void IdleNano::Update(NanoAgent& agent, float dt) const
 {
 	// TODO: Sprite animation?
 }
@@ -30,4 +30,9 @@ FSMStates IdleNano::CheckTransition(NanoAgent& agent) const
 		return DefaultNanoFSMCore::States::WALK;
 	}
 	return DefaultNanoFSMCore::States::IDLE;
+}
+
+std::string IdleNano::GetStateName() const
+{
+	return "IdleNano";
 }
