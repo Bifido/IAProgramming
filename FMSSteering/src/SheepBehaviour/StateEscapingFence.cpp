@@ -29,6 +29,7 @@ StateEscapingFence::~StateEscapingFence()
 {}
 
 void StateEscapingFence::OnEnter(SheepAgent& agent) const{
+	//cout << " sheep Escaping fence" << endl;
 	sf::Vector2<float> target = agent.GetFence()->GetEscapingPoint();
 	agent.SetTarget(target);
 }
@@ -66,7 +67,6 @@ FSMStates StateEscapingFence::CheckTransition(SheepAgent& agent) const
 	}
 	else
 	{
-		//TODO set escaping from dog state
-		return DefaultSheepFSMCore::States::BRUCA;
+		return DefaultSheepFSMCore::States::ESCAPE_FROM_DOG;
 	}
 }

@@ -1,5 +1,6 @@
 #include "Constants.h"
 #include "FiniteStateMachine.h"
+#include "DogBehaviour\DogAgent.h"
 #include "NanoBehaviour\NanoAgent.h"
 #include "NanoBehaviour\NanoFSMCore.h"
 #include "SheepBehaviour\SheepAgent.h"
@@ -17,6 +18,7 @@ using namespace MagicNumber;
 
 NanoAgent newNano(100, 10, 5);
 SheepAgent sheep;
+DogAgent dog;
 
 Mine mine(100);
 Home home(1);
@@ -50,10 +52,15 @@ void InitVale(){
 
 	sheep.SetTarget(fence.GetRandomPointInside());
 
-	/*Vector2<float> pos5(0.6f, 0.6f);
-	newNano5.SetPosition(pos5);
-	ViewComponent* viewNano5 = new ViewComponent(ViewManager::DOG, newNano5.GetPosition(), 0);
-	newNano5.SetViewComponent(viewNano5);*/
+	Vector2<float> pos5(0.6f, 0.6f);
+	dog.SetPosition(pos5);
+	ViewComponent* viewNano5 = new ViewComponent(ViewManager::DOG, dog.GetPosition(), 0);
+	dog.SetViewComponent(viewNano5);
+	dog.SetFence(&fence);
+	dog.SetSheep(&sheep);
+
+	dog.SetTarget(fence.GetRandomPointOutside());
+	sheep.SetDog(&dog);
 
 }
 
@@ -63,6 +70,7 @@ void StartVale(){
 void RunVale(){
 	newNano.FSMRun();
 	sheep.FSMRun();
+	dog.FSMRun();
 }
 
 

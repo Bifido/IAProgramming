@@ -31,14 +31,16 @@ StateBackToFence::~StateBackToFence()
 
 void StateBackToFence::OnEnter(SheepAgent& agent) const
 {
+	//cout << " sheep back to fence" << endl;
 }
 
 void StateBackToFence::OnExit(SheepAgent& agent) const
 {
 	agent.SetInFence(true);
 	agent.SetEscaping(false);
+	agent.SetCatched(false);
+	agent.GetDog()->SetCatched(false);
 	//being in fence, catched will be false
-	agent.SetCatched();
 }
 
 void StateBackToFence::Update(SheepAgent& agent) const

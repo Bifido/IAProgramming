@@ -23,6 +23,10 @@
     <ClCompile Include="src\SheepBehaviour\StateEscapingFence.cpp" />
     <ClCompile Include="src\SheepBehaviour\StateEscapingDog.cpp" />
     <ClCompile Include="src\SheepBehaviour\StateBackToFence.cpp" />
+    <ClCompile Include="src\DogBehaviour\DogAgent.cpp" />
+    <ClCompile Include="src\DogBehaviour\DogFSMCore.cpp" />
+    <ClCompile Include="src\DogBehaviour\StateSwan.cpp" />
+    <ClCompile Include="src\DogBehaviour\StateCatchingSheep.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\FSMCore.h" />
@@ -55,6 +59,11 @@
     <ClInclude Include="inc\SheepBehaviour\StateEscapingFence.h" />
     <ClInclude Include="inc\SheepBehaviour\StateEscapingDog.h" />
     <ClInclude Include="inc\SheepBehaviour\StateBackToFence.h" />
+    <ClInclude Include="inc\DogBehaviour\DogAgent.h" />
+    <ClInclude Include="inc\DogBehaviour\DogFSMCore.h" />
+    <ClInclude Include="inc\DogBehaviour\StateSwan.h" />
+    <ClInclude Include="inc\DogBehaviour\GlobalDog.h" />
+    <ClInclude Include="inc\DogBehaviour\StateCatchingSheep.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\dwarf.png" />
@@ -64,8 +73,5 @@
     <Image Include="resources\fence.png" />
     <Image Include="resources\dog.png" />
     <Image Include="resources\sheep.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="inc\README.txt" />
   </ItemGroup>
 </Project>

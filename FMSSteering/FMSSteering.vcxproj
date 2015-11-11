@@ -70,12 +70,14 @@
       <WarningLevel>Level3</WarningLevel>
       <PrecompiledHeader>
       </PrecompiledHeader>
-      <Optimization>MaxSpeed</Optimization>
+      <Optimization>Disabled</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(SolutionDir)Lib\SFML-2.2\include;$(SolutionDir)FMSSteering\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -92,6 +94,11 @@
   <ItemGroup>
     <ClInclude Include="inc\Agent.h" />
     <ClInclude Include="inc\Constants.h" />
+    <ClInclude Include="inc\DogBehaviour\DogAgent.h" />
+    <ClInclude Include="inc\DogBehaviour\DogFSMCore.h" />
+    <ClInclude Include="inc\DogBehaviour\GlobalDog.h" />
+    <ClInclude Include="inc\DogBehaviour\StateCatchingSheep.h" />
+    <ClInclude Include="inc\DogBehaviour\StateSwan.h" />
     <ClInclude Include="inc\FiniteStateMachine.h" />
     <ClInclude Include="inc\FSMCore.h" />
     <ClInclude Include="inc\GlobalArc.h" />
@@ -119,6 +126,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Agent.cpp" />
+    <ClCompile Include="src\DogBehaviour\DogAgent.cpp" />
+    <ClCompile Include="src\DogBehaviour\DogFSMCore.cpp" />
+    <ClCompile Include="src\DogBehaviour\StateCatchingSheep.cpp" />
+    <ClCompile Include="src\DogBehaviour\StateSwan.cpp" />
     <ClCompile Include="src\Main\Main.cpp" />
     <ClCompile Include="src\NanoBehaviour\GlobalNano.cpp" />
     <ClCompile Include="src\NanoBehaviour\HomeNano.cpp" />
@@ -153,9 +164,6 @@
     <Image Include="resources\hut.png" />
     <Image Include="resources\mine.png" />
     <Image Include="resources\sheep.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="inc\README.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

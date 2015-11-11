@@ -31,6 +31,7 @@ StateEscapingDog::~StateEscapingDog()
 
 void StateEscapingDog::OnEnter(SheepAgent& agent) const
 {
+	//cout << " sheep Escaping dog" << endl;
 }
 
 void StateEscapingDog::OnExit(SheepAgent& agent) const
@@ -39,54 +40,52 @@ void StateEscapingDog::OnExit(SheepAgent& agent) const
 
 void StateEscapingDog::Update(SheepAgent& agent) const
 {
-	//TODO VALE:check if IsCatched
-	if (agent.IsCatched()){
-		sf::Vector2<float> target = agent.GetFence()->GetEscapingPoint();
-		agent.SetTarget(target);
+	sf::Vector2<float> target = agent.GetDog()->GetPosition();
+	agent.SetTarget(target);
 
-		sf::Vector2<float> direction = (agent.GetTarget() - agent.GetPosition());
-		float magnitude = sqrt(direction.x * direction.x + direction.y * direction.y);
-		direction.x = direction.x / magnitude;
-		direction.y = direction.y / magnitude;
-		sf::Vector2<float> newPos = agent.GetPosition();
-		newPos.x += direction.x * agent.GetVelocity().x;
-		newPos.y += direction.y * agent.GetVelocity().y;
-		agent.SetPosition(newPos);
-	}
-	else
+	sf::Vector2<float> direction = (agent.GetPosition() - agent.GetTarget());
+	float magnitude = sqrt(direction.x * direction.x + direction.y * direction.y);
+	direction.x = direction.x / magnitude;
+	direction.y = direction.y / magnitude;
+	sf::Vector2<float> newPos = agent.GetPosition();
+	newPos.x += direction.x * agent.GetVelocity().x;
+	newPos.y += direction.y * agent.GetVelocity().y;
+	if (agent.GetFence()->IsPointInside(newPos) || newPos.x < 0 || newPos.x > 1 || newPos.y < 0 || newPos.y > 1)
 	{
-		//TODO VALE:actually get a random point outside fence, then it will be the dog position
-		sf::Vector2<float> target = agent.GetFence()->GetRandomPointOutside();
+		target = agent.GetFence()->GetRandomPointOutside();
 		agent.SetTarget(target);
 
-		sf::Vector2<float> direction = (agent.GetTarget() - agent.GetPosition());
-		float magnitude = sqrt(direction.x * direction.x + direction.y * direction.y);
+		direction = (agent.GetPosition() - agent.GetTarget());
+		magnitude = sqrt(direction.x * direction.x + direction.y * direction.y);
 		direction.x = direction.x / magnitude;
 		direction.y = direction.y / magnitude;
-		sf::Vector2<float> newPos = agent.GetPosition();
+		newPos = agent.GetPosition();
 		newPos.x += direction.x * agent.GetVelocity().x;
-		newPos.y += direction.y * agent.GetVelocity().y;
-		agent.SetPosition(newPos);
-
-		//TODO VALE: when target will be dog position
-		/*sf::Vector2<float> direction = (agent.GetPosition() - agent.GetTarget());
-		float magnitude = sqrt(direction.x * direction.x + direction.y * direction.y);
-		direction.x = direction.x / magnitude;
-		direction.y = direction.y / magnitude;
-		sf::Vector2<float> newPos = agent.GetPosition();
-		newPos.x += direction.x * agent.GetVelocity().x;
-		newPos.y += direction.y * agent.GetVelocity().y;
-		agent.SetPosition(newPos);*/
+		newPos.y += direction.y * agent.GetVelocity().y;	
+		
+		if (newPos.x < 0)
+			newPos.x = 0.1f;
+		if (newPos.x > 1)
+			newPos.x = 0.99f;
+		if (newPos.y < 0)
+			newPos.y = 0.1f;
+		if (newPos.y > 1)
+			newPos.y = 0.99f;
 	}
+	agent.SetPosition(newPos);
 }
 
 FSMStates StateEscapingDog::CheckTransition(SheepAgent& agent) const
 {
 	if (agent.IsCatched())
 	{
-		DefaultSheepFSMCore::States::BACK_IN_FENCE;
+		return DefaultSheepFSMCore::States::BACK_IN_FENCE;
 	}
-	else{
+	else
+	{
+		//Check if dog catched the Sheep		
+		sf::Vector2<float> target = agent.GetDog()->GetPosition();
+		agent.SetTarget(target);
 		return DefaultSheepFSMCore::States::ESCAPE_FROM_DOG;
 	}
 }

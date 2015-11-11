@@ -36,13 +36,18 @@ void SheepAgent::SetInFence(const bool inFence){
 void SheepAgent::SetEscaping(const bool isEscaping){
 	m_bIsEscaping = isEscaping;
 }
-void SheepAgent::SetCatched(){
-	if (m_bIsInFence){
-		m_bIsCatched = false;
-	}
-	else{
-		m_bIsCatched = true;
-	}
+void SheepAgent::SetCatched(const bool i_bCatched)
+{
+	m_bIsCatched = i_bCatched;
+}
+
+void SheepAgent::SetDog(DogAgent* i_pDog)
+{
+	m_pDogAgent = i_pDog;
+}
+DogAgent* SheepAgent::GetDog() const
+{
+	return m_pDogAgent;
 }
 
 void SheepAgent::FSMAdd(FSMCore<SheepAgent>* sharedStates){

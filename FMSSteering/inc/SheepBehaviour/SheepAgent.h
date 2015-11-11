@@ -1,6 +1,7 @@
 #pragma once
 #include "SFML\System\Vector2.hpp"
 #include "Agent.h"
+#include "DogBehaviour\DogAgent.h"
 #include "FiniteStateMachine.h"
 
 // ** Forward dec
@@ -23,11 +24,11 @@ public:
 	const bool IsCatched() const;
 
 	void SetInFence(const bool inFence);
-	//TODO VALE: can become true if dog_is_near_X false otherwise if i have dog position
 	void SetEscaping(const bool escaping);
 	
-	//TODO RICKY DOG should use only this, If it's already in fence can't be catched otherwise yes
-	void SetCatched();
+	void SetCatched(const bool i_bCatched);
+	void SetDog(DogAgent* i_pDog);
+	DogAgent* GetDog() const;
 
 	~SheepAgent(){};
 
@@ -44,5 +45,6 @@ private:
 
 	Fence* m_oFence;
 	FiniteStateMachine<SheepAgent> m_oFsm;
+	DogAgent* m_pDogAgent;
 };
 

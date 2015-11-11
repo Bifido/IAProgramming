@@ -29,6 +29,8 @@ StateBruca::~StateBruca()
 {}
 
 void StateBruca::OnEnter(SheepAgent& agent) const{
+	//cout << " sheep StateBruca" << endl;
+
 	sf::Vector2<float> target = agent.GetFence()->GetRandomPointInside();
 	agent.SetTarget(target);
 }
@@ -50,6 +52,7 @@ void StateBruca::Update(SheepAgent& agent) const {
 
 FSMStates StateBruca::CheckTransition(SheepAgent& agent) const
 {
+	//inside Fence
 	if (agent.IsInFence()){
 		if (HasReachTarget2(agent.GetPosition(), agent.GetTarget(), agent.GetVelocity())){			
 			float randomNumber = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
@@ -65,14 +68,12 @@ FSMStates StateBruca::CheckTransition(SheepAgent& agent) const
 			}
 		}
 	}
+	//outside fence
 	else{
-
 		//Don't need to check if is catched because is catchable only by dog when the sheep isn't in the fence
 		//sheep must pass in ESCAPRE_FROM_DOG
 		if (agent.IsEscaping())
 		{
-			//TODO VALE: when dogs set's sheep IsEscaping(true) can get directly the dog's position as target to check it as valid
-			//inside StateEscapingDog.Update();
 			sf::Vector2<float> target = agent.GetFence()->GetRandomPointOutside();
 			agent.SetTarget(target);
 			return DefaultSheepFSMCore::States::ESCAPE_FROM_DOG;
