@@ -41,7 +41,7 @@ void StateCatchingSheep::OnExit(DogAgent& agent) const{
 	agent.SetCatched(false);
 }
 
-void StateCatchingSheep::Update(DogAgent& agent) const {
+void StateCatchingSheep::Update(DogAgent& agent, float dt) const {
 	sf::Vector2<float> direction = (agent.GetTarget() - agent.GetPosition());
 	float magnitude = sqrt(direction.x * direction.x + direction.y * direction.y);
 	direction.x = direction.x / magnitude;
@@ -70,4 +70,10 @@ FSMStates StateCatchingSheep::CheckTransition(DogAgent& agent) const
 	{
 		return DefaultDogFSMCore::States::SWAN;
 	}
+}
+
+
+std::string StateCatchingSheep::GetStateName() const
+{
+	return "State Catching Sheep";
 }

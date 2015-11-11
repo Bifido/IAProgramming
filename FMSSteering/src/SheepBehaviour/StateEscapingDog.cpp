@@ -38,7 +38,7 @@ void StateEscapingDog::OnExit(SheepAgent& agent) const
 {
 }
 
-void StateEscapingDog::Update(SheepAgent& agent) const
+void StateEscapingDog::Update(SheepAgent& agent, float dt) const
 {
 	sf::Vector2<float> target = agent.GetDog()->GetPosition();
 	agent.SetTarget(target);
@@ -88,4 +88,9 @@ FSMStates StateEscapingDog::CheckTransition(SheepAgent& agent) const
 		agent.SetTarget(target);
 		return DefaultSheepFSMCore::States::ESCAPE_FROM_DOG;
 	}
+}
+
+std::string StateEscapingDog::GetStateName() const
+{
+	return "StateEscapingDog";
 }

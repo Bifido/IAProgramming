@@ -2,6 +2,9 @@
 #include "SFML\System\Vector2.hpp"
 
 namespace MagicNumber{
+	//FRAME RATE
+	const float deltaTime = 0.016f;
+
 	//SCREEN RESOLUTION
 	const int HEIGHT = 600;
 	const int WIDTH = 800;

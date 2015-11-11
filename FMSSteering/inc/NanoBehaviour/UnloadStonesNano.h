@@ -3,14 +3,15 @@
 
 class NanoAgent;
 
-class WalkNanoRight : public State<NanoAgent>
+class UnloadStonesNano : public State<NanoAgent>
 {
 public:
-	WalkNanoRight();
-	~WalkNanoRight();
+	UnloadStonesNano();
+	~UnloadStonesNano();
 
 	void OnEnter(NanoAgent& agent) const;
 	void OnExit(NanoAgent& agent) const;
-	void Update(NanoAgent& agent) const;
+	void Update(NanoAgent& agent, float dt) const;
 	FSMStates CheckTransition(NanoAgent& agent) const;
+	std::string GetStateName() const;
 };

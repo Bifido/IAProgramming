@@ -38,7 +38,7 @@ void StateSwan::OnEnter(DogAgent& agent) const{
 void StateSwan::OnExit(DogAgent& agent) const{
 }
 
-void StateSwan::Update(DogAgent& agent) const {
+void StateSwan::Update(DogAgent& agent, float dt) const {
 	sf::Vector2<float> direction = (agent.GetTarget() - agent.GetPosition());
 	float magnitude = sqrt(direction.x * direction.x + direction.y * direction.y);
 	direction.x = direction.x / magnitude;
@@ -63,4 +63,9 @@ FSMStates StateSwan::CheckTransition(DogAgent& agent) const
 		agent.SetTarget(target);
 		return DefaultDogFSMCore::States::SWAN;
 	}
+}
+
+std::string StateSwan::GetStateName() const
+{
+	return "State Swan";
 }

@@ -13,7 +13,7 @@ class DogAgent : public Agent
 {
 
 public:
-	DogAgent(bool i_bIsCatching = false, bool i_bHasCatched = false);
+	DogAgent(std::string name, bool i_bIsCatching = false, bool i_bHasCatched = false);
 	~DogAgent(){};
 
 	void SetFence(Fence* i_pSheepFence);
@@ -32,7 +32,7 @@ public:
 
 	void FSMAdd(FSMCore<DogAgent>* i_pSharedStates);
 	void FSMRemove();
-	void FSMRun();
+	void FSMRun(float dt);
 
 private:
 	const sf::Vector2<float> DOG_SPEED = sf::Vector2<float>(0.0006f, 0.0006f);

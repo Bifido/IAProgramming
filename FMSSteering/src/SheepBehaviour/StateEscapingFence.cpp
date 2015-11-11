@@ -38,7 +38,7 @@ void StateEscapingFence::OnExit(SheepAgent& agent) const{
 	agent.SetInFence(false);
 }
 
-void StateEscapingFence::Update(SheepAgent& agent) const {
+void StateEscapingFence::Update(SheepAgent& agent, float dt) const {
 	sf::Vector2<float> direction = (agent.GetTarget() - agent.GetPosition());
 	float magnitude = sqrt(direction.x * direction.x + direction.y * direction.y);
 	direction.x = direction.x / magnitude;
@@ -69,4 +69,9 @@ FSMStates StateEscapingFence::CheckTransition(SheepAgent& agent) const
 	{
 		return DefaultSheepFSMCore::States::ESCAPE_FROM_DOG;
 	}
+}
+
+std::string StateEscapingFence::GetStateName() const
+{
+	return "StateEscapingFence";
 }

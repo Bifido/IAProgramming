@@ -3,7 +3,8 @@
 #include "SheepBehaviour\SheepAgent.h"
 #include "PassiveObj\Fence.h"
 
-DogAgent::DogAgent(bool i_bIsCatching, bool m_bHasCatched) :
+DogAgent::DogAgent(std::string name, bool i_bIsCatching, bool m_bHasCatched) :
+Agent(name),
 m_oFsm(*this),
 m_pFence(nullptr)
 {
@@ -87,6 +88,6 @@ void DogAgent::FSMAdd(FSMCore<DogAgent>* sharedStates){
 void DogAgent::FSMRemove(){
 	m_oFsm.RemoveFSM();
 }
-void DogAgent::FSMRun(){
-	m_oFsm.Run();
+void DogAgent::FSMRun(float dt){
+	m_oFsm.Run(dt);
 }

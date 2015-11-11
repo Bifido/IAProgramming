@@ -16,20 +16,15 @@ using namespace sf;
 
 
 
-
-NanoAgent newNano(100, 10, 5);
-Mine mine(100);
+NanoAgent newNano("NanoMarco",100, 10, 5);
+Mine mine(1000);
 Home home(1);
-enum A
-{
-	FSM1 = 0
-};
-//FiniteStateMachine<NanoAgent> x(newNano);
 
 void InitRicky(){
 
 	Vector2<float> pos(0.0f, 0.0f);
 	newNano.SetPosition(pos);
+	newNano.SetMaxSpeed(0.0001f);
 
 	//pos.x = 0.5f;
 	//pos.y = 0.7f;
@@ -50,7 +45,7 @@ void InitRicky(){
 }
 
 void RunRicky(){
-	newNano.FSMRun();
+	newNano.FSMRun(MagicNumber::deltaTime);
 }
 
 void StartRicky(){

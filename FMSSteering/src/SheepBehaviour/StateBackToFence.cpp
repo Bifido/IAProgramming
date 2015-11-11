@@ -43,7 +43,7 @@ void StateBackToFence::OnExit(SheepAgent& agent) const
 	//being in fence, catched will be false
 }
 
-void StateBackToFence::Update(SheepAgent& agent) const
+void StateBackToFence::Update(SheepAgent& agent, float dt) const
 {
 	sf::Vector2<float> target = agent.GetFence()->GetEscapingPoint();
 	agent.SetTarget(target);
@@ -67,4 +67,9 @@ FSMStates StateBackToFence::CheckTransition(SheepAgent& agent) const
 	else{
 		return DefaultSheepFSMCore::States::BACK_IN_FENCE;
 	}
+}
+
+std::string StateBackToFence::GetStateName() const
+{
+	return "StateBackToFence";
 }

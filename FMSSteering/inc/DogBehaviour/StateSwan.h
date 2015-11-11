@@ -12,6 +12,7 @@ public:
 
 	void OnEnter(DogAgent& agent) const;
 	void OnExit(DogAgent& agent) const;
-	void Update(DogAgent& agent) const;
+	void Update(DogAgent& agent, float) const;
 	FSMStates CheckTransition(DogAgent& agent) const;
+	std::string GetStateName() const;
 };
