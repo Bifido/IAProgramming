@@ -1,5 +1,6 @@
 #include <assert.h>
 #include "Agent.h"
+#include "Steering\Steering.h"
 
 using namespace sf;
 
@@ -58,9 +59,11 @@ void Agent::SetMaxSpeed(float maxSpeed)
 	m_maxSpeed = maxSpeed;
 }
 
-void Agent::SetCurrentSteering(Steering* steering)
+Steering* Agent::SetCurrentSteering(SteeringFactory::SteeringType _steeringType)
 {
-	m_currentSteering = steering;
+	Steering* pointer = SteeringFactory::BuildSteering(_steeringType);
+	m_currentSteering = pointer;
+	return pointer;
 }
 
 void Agent::SetViewComponent(ViewComponent* viewComp){
@@ -72,7 +75,12 @@ Agent::~Agent(){ }
 Steering* Agent::RemoveCurrentSteering()
 {
 	Steering* temp = m_currentSteering;
-	m_currentSteering = nullptr;
+	if (m_currentSteering != nullptr)
+	{
+		m_currentSteering->Uninit();
+		delete m_currentSteering;
+		m_currentSteering = nullptr;
+	}
 	return temp;
 }
 

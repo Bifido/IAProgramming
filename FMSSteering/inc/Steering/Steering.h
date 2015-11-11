@@ -9,15 +9,20 @@ class Agent;
 class Steering
 {
 public:
-	virtual void Upadate(float dt);
+	void Init(Agent* parent);
+	void Uninit();
+
+	virtual void Update(float dt);
 	virtual void Reset();
-	//for debug
-	virtual void Draw();
 
 	int HasReachTarget(const sf::Vector2<float>& pos1, const sf::Vector2<float>& pos2, const sf::Vector2<float>& velocity);
-protected:
-	Steering(std::string name, Agent* partent);
+
 	virtual ~Steering();
+
+	//for debug
+	virtual void Draw();
+protected:
+	Steering(std::string name);
 	Steering(const Steering& other) = delete;
 	Steering& operator=(const Steering& other) = delete;
 
@@ -31,6 +36,9 @@ protected:
 
 	//Agent because it use only function of parent Agent that are not virtual
 	Agent* m_parent;
+
+	const static int K_10_POTATOES = 10;
+	const float K_ZERO_TOLLERANCE = 0.01f;
 
 private:
 	//for debug

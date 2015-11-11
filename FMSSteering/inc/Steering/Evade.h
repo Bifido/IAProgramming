@@ -5,10 +5,10 @@
 class Evade : public Steering
 {
 public:
-	void Upadate(float dt);
+	void Update(float dt);
 	void Reset();
 	//for debug
 	void Draw();
 
-	Evade(std::string name, Agent* partent);
+	Evade(std::string name);
 };

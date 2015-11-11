@@ -5,10 +5,10 @@
 class Seek : public Steering
 {
 public:
-	void Upadate(float dt);
+	void Update(float dt);
 	void Reset();
 	//for debug
 	void Draw();
 
-	Seek(std::string name, Agent* partent);
+	Seek(std::string name);
 };

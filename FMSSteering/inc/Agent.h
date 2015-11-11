@@ -1,5 +1,6 @@
 #pragma once
 #include "SFML\System\Vector2.hpp"
+#include "Steering\SteeringFactory.h"
 #include <string>
 
 // ** Forward dec
@@ -24,7 +25,7 @@ public:
 	void SetVelocity(const sf::Vector2<float>& newVelocity);
 	void SetTarget(const sf::Vector2<float>& newTarget);
 	void SetMaxSpeed(float maxSpeed);
-	void SetCurrentSteering(Steering* steering);
+	Steering* SetCurrentSteering(SteeringFactory::SteeringType);
 	void SetViewComponent(ViewComponent* viewComp);
 
 	Steering* RemoveCurrentSteering();

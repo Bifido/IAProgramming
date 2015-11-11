@@ -2,7 +2,7 @@
 #include "Agent.h"
 
 
-void Seek::Upadate(float dt)
+void Seek::Update(float dt)
 {
 	sf::Vector2<float> result;
 	SteerTowards(m_parent->GetTarget(), result);
@@ -20,6 +20,6 @@ void Seek::Draw()
 
 }
 
-Seek::Seek(std::string name, Agent* partent)
-	: Steering(name,partent)
+Seek::Seek(std::string name)
+	: Steering(name)
 {}

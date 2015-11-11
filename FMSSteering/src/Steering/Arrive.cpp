@@ -3,7 +3,7 @@
 #include <iostream>
 
 
-void Arrive::Upadate(float dt)
+void Arrive::Update(float dt)
 {
 	sf::Vector2<float> result;
 	SteerArrive(m_parent->GetTarget(), result);
@@ -21,9 +21,18 @@ void Arrive::Draw()
 
 }
 
-Arrive::Arrive(std::string name, Agent* partent, float arriveDistance, float minSpeed)
-	: Steering(name, partent), m_arriveDistance(arriveDistance), m_minSpeed(minSpeed)
-{}
+
+Arrive::Arrive(std::string name):
+	Steering(name)
+{
+}
+
+void Arrive::Init(Agent* partent, float arriveDistance, float minSpeed)
+{
+	m_parent = partent;
+	m_arriveDistance = arriveDistance;
+	m_minSpeed = minSpeed;
+}
 
 void Arrive::SteerArrive(const sf::Vector2<float>& target, sf::Vector2<float>& result)
 {

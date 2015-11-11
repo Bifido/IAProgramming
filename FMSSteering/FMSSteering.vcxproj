@@ -125,6 +125,7 @@
     <ClInclude Include="inc\Steering\Arrive.h" />
     <ClInclude Include="inc\Steering\Evade.h" />
     <ClInclude Include="inc\Steering\Steering.h" />
+    <ClInclude Include="inc\Steering\SteeringFactory.h" />
     <ClInclude Include="inc\ViewComponent.h" />
     <ClInclude Include="inc\ViewManager.h" />
     <ClInclude Include="inc\Steering\Seek.h" />
@@ -162,6 +163,7 @@
     <ClCompile Include="src\Steering\Evade.cpp" />
     <ClCompile Include="src\Steering\Seek.cpp" />
     <ClCompile Include="src\Steering\Steering.cpp" />
+    <ClCompile Include="src\Steering\SteeringFactory.cpp" />
     <ClCompile Include="src\ViewComponent.cpp" />
     <ClCompile Include="src\ViewManager.cpp" />
     <ClCompile Include="src\NanoBehaviour\NanoAgent.cpp" />

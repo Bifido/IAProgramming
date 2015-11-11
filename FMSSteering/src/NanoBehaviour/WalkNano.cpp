@@ -5,8 +5,8 @@
 #include "PassiveObj\Mine.h"
 #include "PassiveObj\Home.h"
 
-#include "Steering\Seek.h"
 #include "Steering\Arrive.h"
+#include "Steering\SteeringFactory.h"
 
 #include <assert.h>
 #include <iostream>
@@ -18,19 +18,18 @@ WalkNano::~WalkNano()
 
 void WalkNano::OnEnter(NanoAgent& agent) const{
 	//agent.SetCurrentSteering(new Seek("NanoSeek", &agent));
-	agent.SetCurrentSteering(new Arrive("NanoSeek", &agent, 0.03f, 0.00002f));
+	Arrive* ptr = dynamic_cast<Arrive*>(agent.SetCurrentSteering(SteeringFactory::SteeringType::Arrive));
+	ptr->Init(&agent, 0.03f, 0.00002f);
 }
 
 void WalkNano::OnExit(NanoAgent& agent) const{
 
 	agent.SetVelocity(sf::Vector2<float>(0, 0));
-	//Seek* steering = (Seek*)agent.RemoveCurrentSteering();
-	Arrive* steering = (Arrive*)agent.RemoveCurrentSteering();
-	delete steering;
+	agent.RemoveCurrentSteering();
 }
 
 void WalkNano::Update(NanoAgent& agent, float dt) const {
-	agent.GetCurrentSteering()->Upadate(dt);
+	agent.GetCurrentSteering()->Update(dt);
 }
 
 FSMStates WalkNano::CheckTransition(NanoAgent& agent) const

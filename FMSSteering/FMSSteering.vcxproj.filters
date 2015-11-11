@@ -29,6 +29,10 @@
     <ClCompile Include="src\DogBehaviour\DogFSMCore.cpp" />
     <ClCompile Include="src\DogBehaviour\StateSwan.cpp" />
     <ClCompile Include="src\DogBehaviour\StateCatchingSheep.cpp" />
+    <ClCompile Include="src\NanoBehaviour\RestoreNano.cpp" />
+    <ClCompile Include="src\NanoBehaviour\UnloadStonesNano.cpp" />
+    <ClCompile Include="src\NanoBehaviour\WatchTvNano.cpp" />
+    <ClCompile Include="src\Steering\SteeringFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\FSMCore.h" />
@@ -71,6 +75,7 @@
     <ClInclude Include="inc\DogBehaviour\StateSwan.h" />
     <ClInclude Include="inc\DogBehaviour\GlobalDog.h" />
     <ClInclude Include="inc\DogBehaviour\StateCatchingSheep.h" />
+    <ClInclude Include="inc\Steering\SteeringFactory.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\dwarf.png" />

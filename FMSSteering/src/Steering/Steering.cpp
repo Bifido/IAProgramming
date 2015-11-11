@@ -1,15 +1,32 @@
 #include "Steering\Steering.h"
 #include "Agent.h"
+#include <iostream>
 
-void Steering::Upadate(float dt)
+void Steering::Update(float dt)
 {}
 void Steering::Reset()
 {}
 void Steering::Draw()
 {}
 
-Steering::Steering(std::string name, Agent* partent)
-	:m_name(name), m_parent(partent)
+void Steering::Init(Agent* parent)
+{
+	if (m_parent != nullptr)
+	{
+		std::cout << ">> WARNING: Steering already initialized. Call Uninit instead." << std::endl;
+		return;
+	}
+	m_parent = parent;
+}
+
+void Steering::Uninit()
+{
+	Reset();
+	m_parent = nullptr;
+}
+
+Steering::Steering(std::string name)
+	:m_name(name)
 {}
 Steering::~Steering()
 {}
@@ -23,8 +40,9 @@ void Steering::SteerTowards(const sf::Vector2<float>& target, sf::Vector2<float>
 	float targetDistance = Vector2LenghtSq(desired);
 	if (targetDistance > 0)
 	{
-		desired = Normailize(desired) * m_parent->GetMaxSpeed();
-		result = desired - m_parent->GetVelocity();
+		desired = Normailize(desired);
+		result.x = desired.x * m_parent->GetVelocity().x;
+		result.y = desired.y * m_parent->GetVelocity().y;
 	}
 	else
 	{
@@ -63,9 +81,9 @@ sf::Vector2<float> Steering::Normailize(sf::Vector2<float>& vec)
 Checks if the point 1, with a certain tollerance based on velocity, is near the position 2
 */
 int Steering::HasReachTarget(const sf::Vector2<float>& pos1, const sf::Vector2<float>& pos2, const sf::Vector2<float>& velocity){
-	bool toReturn = ((pos1.x + 0.01f + abs(velocity.x) * 10) >= pos2.x) && ((pos1.x - 0.01f - abs(velocity.x) * 10) <= pos2.x);
+	bool toReturn = ((pos1.x + K_ZERO_TOLLERANCE + abs(velocity.x) * K_10_POTATOES) >= pos2.x) && ((pos1.x - K_ZERO_TOLLERANCE - abs(velocity.x) * K_10_POTATOES) <= pos2.x);
 	if (toReturn){
-		return ((pos1.y + 0.01f + abs(velocity.y) * 10) >= pos2.y) && ((pos1.y - 0.01f - abs(velocity.y) * 10) <= pos2.y);
+		return ((pos1.y + K_ZERO_TOLLERANCE + abs(velocity.y) * K_10_POTATOES) >= pos2.y) && ((pos1.y - K_ZERO_TOLLERANCE - abs(velocity.y) * K_10_POTATOES) <= pos2.y);
 	}
 	return false;
 }

@@ -2,7 +2,7 @@
 #include "Agent.h"
 
 
-void Evade::Upadate(float dt)
+void Evade::Update(float dt)
 {
 	sf::Vector2<float> result;
 	SteerAway(m_parent->GetTarget(), result);
@@ -20,6 +20,6 @@ void Evade::Draw()
 
 }
 
-Evade::Evade(std::string name, Agent* partent)
-	: Steering(name, partent)
+Evade::Evade(std::string name)
+	: Steering(name)
 {}

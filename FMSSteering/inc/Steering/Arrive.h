@@ -5,13 +5,16 @@
 class Arrive : public Steering
 {
 public:
-	void Upadate(float dt);
+	void Init(Agent* parent, float arriveDistance, float minSpeed);
+	void Update(float dt);
 	void Reset();
 	//for debug
 	void Draw();
 
-	Arrive(std::string name, Agent* partent, float arriveDistance, float minSpeed);
+	Arrive(std::string name);
 private:
+	void Init(Agent* parent); // <-- Hidden. The arrive can be initialized only with also and arriveDistance and minSpeed
+
 	void SteerArrive(const sf::Vector2<float>& target, sf::Vector2<float>& result);
 
 	float m_arriveDistance;
