@@ -1,4 +1,5 @@
 #include "SheepBehaviour\SheepFSMCore.h"
+#include "SheepBehaviour\IdleSheep.h"
 #include "SheepBehaviour\StateBruca.h"
 #include "SheepBehaviour\StateEscapingFence.h"
 #include "SheepBehaviour\StateEscapingDog.h"
@@ -12,6 +13,7 @@ using namespace std;
 
 DefaultSheepFSMCore::DefaultSheepFSMCore()
 {
+	statesArray[States::IDLE] = new IdleSheep();
 	statesArray[States::BRUCA] = new StateBruca();
 	statesArray[States::ESCAPING_FENCE] = new StateEscapingFence();
 	statesArray[States::ESCAPE_FROM_DOG] = new StateEscapingDog();
@@ -33,7 +35,7 @@ FSMCore<SheepAgent>* DefaultSheepFSMCore::GetInstance()
 
 State<SheepAgent>* DefaultSheepFSMCore::GetDefaultState() const
 {
-	return statesArray[States::BRUCA];
+	return statesArray[States::IDLE];
 }
 
 State<SheepAgent>* DefaultSheepFSMCore::GetState(FSMStates stateId) const

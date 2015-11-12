@@ -40,9 +40,8 @@ void Steering::SteerTowards(const sf::Vector2<float>& target, sf::Vector2<float>
 	float targetDistance = Vector2LenghtSq(desired);
 	if (targetDistance > 0)
 	{
-		desired = Normailize(desired);
-		result.x = desired.x * m_parent->GetVelocity().x;
-		result.y = desired.y * m_parent->GetVelocity().y;
+		desired = Normailize(desired) * m_parent->GetMaxSpeed();
+		result = desired - m_parent->GetVelocity();
 	}
 	else
 	{

@@ -33,6 +33,8 @@
     <ClCompile Include="src\NanoBehaviour\UnloadStonesNano.cpp" />
     <ClCompile Include="src\NanoBehaviour\WatchTvNano.cpp" />
     <ClCompile Include="src\Steering\SteeringFactory.cpp" />
+    <ClCompile Include="src\DogBehaviour\IdleDog.cpp" />
+    <ClCompile Include="src\SheepBehaviour\IdleSheep.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\FSMCore.h" />
@@ -76,6 +78,8 @@
     <ClInclude Include="inc\DogBehaviour\GlobalDog.h" />
     <ClInclude Include="inc\DogBehaviour\StateCatchingSheep.h" />
     <ClInclude Include="inc\Steering\SteeringFactory.h" />
+    <ClInclude Include="inc\DogBehaviour\IdleDog.h" />
+    <ClInclude Include="inc\SheepBehaviour\IdleSheep.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\dwarf.png" />

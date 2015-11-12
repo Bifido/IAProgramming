@@ -19,7 +19,7 @@ NanoAgent newNano("Nano", 100, 10, 5);
 SheepAgent sheep("Sheep");
 DogAgent dog("Dog");
 
-Mine mine(100);
+Mine mine(10000);
 Home home(1);
 Fence fence(MagicNumber::POS_BACKGROUND_FENCE,MagicNumber::FENCE_SIZE);
 
@@ -31,6 +31,7 @@ void InitVale(){
 
 	newNano.SetHome(&home);
 	newNano.SetMine(&mine);
+	newNano.SetMaxSpeed(0.03f);
 
 	Vector2<float> pos(MagicNumber::POS_NANO_HOUSE);
 	newNano.SetPosition(pos);
@@ -45,6 +46,7 @@ void InitVale(){
 	sheep.SetFence(&fence);
 
 	sheep.SetTarget(fence.GetRandomPointInside());
+	sheep.SetMaxSpeed(0.001f);
 
 	Vector2<float> pos5(0.6f, 0.6f);
 	dog.SetPosition(pos5);
@@ -54,6 +56,7 @@ void InitVale(){
 	dog.SetSheep(&sheep);
 
 	dog.SetTarget(fence.GetRandomPointOutside());
+	dog.SetMaxSpeed(0.0012f);
 	sheep.SetDog(&dog);
 
 }

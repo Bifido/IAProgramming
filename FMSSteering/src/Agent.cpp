@@ -8,7 +8,8 @@ Agent::Agent(std::string name) :
 m_name(name),
 m_pos(Vector2<float>(0, 0)),
 m_velocity(Vector2<float>(0, 0)),
-m_viewInfo(nullptr)
+m_viewInfo(nullptr),
+m_maxSpeed(0.0f)
 {
 }
 
@@ -39,11 +40,15 @@ ViewComponent* Agent::GetViewComponent() const{
 	return m_viewInfo;
 }
 
-void Agent::SetPosition(const Vector2<float>& newPosition){
-	// The position must be expressed in term of numbers between 0 and 1
-	assert(newPosition.x <= 1 && newPosition.x >= 0 && newPosition.y <= 1 && newPosition.y >= 0);
-
+// The position must be expressed in term of numbers between 0 and 1
+void Agent::SetPosition(const Vector2<float>& newPosition)
+{
 	m_pos = newPosition;
+
+	if (m_pos.x < 0) m_pos.x = 0;
+	if (m_pos.x > 1) m_pos.x = 1;
+	if (m_pos.y < 0) m_pos.y = 0;
+	if (m_pos.y > 1) m_pos.y = 1;
 }
 
 void Agent::SetVelocity(const Vector2<float>& newVelocity){
