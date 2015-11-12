@@ -126,6 +126,7 @@
     <ClInclude Include="inc\State.h" />
     <ClInclude Include="inc\Steering\Arrive.h" />
     <ClInclude Include="inc\Steering\Evade.h" />
+    <ClInclude Include="inc\Steering\Pursue.h" />
     <ClInclude Include="inc\Steering\Steering.h" />
     <ClInclude Include="inc\Steering\SteeringFactory.h" />
     <ClInclude Include="inc\ViewComponent.h" />
@@ -165,6 +166,7 @@
     <ClCompile Include="src\SheepBehaviour\StateEscapingFence.cpp" />
     <ClCompile Include="src\Steering\Arrive.cpp" />
     <ClCompile Include="src\Steering\Evade.cpp" />
+    <ClCompile Include="src\Steering\Pursue.cpp" />
     <ClCompile Include="src\Steering\Seek.cpp" />
     <ClCompile Include="src\Steering\Steering.cpp" />
     <ClCompile Include="src\Steering\SteeringFactory.cpp" />

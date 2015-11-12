@@ -12,7 +12,8 @@ public:
 	{
 		Seek,
 		Evade,
-		Arrive
+		Arrive,
+		Pursue
 	};
 
 	static Steering* BuildSteering(SteeringType);

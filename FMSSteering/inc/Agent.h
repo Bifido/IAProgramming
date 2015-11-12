@@ -17,6 +17,7 @@ public:
 	const sf::Vector2<float>& GetPosition() const;
 	const sf::Vector2<float>& GetVelocity() const;
 	const sf::Vector2<float>& GetTarget() const;
+	const sf::Vector2<float>& GetTargetVelocity() const;
 	float GetMaxSpeed() const;
 	Steering* GetCurrentSteering() const;
 	ViewComponent* GetViewComponent() const;
@@ -24,6 +25,7 @@ public:
 	void SetPosition(const sf::Vector2<float>& newPosition);
 	void SetVelocity(const sf::Vector2<float>& newVelocity);
 	void SetTarget(const sf::Vector2<float>& newTarget);
+	void SetTargetVelocity(const sf::Vector2<float>& newTarget);
 	void SetMaxSpeed(float maxSpeed);
 	Steering* SetCurrentSteering(SteeringFactory::SteeringType);
 	void SetViewComponent(ViewComponent* viewComp);
@@ -41,6 +43,7 @@ private:
 	sf::Vector2<float> m_pos; // each value, go from 0 to 1 (Normalized)
 	sf::Vector2<float> m_velocity;
 	sf::Vector2<float> m_target;
+	sf::Vector2<float> m_targetVelocity;
 	Steering* m_currentSteering;
 
 	std::string m_name;

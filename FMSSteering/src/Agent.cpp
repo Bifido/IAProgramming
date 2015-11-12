@@ -9,7 +9,8 @@ m_name(name),
 m_pos(Vector2<float>(0, 0)),
 m_velocity(Vector2<float>(0, 0)),
 m_viewInfo(nullptr),
-m_maxSpeed(0.0f)
+m_maxSpeed(0.0f),
+m_targetVelocity(Vector2<float>(0, 0))
 {
 }
 
@@ -24,6 +25,10 @@ const Vector2<float>& Agent::GetVelocity() const{
 
 const sf::Vector2<float>& Agent::GetTarget() const{
 	return m_target;
+}
+
+const sf::Vector2<float>& Agent::GetTargetVelocity() const{
+	return m_targetVelocity;
 }
 
 float Agent::GetMaxSpeed() const
@@ -57,6 +62,10 @@ void Agent::SetVelocity(const Vector2<float>& newVelocity){
 
 void Agent::SetTarget(const sf::Vector2<float>& newTarget){
 	m_target = newTarget;
+}
+
+void Agent::SetTargetVelocity(const sf::Vector2<float>& newTargetVelocity){
+	m_targetVelocity = newTargetVelocity;
 }
 
 void Agent::SetMaxSpeed(float maxSpeed)

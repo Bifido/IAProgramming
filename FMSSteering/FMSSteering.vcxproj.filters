@@ -35,6 +35,7 @@
     <ClCompile Include="src\Steering\SteeringFactory.cpp" />
     <ClCompile Include="src\DogBehaviour\IdleDog.cpp" />
     <ClCompile Include="src\SheepBehaviour\IdleSheep.cpp" />
+    <ClCompile Include="src\Steering\Pursue.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\FSMCore.h" />
@@ -80,6 +81,7 @@
     <ClInclude Include="inc\Steering\SteeringFactory.h" />
     <ClInclude Include="inc\DogBehaviour\IdleDog.h" />
     <ClInclude Include="inc\SheepBehaviour\IdleSheep.h" />
+    <ClInclude Include="inc\Steering\Pursue.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\dwarf.png" />
