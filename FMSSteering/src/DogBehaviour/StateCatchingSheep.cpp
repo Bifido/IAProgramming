@@ -61,7 +61,7 @@ FSMStates StateCatchingSheep::CheckTransition(DogAgent& agent) const
 	}
 	else
 	{
-		return DefaultDogFSMCore::States::SWAN;
+		return DefaultDogFSMCore::States::FOLLOWING_SHEEP;
 	}
 }
 

@@ -2,7 +2,7 @@
 #include "DogBehaviour\StateSwan.h"
 #include "DogBehaviour\StateCatchingSheep.h"
 #include "DogBehaviour\IdleDog.h"
-//#include "SheepBehaviour\StateBackToFence.h"
+#include "DogBehaviour\StateFollowSheep.h"
 #include "DogBehaviour\GlobalDog.h"
 
 #include <assert.h>
@@ -15,6 +15,7 @@ DefaultDogFSMCore::DefaultDogFSMCore()
 	statesArray[States::IDLE] = new IdleDog();
 	statesArray[States::SWAN] = new StateSwan();
 	statesArray[States::CATCHING] = new StateCatchingSheep();
+	statesArray[States::FOLLOWING_SHEEP] = new StateFollowSheep();
 
 	//NEVER USED. HERE ONLY TO SATISFY DefaultDogFSMCore that inherit from FSMCore.h with pure virtual GetGlobalArc()
 	globalArc = new GlobalDog();

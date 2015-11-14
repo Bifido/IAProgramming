@@ -4,6 +4,7 @@
 namespace MagicNumber{
 	//FRAME RATE
 	const float deltaTime = 0.016f;
+	const int deltaTimeMill = 16;
 
 	//SCREEN RESOLUTION
 	const int HEIGHT = 600;

@@ -46,7 +46,7 @@ void InitVale(){
 	sheep.SetFence(&fence);
 
 	sheep.SetTarget(fence.GetRandomPointInside());
-	sheep.SetMaxSpeed(0.001f);
+	sheep.SetMaxSpeed(0.01f);
 
 	Vector2<float> pos5(0.6f, 0.6f);
 	dog.SetPosition(pos5);
@@ -56,7 +56,7 @@ void InitVale(){
 	dog.SetSheep(&sheep);
 
 	dog.SetTarget(fence.GetRandomPointOutside());
-	dog.SetMaxSpeed(0.0012f);
+	dog.SetMaxSpeed(0.012f);
 	sheep.SetDog(&dog);
 
 }

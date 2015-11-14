@@ -15,6 +15,7 @@ public:
 		IDLE = 0,
 		SWAN = 1,			//gironzolare
 		CATCHING = 2,
+		FOLLOWING_SHEEP = 3,
 		COUNT
 	};
 

@@ -1,10 +1,11 @@
-#define Vale
-//#define Marco
+//#define Vale
+#define Marco
 //#define Ricky
 
 #include "SFML\Graphics.hpp"
 #include "ViewManager.h"
 #include "Constants.h"
+#include <Windows.h>
 
 #ifndef Ricky
 	#ifndef Marco
@@ -18,8 +19,7 @@
 	#include "MainRicky.cpp"
 #endif
 
-void MainLoop();
-static void Draw(sf::Sprite sprite);
+float timePreciso();
 
 
 void DrawTexture(sf::RenderWindow& window){
@@ -44,6 +44,9 @@ int main(){
 
 	// create the window
 	sf::RenderWindow window(sf::VideoMode(MagicNumber::WIDTH, MagicNumber::HEIGHT), "Son of WhiteSnow");
+
+	float previousClock = 0;
+
 	// run the program as long as the window is open
 	while (window.isOpen()){
 		// check all the window's events that were triggered since the last iteration of the loop
@@ -58,7 +61,6 @@ int main(){
 				viewMan.ChangeHouseMinePos();
 		}
 
-		//TODO updateLogica
 		#ifndef Ricky
 			#ifndef Marco
 				#ifdef Vale
@@ -73,24 +75,29 @@ int main(){
 
 
 		viewMan.Draw(window);
+
+		int delta = (timePreciso() - previousClock) * 1000;
+		if (delta < MagicNumber::deltaTimeMill)
+			Sleep(MagicNumber::deltaTimeMill - delta);
+		previousClock = timePreciso();
 	}
 
 	return 0;
 }
 
-void MainLoop(){
-	#ifndef Ricky
-		#ifndef Marco
-			#ifdef Vale
-				StartVale();
-			#endif
-		#else 
-			StartMarco();
-		#endif
-	#else
-		StartRicky();
-	#endif
+float timePreciso()
+{
+	static __int64 start = 0;
+	static __int64 frequency = 0;
 
+	if (start == 0)
+	{
+		QueryPerformanceCounter((LARGE_INTEGER*)&start);
+		QueryPerformanceFrequency((LARGE_INTEGER*)&frequency);
+		return 0.0f;
+	}
 
-
+	__int64 counter = 0;
+	QueryPerformanceCounter((LARGE_INTEGER*)&counter);
+	return (float)((counter - start) / double(frequency));
 }

@@ -99,6 +99,7 @@
     <ClInclude Include="inc\DogBehaviour\GlobalDog.h" />
     <ClInclude Include="inc\DogBehaviour\IdleDog.h" />
     <ClInclude Include="inc\DogBehaviour\StateCatchingSheep.h" />
+    <ClInclude Include="inc\DogBehaviour\StateFollowSheep.h" />
     <ClInclude Include="inc\DogBehaviour\StateSwan.h" />
     <ClInclude Include="inc\FiniteStateMachine.h" />
     <ClInclude Include="inc\FSMCore.h" />
@@ -140,6 +141,7 @@
     <ClCompile Include="src\DogBehaviour\DogFSMCore.cpp" />
     <ClCompile Include="src\DogBehaviour\IdleDog.cpp" />
     <ClCompile Include="src\DogBehaviour\StateCatchingSheep.cpp" />
+    <ClCompile Include="src\DogBehaviour\StateFollowSheep.cpp" />
     <ClCompile Include="src\DogBehaviour\StateSwan.cpp" />
     <ClCompile Include="src\Main\Main.cpp" />
     <ClCompile Include="src\NanoBehaviour\GlobalNano.cpp" />
