@@ -24,7 +24,7 @@ void InitRicky(){
 
 	Vector2<float> pos(0.0f, 0.0f);
 	newNano.SetPosition(pos);
-	newNano.SetMaxSpeed(0.0001f);
+	newNano.SetMaxSpeed(0.01f);
 
 	//pos.x = 0.5f;
 	//pos.y = 0.7f;
