@@ -49,8 +49,8 @@ FSMStates StateSwan::CheckTransition(DogAgent& agent) const
 	{
 		sf::Vector2<float> target = agent.GetFence()->GetRandomPointOutside();
 		agent.SetTarget(target);
-		return DefaultDogFSMCore::States::SWAN;
 	}
+	return DefaultDogFSMCore::States::SWAN;
 }
 
 std::string StateSwan::GetStateName() const

@@ -1,6 +1,7 @@
 #include "DogBehaviour\DogFSMCore.h"
 #include "DogBehaviour\StateSwan.h"
 #include "DogBehaviour\StateCatchingSheep.h"
+#include "DogBehaviour\IdleDog.h"
 //#include "SheepBehaviour\StateBackToFence.h"
 #include "DogBehaviour\GlobalDog.h"
 
@@ -11,6 +12,7 @@ using namespace std;
 
 DefaultDogFSMCore::DefaultDogFSMCore()
 {
+	statesArray[States::IDLE] = new IdleDog();
 	statesArray[States::SWAN] = new StateSwan();
 	statesArray[States::CATCHING] = new StateCatchingSheep();
 
@@ -30,7 +32,7 @@ FSMCore<DogAgent>* DefaultDogFSMCore::GetInstance()
 
 State<DogAgent>* DefaultDogFSMCore::GetDefaultState() const
 {
-	return statesArray[States::SWAN];
+	return statesArray[States::IDLE];
 }
 
 State<DogAgent>* DefaultDogFSMCore::GetState(FSMStates stateId) const

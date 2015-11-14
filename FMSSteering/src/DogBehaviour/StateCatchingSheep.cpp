@@ -20,7 +20,7 @@ StateCatchingSheep::~StateCatchingSheep()
 {}
 
 void StateCatchingSheep::OnEnter(DogAgent& agent) const{
-	Steering* ptr = agent.SetCurrentSteering(SteeringFactory::Seek);
+	Steering* ptr = agent.SetCurrentSteering(SteeringFactory::Pursue);
 
 	sf::Vector2<float> target = agent.GetSheep()->GetPosition();
 	agent.SetTarget(target);
@@ -34,9 +34,15 @@ void StateCatchingSheep::OnExit(DogAgent& agent) const{
 	agent.RemoveCurrentSteering();
 }
 
-void StateCatchingSheep::Update(DogAgent& agent, float dt) const {
+void StateCatchingSheep::Update(DogAgent& agent, float dt) const 
+{
+	agent.SetTarget(agent.GetSheep()->GetPosition());
+	agent.SetTargetVelocity(agent.GetSheep()->GetVelocity());
 
-	agent.GetCurrentSteering()->Update(dt);
+	if (agent.GetCurrentSteering() != nullptr)
+	{
+		agent.GetCurrentSteering()->Update(dt);
+	}
 }
 
 FSMStates StateCatchingSheep::CheckTransition(DogAgent& agent) const

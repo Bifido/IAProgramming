@@ -12,8 +12,9 @@ class DefaultDogFSMCore : FSMCore < DogAgent >
 public:
 	enum States{
 		NOT_VALID = -1,
-		SWAN = 0,			//gironzolare
-		CATCHING = 1,
+		IDLE = 0,
+		SWAN = 1,			//gironzolare
+		CATCHING = 2,
 		COUNT
 	};
 

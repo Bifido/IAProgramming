@@ -97,6 +97,7 @@
     <ClInclude Include="inc\DogBehaviour\DogAgent.h" />
     <ClInclude Include="inc\DogBehaviour\DogFSMCore.h" />
     <ClInclude Include="inc\DogBehaviour\GlobalDog.h" />
+    <ClInclude Include="inc\DogBehaviour\IdleDog.h" />
     <ClInclude Include="inc\DogBehaviour\StateCatchingSheep.h" />
     <ClInclude Include="inc\DogBehaviour\StateSwan.h" />
     <ClInclude Include="inc\FiniteStateMachine.h" />
@@ -115,6 +116,7 @@
     <ClInclude Include="inc\PassiveObj\Home.h" />
     <ClInclude Include="inc\PassiveObj\Mine.h" />
     <ClInclude Include="inc\SheepBehaviour\GlobalSheep.h" />
+    <ClInclude Include="inc\SheepBehaviour\IdleSheep.h" />
     <ClInclude Include="inc\SheepBehaviour\SheepAgent.h" />
     <ClInclude Include="inc\SheepBehaviour\StateBackToFence.h" />
     <ClInclude Include="inc\SheepBehaviour\StateBruca.h" />
@@ -124,8 +126,10 @@
     <ClInclude Include="inc\State.h" />
     <ClInclude Include="inc\Steering\Arrive.h" />
     <ClInclude Include="inc\Steering\Evade.h" />
+    <ClInclude Include="inc\Steering\Pursue.h" />
     <ClInclude Include="inc\Steering\Steering.h" />
     <ClInclude Include="inc\Steering\SteeringFactory.h" />
+    <ClInclude Include="inc\Steering\Wander.h" />
     <ClInclude Include="inc\ViewComponent.h" />
     <ClInclude Include="inc\ViewManager.h" />
     <ClInclude Include="inc\Steering\Seek.h" />
@@ -134,6 +138,7 @@
     <ClCompile Include="src\Agent.cpp" />
     <ClCompile Include="src\DogBehaviour\DogAgent.cpp" />
     <ClCompile Include="src\DogBehaviour\DogFSMCore.cpp" />
+    <ClCompile Include="src\DogBehaviour\IdleDog.cpp" />
     <ClCompile Include="src\DogBehaviour\StateCatchingSheep.cpp" />
     <ClCompile Include="src\DogBehaviour\StateSwan.cpp" />
     <ClCompile Include="src\Main\Main.cpp" />
@@ -153,6 +158,7 @@
     <ClCompile Include="src\PassiveObj\Fence.cpp" />
     <ClCompile Include="src\PassiveObj\Home.cpp" />
     <ClCompile Include="src\PassiveObj\Mine.cpp" />
+    <ClCompile Include="src\SheepBehaviour\IdleSheep.cpp" />
     <ClCompile Include="src\SheepBehaviour\SheepAgent.cpp" />
     <ClCompile Include="src\SheepBehaviour\SheepFSMCore.cpp" />
     <ClCompile Include="src\SheepBehaviour\StateBackToFence.cpp" />
@@ -161,9 +167,11 @@
     <ClCompile Include="src\SheepBehaviour\StateEscapingFence.cpp" />
     <ClCompile Include="src\Steering\Arrive.cpp" />
     <ClCompile Include="src\Steering\Evade.cpp" />
+    <ClCompile Include="src\Steering\Pursue.cpp" />
     <ClCompile Include="src\Steering\Seek.cpp" />
     <ClCompile Include="src\Steering\Steering.cpp" />
     <ClCompile Include="src\Steering\SteeringFactory.cpp" />
+    <ClCompile Include="src\Steering\Wander.cpp" />
     <ClCompile Include="src\ViewComponent.cpp" />
     <ClCompile Include="src\ViewManager.cpp" />
     <ClCompile Include="src\NanoBehaviour\NanoAgent.cpp" />

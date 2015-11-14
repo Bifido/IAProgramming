@@ -2,6 +2,8 @@
 #include "Steering\Seek.h"
 #include "Steering\Evade.h"
 #include "Steering\Arrive.h"
+#include "Steering\Pursue.h"
+#include "Steering\Wander.h"
 
 Steering* SteeringFactory::BuildSteering(SteeringType _steeringType)
 {
@@ -17,6 +19,14 @@ Steering* SteeringFactory::BuildSteering(SteeringType _steeringType)
 
 	case Arrive:
 		return new ::Arrive("ArriveTarget");
+		break;
+
+	case Pursue:
+		return new ::Pursue("PusueTarget");
+		break;
+
+	case Wander:
+		return new ::Wander("Wandering");
 		break;
 
 	default:
