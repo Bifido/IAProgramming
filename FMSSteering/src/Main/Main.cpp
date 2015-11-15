@@ -57,8 +57,8 @@ int main(){
 				window.close();
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 				window.close();
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-				viewMan.ChangeHouseMinePos();
+			/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+				viewMan.ChangeHouseMinePos();*/
 		}
 
 		#ifndef Ricky
