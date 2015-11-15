@@ -11,16 +11,6 @@ m_vPosition(newPos),
 m_vLowerRightCorner(newPos.x + fenceSize.x, newPos.y + fenceSize.y),
 m_vEscapingPoint(newPos.x + fenceSize.x, newPos.y)
 {
-	/*cout << "fence2 Costructor" << endl;
-	printf("%f ", GetPosition().x);
-	printf("%f ", GetPosition().y);
-	cout << endl;
-	printf("%f ", GetLowerLeftCornerPos().x);
-	printf("%f ", GetLowerLeftCornerPos().y);
-	cout << endl;
-	printf("%f ", GetUpperRightCornerPos().x);
-	printf("%f ", GetUpperRightCornerPos().y);
-	cout << "fence2 Costructor end" << endl;*/
 }
 
 const sf::Vector2<float>& Fence::GetPosition() const{

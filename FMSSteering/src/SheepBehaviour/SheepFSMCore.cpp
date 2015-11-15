@@ -25,6 +25,11 @@ DefaultSheepFSMCore::DefaultSheepFSMCore()
 
 DefaultSheepFSMCore::~DefaultSheepFSMCore()
 {
+	delete dynamic_cast<IdleSheep*>(statesArray[States::IDLE]);
+	delete dynamic_cast<StateBruca*>(statesArray[States::BRUCA]);
+	delete dynamic_cast<StateEscapingFence*>(statesArray[States::ESCAPING_FENCE]);
+	delete dynamic_cast<StateEscapingDog*>(statesArray[States::ESCAPE_FROM_DOG]);
+	delete dynamic_cast<StateBackToFence*>(statesArray[States::BACK_IN_FENCE]);
 }
 
 FSMCore<SheepAgent>* DefaultSheepFSMCore::GetInstance()

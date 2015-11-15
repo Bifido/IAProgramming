@@ -38,7 +38,6 @@ void Arrive::SteerArrive(const sf::Vector2<float>& target, sf::Vector2<float>& r
 {
 	sf::Vector2<float> desired = target - m_parent->GetPosition();
 	float targetDistance = Vector2LenghtSq(desired);
-	//std::cout << "ARRIVE: target distance: " << targetDistance << std::endl;
 	if (targetDistance > 0)
 	{
 		float speed;

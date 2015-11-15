@@ -23,6 +23,10 @@ DefaultDogFSMCore::DefaultDogFSMCore()
 
 DefaultDogFSMCore::~DefaultDogFSMCore()
 {
+	delete dynamic_cast<IdleDog*> (statesArray[States::IDLE]);
+	delete dynamic_cast<StateSwan*> (statesArray[States::SWAN]);
+	delete dynamic_cast<StateCatchingSheep*> (statesArray[States::CATCHING]);
+	delete dynamic_cast<StateFollowSheep*> (statesArray[States::FOLLOWING_SHEEP]);
 }
 
 FSMCore<DogAgent>* DefaultDogFSMCore::GetInstance()

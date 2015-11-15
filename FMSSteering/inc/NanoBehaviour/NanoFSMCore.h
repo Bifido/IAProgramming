@@ -1,6 +1,5 @@
 #pragma once
 #include "FSMCore.h"
-//#include "GlobalNano.h"
 
 class NanoAgent;
 

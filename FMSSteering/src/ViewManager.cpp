@@ -63,13 +63,9 @@ void ViewManager::DrawBackground(RenderWindow& window) const{
 }
 
 void ViewManager::DrawDynamic(RenderWindow& window){
-	//window.draw(m_Sprites[DWARF]);
-	//window.draw(m_Sprites[DOG]);
-	//window.draw(m_Sprites[SHEEP]);
 
 	Sprite temp;
 	for (vector<ViewComponent>::iterator it = m_Agents.begin(); it != m_Agents.end(); ++it){
-		//cout << "DRAWING " << it->GetSpriteIndex() << endl;
 		if (it->IsDrawable())
 		{
 			temp = m_Sprites[it->GetSpriteIndex()];
@@ -125,7 +121,6 @@ ViewManager::ViewManager(){
 
 	m_SheepTexture.loadFromFile("resources/sheep.png");
 	temp.setTexture(m_SheepTexture);
-	//temp.setScale(0.5, 0.5);
 	temp.setTextureRect(IntRect(0, 0, 64, 64));
 	temp.setPosition(0, 0);
 	m_Sprites.push_back(temp);

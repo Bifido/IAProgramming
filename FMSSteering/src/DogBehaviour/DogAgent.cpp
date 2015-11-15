@@ -36,11 +36,9 @@ const bool DogAgent::CanStartCatching()
 		{
 			sf::Vector2<float> sheepPos = m_pSheepAgent->GetPosition();
 			float distance = sqrt(pow(sheepPos.x - this->GetPosition().x, 2) + pow(sheepPos.y - this->GetPosition().y, 2));
-			/*std::cout << "Distance for start catching " << distance << endl;*/
 			if (distance > 0.f && distance < SHEEP_CATCHING_DISTANCE)
 			{
 				SetCatching(true);
-				/*std::cout << "Sheep Found " << endl;*/
 				return true;
 			}
 		}

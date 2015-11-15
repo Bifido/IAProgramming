@@ -24,7 +24,6 @@ Home home(1);
 Fence fence(MagicNumber::POS_BACKGROUND_FENCE,MagicNumber::FENCE_SIZE);
 
 void InitVale(){
-	//FiniteStateMachine<NanoAgent> x;
 
 	home.SetPosition(MagicNumber::POS_NANO_HOUSE);
 	mine.SetPosition(MagicNumber::POS_NANO_MINE);

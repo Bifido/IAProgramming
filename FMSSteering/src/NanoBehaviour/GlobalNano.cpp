@@ -18,7 +18,7 @@ FSMStates GlobalNano::CheckTransition(NanoAgent& agent) const
 	if (!agent.IsInStaminaRecovering() && !agent.HasStillStamina() && agent.GetTarget() != agent.GetHome()->GetPosition())
 	{
 		// Setting the HOME position as new target
-		agent.SetTarget(agent.GetHome()->GetPosition()); // TODO: Substitute this statement with agent->SetHomeAsTarget() ?
+		agent.SetTarget(agent.GetHome()->GetPosition());
 		// go to state: WALK
 		return DefaultNanoFSMCore::States::WALK;
 	}

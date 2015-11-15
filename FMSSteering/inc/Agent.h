@@ -6,8 +6,6 @@
 // ** Forward dec
 class ViewComponent;
 class Steering;
-//template <typename Agent>
-//class FiniteStateMachine;
 // ** END
 
 class Agent
@@ -49,8 +47,6 @@ private:
 	std::string m_name;
 
 	float m_maxSpeed;
-
-	//FiniteStateMachine<Agent>* fsm;
 
 	ViewComponent* m_viewInfo;
 };

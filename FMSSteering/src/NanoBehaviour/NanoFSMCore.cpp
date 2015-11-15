@@ -21,14 +21,10 @@ DefaultNanoFSMCore::DefaultNanoFSMCore()
 
 DefaultNanoFSMCore::~DefaultNanoFSMCore()
 {
-	//for (int i = 0; i < States::COUNT; ++i)
-	//{
-	//	delete statesArray[i];
-	//}
-	delete (IdleNano*)statesArray[States::IDLE];
-	delete (WalkNano*)statesArray[States::WALK];
-	delete (MineNano*)statesArray[States::MINE];
-	delete (HomeNano*)statesArray[States::HOME];
+	delete dynamic_cast<IdleNano*>(statesArray[States::IDLE]);
+	delete dynamic_cast<WalkNano*>(statesArray[States::WALK]);
+	delete dynamic_cast<MineNano*>(statesArray[States::MINE]);
+	delete dynamic_cast<HomeNano*>(statesArray[States::HOME]);
 }
 
 FSMCore<NanoAgent>* DefaultNanoFSMCore::GetInstance()
@@ -75,13 +71,9 @@ SubHomeNanoFSMCore::SubHomeNanoFSMCore()
 
 SubHomeNanoFSMCore::~SubHomeNanoFSMCore()
 {
-	//for (int i = 0; i < States::COUNT; ++i)
-	//{
-	//	delete statesArray[i];
-	//}
-	delete (UnloadStonesNano*)statesArray[States::UNLOAD];
-	delete (RestoreNano*)statesArray[States::RESTORE];
-	delete (WatchTvNano*)statesArray[States::WATCH_TV];
+	delete dynamic_cast<UnloadStonesNano*>(statesArray[States::UNLOAD]);
+	delete dynamic_cast<RestoreNano*>(statesArray[States::RESTORE]);
+	delete dynamic_cast<WatchTvNano*>(statesArray[States::WATCH_TV]);
 }
 
 FSMCore<NanoAgent>* SubHomeNanoFSMCore::GetInstance()

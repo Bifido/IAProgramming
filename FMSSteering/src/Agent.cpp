@@ -92,8 +92,7 @@ Steering* Agent::RemoveCurrentSteering()
 	if (m_currentSteering != nullptr)
 	{
 		m_currentSteering->Uninit();
-		delete m_currentSteering;
-		m_currentSteering = nullptr;
+		SteeringFactory::ReleaseSteering(m_currentSteering);
 	}
 	return temp;
 }

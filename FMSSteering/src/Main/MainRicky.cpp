@@ -37,10 +37,10 @@ void InitRicky(){
 	mine.SetPosition(MagicNumber::POS_NANO_MINE);
 	newNano.SetMine(&mine);
 
-	ViewComponent* viewNano = new ViewComponent(ViewManager::DWARF, newNano.GetPosition(), 0); // LEAK
+	ViewComponent* viewNano = new ViewComponent(ViewManager::DWARF, newNano.GetPosition(), 0);
 	newNano.SetViewComponent(viewNano);
 
-	//ViewComponent* viewMine = new ViewComponent(ViewManager::MINE, mine.GetPosition(), 0); // LEAK
+	//ViewComponent* viewMine = new ViewComponent(ViewManager::MINE, mine.GetPosition(), 0);
 	//mine.SetViewComponent(viewMine);
 }
 

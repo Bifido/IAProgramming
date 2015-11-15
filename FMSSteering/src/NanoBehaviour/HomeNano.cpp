@@ -41,7 +41,7 @@ FSMStates HomeNano::CheckTransition(NanoAgent& agent) const
 	if (!agent.IsInStaminaRecovering() && agent.GetMine() != nullptr && agent.GetStamina() >= agent.MAX_STAMINA && agent.GetCarriedStonesNumber() <= 0)
 	{
 		// Setting the mine position as new target
-		agent.SetTarget(agent.GetMine()->GetPosition()); // TODO: Substitute this statement with agent->SetHomeAsTarget() ?
+		agent.SetTarget(agent.GetMine()->GetPosition());
 		// go to state: WALK
 		return DefaultNanoFSMCore::States::WALK;
 	}

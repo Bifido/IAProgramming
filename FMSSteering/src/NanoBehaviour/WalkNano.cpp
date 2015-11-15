@@ -17,7 +17,6 @@ WalkNano::~WalkNano()
 {}
 
 void WalkNano::OnEnter(NanoAgent& agent) const{
-	//agent.SetCurrentSteering(new Seek("NanoSeek", &agent));
 	Arrive* ptr = dynamic_cast<Arrive*>(agent.SetCurrentSteering(SteeringFactory::SteeringType::Arrive));
 	ptr->Init(&agent, 0.03f, 0.00002f);
 }

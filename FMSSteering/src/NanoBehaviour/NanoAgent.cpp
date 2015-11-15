@@ -1,7 +1,5 @@
-#include <assert.h>
 #include "NanoBehaviour\NanoAgent.h"
 #include "NanoBehaviour\NanoFSMCore.h"
-//#include "FiniteStateMachine.h"
 
 using namespace sf;
 
@@ -48,15 +46,10 @@ void NanoAgent::SetMine(Mine* nanoMine){
 
 
 void NanoAgent::SetStamina(unsigned int newStamina){
-	// the stamina can't be a negative value **DEPRECATED**
-	//assert(newStamina >= 0);
-
 	m_stamina = newStamina < MAX_STAMINA ? newStamina : MAX_STAMINA;
 }
 
 unsigned int NanoAgent::IncrementStamina(unsigned int staminaToAdd){
-	// the stamina to add can't be a negative value **DEPRECATED**
-	//assert(staminaToAdd >= 0);
 
 	m_stamina += staminaToAdd;
 	m_stamina = m_stamina < MAX_STAMINA ? m_stamina : MAX_STAMINA;
@@ -65,24 +58,16 @@ unsigned int NanoAgent::IncrementStamina(unsigned int staminaToAdd){
 }
 
 unsigned int NanoAgent::DecrementStamina(unsigned int staminaLost){
-	// the stamina lost can't be a negative value **DEPRECATED**
-	//assert(staminaLost >= 0);
 	m_stamina = (m_stamina > staminaLost) ? (m_stamina - staminaLost) : 0;
 
 	return m_stamina;
 }
 
 void NanoAgent::SetCarriedStonesNumber(unsigned int newCarriedStonesNumber){
-	// the carried stone number can't be a negative value **DEPRECATED**
-	//assert(newCarriedStonesNumber >= 0);
-
 	m_numOfCarriedStones = newCarriedStonesNumber < MAX_STONE ? newCarriedStonesNumber : MAX_STONE;
 }
 
 unsigned int NanoAgent::IncrementStoneCarried(unsigned int stoneToAdd){
-	// the number of carried stone added can't be a negative value **DEPRECATED**
-	//assert(stoneToAdd >= 0);
-
 	m_numOfCarriedStones += stoneToAdd;
 	m_numOfCarriedStones = m_numOfCarriedStones < MAX_STONE ? m_numOfCarriedStones : MAX_STONE;
 	
@@ -90,12 +75,7 @@ unsigned int NanoAgent::IncrementStoneCarried(unsigned int stoneToAdd){
 }
 
 unsigned int NanoAgent::DecrementStoneCarried(unsigned int stoneToRemove){
-	// the number of carried stone dropped can't be a negative value **DEPRECATED**
-	//assert(stoneToRemove >= 0);
-
 	m_numOfCarriedStones = (m_numOfCarriedStones > stoneToRemove) ? (m_numOfCarriedStones - stoneToRemove) : 0;
-	//m_numOfCarriedStones -= stoneToRemove;
-	//m_numOfCarriedStones = m_numOfCarriedStones > 0 ? m_numOfCarriedStones : 0;
 
 	return m_numOfCarriedStones;
 }

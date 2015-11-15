@@ -20,7 +20,6 @@ const sf::Vector2<float>& Mine::GetPosition() const{
 }
 
 unsigned int Mine::DecrementStonesNumber(unsigned int stoneToRemove){
-	//TOFIX Ricky
 	if (numberOfStoneAvailable > stoneToRemove)
 		numberOfStoneAvailable -= stoneToRemove;
 	else

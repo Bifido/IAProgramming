@@ -44,11 +44,10 @@ FSMStates MineNano::CheckTransition(NanoAgent& agent) const
 	if (agent.GetHome() != nullptr && (agent.HasReachedMaxStone() || agent.GetMine()->GetActualStonesNumber() <= 0))
 	{
 		// Setting the mine position as new target
-		agent.SetTarget(agent.GetHome()->GetPosition()); // TODO: Substitute this statement with agent->SetHomeAsTarget() ?
+		agent.SetTarget(agent.GetHome()->GetPosition());
 		// go to state: WALK
 		return DefaultNanoFSMCore::States::WALK;
 	}
-	// TODO: To implement
 	return DefaultNanoFSMCore::States::MINE;
 }
 
